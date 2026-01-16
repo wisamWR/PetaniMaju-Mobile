@@ -135,9 +135,7 @@ alter table profiles enable row level security;
 ## ▶️ Menjalankan Aplikasi
 
 ### Development Mode
-Pastikan Anda berada di dalam folder `mobile`:
 ```bash
-cd mobile
 flutter run
 ```
 
