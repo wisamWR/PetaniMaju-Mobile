@@ -246,8 +246,8 @@ Muhammad Abid (A11.2024.15597)
 Aulia Rahman Afryansyah (A11.2024.15810)
 
 
-*   Email: support@petanimaju.id
-*   Website: www.petanimaju.id
+*   Email: petanimaju911@gmail.com
+*   Website: https://petani-maju-web-download-303lx2dk6-minjeongs-projects-f023e36f.vercel.app/
 
 ---
 
