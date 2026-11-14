@@ -115,6 +115,7 @@ flutter run --dart-define-from-file=.env
    - `20260919000000_agrinova_features.sql` — tabel `prediction_history`, bucket `scan_images`, tabel `user_premium` & `premium_orders`.
    - `20260919100000_base_schema.sql` — profil, tips, hama, video, forum, kalender, bookmark + RLS.
    - `20261115000000_delete_account.sql` — fungsi `delete_my_account()` untuk fitur **Hapus Akun**.
+   - Lalu jalankan `supabase/seed.sql` untuk mengisi konten awal (24 tips & 8 hama/penyakit). Aman dijalankan ulang.
 2. (Untuk PRO) deploy Edge Function lalu set secret Midtrans:
 ```bash
 supabase functions deploy create-midtrans-payment
