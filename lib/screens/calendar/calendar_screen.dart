@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../data/services/supabase_service.dart';
 import '../../data/services/notification_service.dart';
 import '../../data/models/calendar_event_model.dart';
+import '../../core/farming_advice.dart';
 
 class CalendarScreen extends StatefulWidget {
   const CalendarScreen({super.key});
@@ -279,7 +280,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
           : Column(
               children: [
                 _buildCalendar(),
-                const SizedBox(height: 16),
+                const SizedBox(height: 8),
+                _buildMonthlyBanner(),
+                const SizedBox(height: 12),
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
@@ -292,6 +295,83 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 ),
               ],
             ),
+    );
+  }
+
+  Widget _buildMonthlyBanner() {
+    final activity = FarmingAdvice.forMonth(_focusedDay.month);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: InkWell(
+        onTap: () => _showMonthlyActivities(activity),
+        borderRadius: BorderRadius.circular(12),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+          decoration: BoxDecoration(
+            color: Colors.green[50],
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: Colors.green[100]!),
+          ),
+          child: Row(
+            children: [
+              const Icon(Icons.tips_and_updates,
+                  size: 20, color: Color(0xFF166534)),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  "Rekomendasi ${activity.title}",
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 13,
+                      color: Color(0xFF166534)),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              const Icon(Icons.chevron_right, color: Color(0xFF166534)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showMonthlyActivities(MonthlyActivity activity) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
+      builder: (context) => SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Aktivitas ${activity.title}",
+                  style: GoogleFonts.plusJakartaSans(
+                      fontSize: 18, fontWeight: FontWeight.bold)),
+              const SizedBox(height: 4),
+              Text("Saran kegiatan bertani sesuai musim bulan ini",
+                  style: TextStyle(color: Colors.grey[600], fontSize: 12)),
+              const SizedBox(height: 16),
+              ...activity.items.map((item) => Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Icon(Icons.check_circle,
+                            size: 18, color: Color(0xFF166534)),
+                        const SizedBox(width: 10),
+                        Expanded(
+                            child:
+                                Text(item, style: const TextStyle(height: 1.4))),
+                      ],
+                    ),
+                  )),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -308,6 +388,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
           _selectedDay = selectedDay;
           _focusedDay = focusedDay;
         });
+      },
+      onPageChanged: (focusedDay) {
+        setState(() => _focusedDay = focusedDay);
       },
       eventLoader: _getEventsForDay,
       daysOfWeekStyle: DaysOfWeekStyle(

@@ -62,8 +62,16 @@ class SupabaseService {
     );
   }
 
+  Future<void> resendConfirmationEmail(String email) async {
+    await client.auth.resend(type: OtpType.signup, email: email.trim());
+  }
+
   Future<void> signOut() async {
     await client.auth.signOut();
+  }
+
+  Future<void> sendPasswordResetEmail(String email) async {
+    await client.auth.resetPasswordForEmail(email.trim());
   }
 
   Future<void> updatePassword(String newPassword) async {
@@ -475,45 +483,26 @@ class SupabaseService {
         .select()
         .single();
 
-    // Schedule Notification
-    // Schedule Notification
+    // Schedule reminders (H-1, H-1 jam, tepat waktu) sesuai pengaturan notifikasi
     try {
-      final prefs = await SharedPreferences.getInstance();
-
-      // Strict check: If global notifications are disabled, DO NOT schedule anything.
-      final globalEnabled = prefs.getBool('notifications_enabled') ?? false;
-
-      if (!globalEnabled) {
+      if (!await NotificationService().isGloballyEnabled()) {
         debugPrint(
             "DEBUG: Notifications disabled globally. Skipping schedule.");
         return;
       }
 
-      // If enabled, proceed
-      bool shouldSchedule = notificationTime != null;
-      TimeOfDay targetTime =
-          notificationTime ?? const TimeOfDay(hour: 7, minute: 0);
-
-      if (notificationTime == null) {
-        // Use default preference time
-        shouldSchedule = true;
-        final hour = prefs.getInt('notif_hour') ?? 7;
-        final minute = prefs.getInt('notif_minute') ?? 0;
-        targetTime = TimeOfDay(hour: hour, minute: minute);
+      var eventTime = date;
+      if (notificationTime != null) {
+        eventTime = DateTime(date.year, date.month, date.day,
+            notificationTime.hour, notificationTime.minute);
       }
 
-      if (shouldSchedule) {
-        final id = data['id'] as int;
-        // Improved Notification Content
-        await NotificationService().scheduleDailyNotification(
-          id: id,
-          title: "Pengingat Jadwal Tani 🌱",
-          body:
-              "Saatnya melakukan kegiatan '$type' - $title. Semangat bertani!",
-          date: date,
-          time: targetTime,
-        );
-      }
+      await NotificationService().scheduleCalendarReminders(
+        eventId: data['id'] as int,
+        title: title,
+        type: type,
+        eventTime: eventTime,
+      );
     } catch (e) {
       debugPrint("Error scheduling notification: $e");
     }
@@ -522,7 +511,7 @@ class SupabaseService {
   Future<void> deleteCalendarEvent(int id) async {
     // Cancel notification first
     try {
-      await NotificationService().cancelType(id);
+      await NotificationService().cancelCalendarReminders(id);
     } catch (_) {}
 
     await client.from('calendar_events').delete().eq('id', id);

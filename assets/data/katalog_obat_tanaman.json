@@ -1,0 +1,928 @@
+[
+    {
+        "id":  "FNG-001",
+        "nama_obat":  "Dithane M-45",
+        "kategori":  "Fungisida",
+        "produsen":  "Dow AgroSciences / Corteva",
+        "bahan_aktif":  "Mancozeb 80%",
+        "dosis":  "2 g/liter air",
+        "deskripsi":  "Fungisida kontak berbasis mankozeb yang efektif mengendalikan berbagai penyakit jamur pada tanaman. Bekerja dengan menghambat enzim vital dalam proses respirasi sel jamur sehingga mencegah perkembangan spora dan miselium. Cocok digunakan sebagai tindakan pencegahan maupun pengendalian awal infeksi jamur.",
+        "tanaman":  [
+                        "Teh",
+                        "Tomat",
+                        "Padi"
+                    ],
+        "sasaran":  [
+                        "Blight (Phytophthora infestans)",
+                        "Downy mildew (Peronospora tabacina)",
+                        "Bercak daun (Cercospora sp.)",
+                        "Busuk daun teh (Pestalotiopsis theae)"
+                    ],
+        "cara_pakai":  "Larutkan 2 g Dithane M-45 dalam 1 liter air. Semprotkan secara merata ke seluruh permukaan daun pada pagi hari saat angin tidak kencang. Ulangi setiap 7–10 hari atau sesuai tingkat serangan.",
+        "peringatan":  "Gunakan APD lengkap (masker, sarung tangan, kacamata pelindung). Hindari penyemprotan saat angin kencang. Jangan semprotkan menjelang hujan. Simpan jauh dari jangkauan anak-anak dan hewan ternak. Interval pra-panen minimal 7 hari.",
+        "gambar_url":  "https://down-id.img.susercontent.com/file/e1b2cc23a03f0aba6b20b4359e8eab91",
+        "link_pembelian": "https://shopee.co.id/search?keyword=dithane%20m-45"
+    },
+    {
+        "id":  "FNG-002",
+        "nama_obat":  "Antracol 70 WP",
+        "kategori":  "Fungisida",
+        "produsen":  "Bayer CropScience",
+        "bahan_aktif":  "Propineb 70%",
+        "dosis":  "2 g/liter air",
+        "deskripsi":  "Fungisida kontak berbasis propineb yang berspektrum luas untuk mengendalikan penyakit jamur terutama pada sayuran dan tanaman hortikultura. Membentuk lapisan pelindung pada permukaan daun yang mencegah perkecambahan spora jamur. Efektif sebagai tindakan preventif dan kuratif awal.",
+        "tanaman":  [
+                        "Tomat",
+                        "Teh"
+                    ],
+        "sasaran":  [
+                        "Busuk daun (Phytophthora infestans)",
+                        "Bercak coklat (Alternaria solani)",
+                        "Downy mildew",
+                        "Blight awal dan akhir pada tomat"
+                    ],
+        "cara_pakai":  "Campurkan 2 g/liter air, aduk hingga larut sempurna. Semprotkan ke seluruh bagian tanaman termasuk bagian bawah daun. Frekuensi aplikasi 7–14 hari sekali tergantung kondisi cuaca dan tingkat serangan.",
+        "peringatan":  "Pakai APD saat aplikasi. Hindari kontak dengan kulit dan mata. Jangan buang sisa larutan ke sumber air. Rotasikan dengan fungisida berbahan aktif berbeda untuk mencegah resistensi. Interval pra-panen 14 hari.",
+        "gambar_url":  "https://down-id.img.susercontent.com/file/id-11134207-822wi-mmsevn7ozhmt24",
+        "link_pembelian": "https://shopee.co.id/search?keyword=antracol%2070%20wp"
+    },
+    {
+        "id":  "FNG-003",
+        "nama_obat":  "Score 250 EC",
+        "kategori":  "Fungisida",
+        "produsen":  "Syngenta",
+        "bahan_aktif":  "Difenokonazol 250 g/l",
+        "dosis":  "0,5 ml/liter air",
+        "deskripsi":  "Fungisida sistemik dari kelompok triazol yang bekerja dengan menghambat biosintesis ergosterol pada membran sel jamur. Diserap oleh jaringan tanaman sehingga memberikan perlindungan menyeluruh dari dalam. Efektif mengendalikan berbagai penyakit bercak dan karat pada tanaman.",
+        "tanaman":  [
+                        "Tomat",
+                        "Teh"
+                    ],
+        "sasaran":  [
+                        "Bercak daun (Septoria lycopersici)",
+                        "Antraknosa (Colletotrichum sp.)",
+                        "Karat daun",
+                        "Bercak coklat teh (Colletotrichum theae-sinensis)"
+                    ],
+        "cara_pakai":  "Larutkan 0,5 ml Score dalam 1 liter air. Semprotkan merata ke seluruh bagian tanaman. Aplikasikan saat gejala awal muncul atau sebagai tindakan preventif. Interval aplikasi 10–14 hari.",
+        "peringatan":  "Bersifat sistemik, jangan digunakan berlebihan. Hindari aplikasi pada suhu ekstrem. Rotasikan bahan aktif untuk mencegah resistensi. Simpan di tempat kering dan sejuk. Interval pra-panen 14 hari.",
+        "gambar_url":  "https://images.tokopedia.net/img/cache/700/VqbcmM/2024/1/7/9a3c8c98-bea3-4244-9ea2-c235dd00bb97.jpg.webp",
+        "link_pembelian": "https://shopee.co.id/search?keyword=score%20250%20ec"
+    },
+    {
+        "id":  "FNG-004",
+        "nama_obat":  "Amistar Top",
+        "kategori":  "Fungisida",
+        "produsen":  "Syngenta",
+        "bahan_aktif":  "Azoksistrobin 200 g/l + Difenokonazol 125 g/l",
+        "dosis":  "0,5 ml/liter air",
+        "deskripsi":  "Fungisida campuran sistemik yang menggabungkan dua mekanisme kerja berbeda (strobilurin dan triazol). Memberikan perlindungan ganda yang sangat efektif melawan berbagai patogen jamur. Azoksistrobin menghambat respirasi mitokondria jamur, sedangkan difenokonazol menghambat sintesis ergosterol.",
+        "tanaman":  [
+                        "Padi",
+                        "Tomat"
+                    ],
+        "sasaran":  [
+                        "Blas padi (Magnaporthe oryzae)",
+                        "Hawar pelepah (Rhizoctonia solani)",
+                        "Bercak coklat (Helminthosporium oryzae)",
+                        "Busuk batang tomat"
+                    ],
+        "cara_pakai":  "Campurkan 0,5 ml/liter air. Semprotkan secara merata pada stadium vegetatif hingga pengisian biji. Untuk padi, aplikasikan saat fase bunting hingga berbunga. Interval 14 hari.",
+        "peringatan":  "Produk ini sangat efektif namun mahal; gunakan sesuai dosis anjuran. Rotasikan dengan fungisida mekanisme kerja berbeda. Hindari aplikasi saat hujan lebat. Interval pra-panen 14 hari.",
+        "gambar_url":  "https://down-id.img.susercontent.com/file/5bd72284281bcee31dd64d719bf0866a",
+        "link_pembelian": "https://shopee.co.id/search?keyword=amistar%20top"
+    },
+    {
+        "id":  "FNG-005",
+        "nama_obat":  "Ridomil Gold MZ 68 WG",
+        "kategori":  "Fungisida",
+        "produsen":  "Syngenta",
+        "bahan_aktif":  "Metalaksil-M 4% + Mancozeb 64%",
+        "dosis":  "2,5 g/liter air",
+        "deskripsi":  "Fungisida campuran yang menggabungkan sifat sistemik metalaksil-M dengan perlindungan kontak mancozeb. Sangat efektif untuk mengendalikan penyakit yang disebabkan oleh oomisetes (Phytophthora, Pythium, Peronospora). Metalaksil-M bekerja dari dalam jaringan, sementara mancozeb melindungi permukaan luar.",
+        "tanaman":  [
+                        "Tomat",
+                        "Teh"
+                    ],
+        "sasaran":  [
+                        "Busuk daun (Phytophthora infestans)",
+                        "Pythium damping-off",
+                        "Downy mildew",
+                        "Busuk akar teh (Phytophthora cinnamomi)"
+                    ],
+        "cara_pakai":  "Larutkan 2,5 g dalam 1 liter air. Semprotkan ke bagian daun dan batang secara merata. Juga dapat diaplikasikan sebagai drench di sekitar pangkal tanaman untuk mengendalikan penyakit akar. Ulangi setiap 14 hari.",
+        "peringatan":  "Hanya gunakan jika ada risiko serangan Phytophthora atau Pythium. Penggunaan berlebihan dapat mempercepat resistensi. Jangan gunakan lebih dari 3 kali per musim. Interval pra-panen 14 hari.",
+        "gambar_url":  "https://down-id.img.susercontent.com/file/id-11134207-7r98v-lzyqtp9jdbfka6",
+        "link_pembelian": "https://shopee.co.id/search?keyword=ridomil%20gold%20mz%2068%20wg"
+    },
+    {
+        "id":  "FNG-006",
+        "nama_obat":  "Topsin M 70 WP",
+        "kategori":  "Fungisida",
+        "produsen":  "Nippon Soda / Nufarm",
+        "bahan_aktif":  "Tiofanat Metil 70%",
+        "dosis":  "1,5 g/liter air",
+        "deskripsi":  "Fungisida sistemik benzimidazol yang diserap dan ditranslokasikan ke seluruh jaringan tanaman. Menghambat pembelahan sel jamur dengan mengganggu pembentukan tubulin. Efektif mengendalikan penyakit yang disebabkan oleh cendawan Ascomycetes dan Deuteromycetes.",
+        "tanaman":  [
+                        "Tomat",
+                        "Teh",
+                        "Padi"
+                    ],
+        "sasaran":  [
+                        "Antraknosa (Colletotrichum sp.)",
+                        "Busuk buah (Botrytis cinerea)",
+                        "Bercak daun teh",
+                        "Hawar daun padi"
+                    ],
+        "cara_pakai":  "Larutkan 1,5 g dalam 1 liter air. Aplikasikan penyemprotan preventif maupun saat gejala awal muncul. Semprotkan merata ke seluruh tajuk tanaman termasuk batang. Interval 7–10 hari.",
+        "peringatan":  "Rentan terhadap resistensi jika digunakan terus-menerus. Rotasikan dengan fungisida non-benzimidazol. Hindari penyemprotan saat suhu tinggi (\u003e35°C). Interval pra-panen 7 hari.",
+        "gambar_url":  "https://img.lazcdn.com/g/p/4b6d31e809422586a191b7dc49dee67f.jpg_720x720q80.jpg",
+        "link_pembelian": "https://shopee.co.id/search?keyword=topsin%20m%2070%20wp"
+    },
+    {
+        "id":  "FNG-007",
+        "nama_obat":  "Benlate 50 WP",
+        "kategori":  "Fungisida",
+        "produsen":  "DuPont / Corteva",
+        "bahan_aktif":  "Benomil 50%",
+        "dosis":  "1 g/liter air",
+        "deskripsi":  "Fungisida sistemik dari kelompok benzimidazol yang bekerja menghambat polimerisasi tubulin pada sel jamur sehingga menghentikan pembelahan sel. Memiliki spektrum luas dan mampu bergerak akropetal dalam jaringan tanaman untuk memberikan perlindungan menyeluruh.",
+        "tanaman":  [
+                        "Tomat",
+                        "Teh"
+                    ],
+        "sasaran":  [
+                        "Botrytis (Botrytis cinerea)",
+                        "Antraknosa",
+                        "Bercak daun teh",
+                        "Embun tepung (Oidium sp.)"
+                    ],
+        "cara_pakai":  "Larutkan 1 g Benlate dalam 1 liter air, aduk rata. Semprotkan saat kondisi tanaman kering. Efektif digunakan preventif atau saat serangan ringan. Ulangi 10–14 hari sekali.",
+        "peringatan":  "Jangan gunakan terus-menerus karena risiko resistensi tinggi. Pakai sarung tangan dan masker. Hindari kontak dengan mata. Tidak boleh dicampur dengan produk berbasis tembaga. Interval pra-panen 14 hari.",
+        "gambar_url":  "https://down-id.img.susercontent.com/file/id-11134207-7qul4-li6n4277uw2mcf",
+        "link_pembelian": "https://shopee.co.id/search?keyword=benlate%2050%20wp"
+    },
+    {
+        "id":  "FNG-008",
+        "nama_obat":  "Kocide 77 WP",
+        "kategori":  "Fungisida",
+        "produsen":  "DuPont / Corteva",
+        "bahan_aktif":  "Tembaga Hidroksida 77%",
+        "dosis":  "3 g/liter air",
+        "deskripsi":  "Fungisida dan bakterisida kontak berbasis tembaga anorganik. Ion tembaga yang dilepaskan bekerja mendenaturasi protein enzim pada sel patogen sehingga mencegah perkecambahan spora dan perkembangan bakteri. Efektif sebagai perlindungan permukaan daun jangka panjang karena sifat re-solubilisasinya yang lambat.",
+        "tanaman":  [
+                        "Tomat",
+                        "Teh",
+                        "Padi"
+                    ],
+        "sasaran":  [
+                        "Bercak bakteri (Xanthomonas sp.)",
+                        "Busuk daun (Phytophthora sp.)",
+                        "Downy mildew",
+                        "Bercak daun teh"
+                    ],
+        "cara_pakai":  "Larutkan 3 g dalam 1 liter air. Kocok hingga larut merata. Semprotkan ke seluruh permukaan tanaman termasuk bagian bawah daun. Hindari penggunaan berlebihan yang dapat menyebabkan fitotoksisitas.",
+        "peringatan":  "Dapat menyebabkan fitotoksisitas pada suhu tinggi atau saat tanaman stres. Jangan campurkan dengan fungisida berbahan aktif organik tertentu. Hindari penggunaan pada kondisi hujan lebat. Interval pra-panen 7 hari.",
+        "gambar_url":  "https://down-id.img.susercontent.com/file/id-11134207-7rbka-m8dyy76vyqm0e5",
+        "link_pembelian": "https://shopee.co.id/search?keyword=kocide%2077%20wp"
+    },
+    {
+        "id":  "FNG-009",
+        "nama_obat":  "Bravo 500 SC",
+        "kategori":  "Fungisida",
+        "produsen":  "Syngenta",
+        "bahan_aktif":  "Klorotalonil 500 g/l",
+        "dosis":  "2 ml/liter air",
+        "deskripsi":  "Fungisida kontak berspektrum luas berbasis klorotalonil yang bekerja menghambat beberapa enzim metabolisme jamur secara bersamaan. Membentuk lapisan pelindung yang tahan pada permukaan tanaman. Sangat efektif mencegah berbagai penyakit bercak dan busuk pada sayuran dan tanaman pangan.",
+        "tanaman":  [
+                        "Tomat",
+                        "Padi"
+                    ],
+        "sasaran":  [
+                        "Bercak daun awal (Alternaria solani)",
+                        "Bercak daun akhir (Septoria lycopersici)",
+                        "Bercak coklat padi (Helminthosporium oryzae)",
+                        "Blast daun padi"
+                    ],
+        "cara_pakai":  "Larutkan 2 ml dalam 1 liter air. Semprotkan ke seluruh bagian tanaman secara merata saat kondisi cuaca cerah. Ulangi setiap 7–10 hari atau setelah hujan lebat. Jangan campurkan dengan produk alkali.",
+        "peringatan":  "Sangat toksik bagi ikan dan organisme akuatik; jangan buang sisa ke perairan. Gunakan masker dan sarung tangan wajib. Dapat mengiritasi kulit dan mata. Interval pra-panen 7 hari.",
+        "gambar_url":  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIvJ_JvHZOIwGGhBYL7YtQadCmuPi-sV03sw&s",
+        "link_pembelian": "https://shopee.co.id/search?keyword=bravo%20500%20sc"
+    },
+    {
+        "id":  "FNG-010",
+        "nama_obat":  "Rovral 50 WP",
+        "kategori":  "Fungisida",
+        "produsen":  "BASF",
+        "bahan_aktif":  "Iprodion 50%",
+        "dosis":  "2 g/liter air",
+        "deskripsi":  "Fungisida kontak dan sistemik lokal dari kelompok dikarboksimida yang efektif mengendalikan Botrytis dan Sclerotinia. Menghambat perkecambahan spora dan pertumbuhan miselium jamur dengan mengganggu sinyal osmotik sel jamur. Baik digunakan preventif maupun kuratif.",
+        "tanaman":  [
+                        "Tomat",
+                        "Teh"
+                    ],
+        "sasaran":  [
+                        "Botrytis (Botrytis cinerea)",
+                        "Busuk buah tomat",
+                        "Bercak coklat teh",
+                        "Sclerotinia stem rot"
+                    ],
+        "cara_pakai":  "Larutkan 2 g dalam 1 liter air. Semprotkan ke bagian tanaman yang rentan terutama bunga dan buah muda. Efektif diaplikasikan saat awal pembungaan. Ulangi setiap 10–14 hari.",
+        "peringatan":  "Hindari aplikasi berlebihan. Rotasikan dengan fungisida kelompok lain. Hindari inhalasi debu saat penyiapan. Jauhkan dari jangkauan anak-anak. Interval pra-panen 7 hari.",
+        "gambar_url":  "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/img/hDjmkQ/2024/1/25/b0d5dfab-ad3f-48c1-9125-162fe6bbbc5c.jpg~tplv-aphluv4xwc-resize-jpeg:700:0.jpg",
+        "link_pembelian": "https://shopee.co.id/search?keyword=rovral%2050%20wp"
+    },
+    {
+        "id":  "FNG-011",
+        "nama_obat":  "Melody Duo 66,75 WP",
+        "kategori":  "Fungisida",
+        "produsen":  "Bayer CropScience",
+        "bahan_aktif":  "Iprovalikarb 5,5% + Propineb 61,25%",
+        "dosis":  "2,5 g/liter air",
+        "deskripsi":  "Fungisida campuran yang menggabungkan komponen sistemik iprovalikarb dengan komponen kontak propineb. Iprovalikarb bekerja menghambat sintesis dinding sel pada oomisetes, sementara propineb melindungi permukaan tanaman. Sangat efektif untuk mengendalikan penyakit yang disebabkan Phytophthora dan Peronospora.",
+        "tanaman":  [
+                        "Tomat"
+                    ],
+        "sasaran":  [
+                        "Busuk daun (Phytophthora infestans)",
+                        "Downy mildew (Peronospora destructor)",
+                        "Blight awal dan akhir"
+                    ],
+        "cara_pakai":  "Larutkan 2,5 g dalam 1 liter air. Semprotkan ke seluruh bagian tanaman terutama bagian bawah daun. Aplikasikan preventif sebelum musim hujan atau saat kondisi cuaca mendukung perkembangan jamur. Interval 7–10 hari.",
+        "peringatan":  "Efektivitas berkurang jika curah hujan tinggi segera setelah aplikasi. Gunakan APD lengkap. Jangan buang limbah ke saluran air. Interval pra-panen 14 hari.",
+        "gambar_url":  "https://img.lazcdn.com/g/p/ff3fbb71bacce10973d43a671b4718a2.jpg_720x720q80.jpg",
+        "link_pembelian": "https://shopee.co.id/search?keyword=melody%20duo%2066%2C75%20wp"
+    },
+    {
+        "id":  "FNG-012",
+        "nama_obat":  "Nativo 75 WG",
+        "kategori":  "Fungisida",
+        "produsen":  "Bayer CropScience",
+        "bahan_aktif":  "Trifloksistrobin 25% + Tebukonazol 50%",
+        "dosis":  "0,4 g/liter air",
+        "deskripsi":  "Fungisida premium campuran dua mekanisme kerja (strobilurin + triazol) yang memberikan perlindungan menyeluruh dan berkepanjangan. Trifloksistrobin menghambat respirasi mitokondria jamur, sedangkan tebukonazol menghambat biosintesis ergosterol. Memiliki efek greening yang memperpanjang umur daun aktif.",
+        "tanaman":  [
+                        "Padi",
+                        "Teh"
+                    ],
+        "sasaran":  [
+                        "Blas padi (Magnaporthe oryzae)",
+                        "Hawar pelepah (Rhizoctonia solani)",
+                        "Karat daun",
+                        "Bercak daun teh"
+                    ],
+        "cara_pakai":  "Larutkan 0,4 g dalam 1 liter air. Semprotkan dengan volume semprot yang cukup untuk menutup seluruh permukaan tanaman. Untuk padi, aplikasikan pada fase vegetatif akhir dan awal generatif. Interval 14–21 hari.",
+        "peringatan":  "Dosis rendah tapi sangat efektif; jangan menambah dosis melebihi anjuran. Rotasikan secara ketat karena potensi resistensi pada strobilurin tinggi. Interval pra-panen 21 hari.",
+        "gambar_url":  "https://down-id.img.susercontent.com/file/sg-11134201-7rdwv-lxi09ujoq5oo2d",
+        "link_pembelian": "https://shopee.co.id/search?keyword=nativo%2075%20wg"
+    },
+    {
+        "id":  "FNG-013",
+        "nama_obat":  "Propiconazole 250 EC",
+        "kategori":  "Fungisida",
+        "produsen":  "Syngenta / Dow AgroSciences",
+        "bahan_aktif":  "Propikonazol 250 g/l",
+        "dosis":  "0,5 ml/liter air",
+        "deskripsi":  "Fungisida sistemik triazol yang sangat efektif mengendalikan penyakit karat dan bercak daun pada serealia dan tanaman pangan. Bekerja menghambat sintesis ergosterol pada membran sel jamur dan mampu berpindah secara akropetal dalam jaringan tanaman sehingga memberikan perlindungan menyeluruh.",
+        "tanaman":  [
+                        "Padi"
+                    ],
+        "sasaran":  [
+                        "Blas padi (Magnaporthe oryzae)",
+                        "Hawar pelepah (Rhizoctonia solani)",
+                        "Bercak coklat (Helminthosporium oryzae)",
+                        "Gosong palsu (Ustilaginoidea virens)"
+                    ],
+        "cara_pakai":  "Larutkan 0,5 ml dalam 1 liter air. Untuk padi, semprotkan saat fase bunting (PI: panicle initiation) hingga malai keluar. Volume semprot 400–500 liter/ha. Interval 14 hari.",
+        "peringatan":  "Jangan digunakan lebih dari 2 kali per siklus tanam. Rotasikan dengan fungisida mekanisme berbeda. Hindari pencemaran air permukaan. Interval pra-panen 28 hari.",
+        "gambar_url":  "https://down-id.img.susercontent.com/file/id-11134207-8224s-mkniwxmqkcuec6",
+        "link_pembelian": "https://shopee.co.id/search?keyword=propiconazole%20250%20ec"
+    },
+    {
+        "id":  "FNG-014",
+        "nama_obat":  "Blast Force 750 WP",
+        "kategori":  "Fungisida",
+        "produsen":  "Petrokimia Gresik",
+        "bahan_aktif":  "Trisiklazol 75%",
+        "dosis":  "0,8 g/liter air",
+        "deskripsi":  "Fungisida sistemik khusus untuk pengendalian blast pada padi yang bekerja dengan menghambat biosintesis melanin pada dinding sel spora Magnaporthe oryzae. Tanpa melanin, spora tidak mampu membentuk appressorium untuk menembus jaringan daun padi sehingga infeksi terhenti.",
+        "tanaman":  [
+                        "Padi"
+                    ],
+        "sasaran":  [
+                        "Blas daun padi (Magnaporthe oryzae)",
+                        "Blas leher malai",
+                        "Blas buku"
+                    ],
+        "cara_pakai":  "Larutkan 0,8 g dalam 1 liter air. Semprotkan pada fase vegetatif awal saat gejala muncul atau preventif saat cuaca lembab mendukung blast. Aplikasikan kembali 10–14 hari kemudian terutama saat fase bunting.",
+        "peringatan":  "Spesifik untuk blast; tidak efektif untuk penyakit lain. Gunakan APD lengkap. Jangan aplikasikan saat angin kencang. Rotasikan dengan fungisida berbahan aktif lain. Interval pra-panen 14 hari.",
+        "gambar_url":  "https://down-id.img.susercontent.com/file/sg-11134201-7rdyd-lz9zq6vqb49ue7",
+        "link_pembelian": "https://shopee.co.id/search?keyword=blastgone%2075wp&trackingId=searchhint-1782287317-1bdee13f-6fa1-11f1-a71c-4e25264e976f"
+    },
+    {
+        "id":  "FNG-015",
+        "nama_obat":  "Acrobat MZ 69 WP",
+        "kategori":  "Fungisida",
+        "produsen":  "BASF",
+        "bahan_aktif":  "Dimetomorf 9% + Mancozeb 60%",
+        "dosis":  "2,5 g/liter air",
+        "deskripsi":  "Fungisida campuran yang menggabungkan sifat sistemik lokal dimetomorf dengan perlindungan kontak mancozeb. Dimetomorf secara spesifik menghambat sintesis dinding sel oomisetes. Produk ini sangat efektif melawan strain Phytophthora yang telah resisten terhadap metalaksil.",
+        "tanaman":  [
+                        "Tomat",
+                        "Teh"
+                    ],
+        "sasaran":  [
+                        "Busuk daun (Phytophthora infestans)",
+                        "Downy mildew",
+                        "Pythium root rot",
+                        "Busuk batang dan buah tomat"
+                    ],
+        "cara_pakai":  "Larutkan 2,5 g dalam 1 liter air. Semprotkan secara merata ke seluruh bagian tanaman termasuk bawah daun. Sangat dianjurkan saat musim hujan atau kelembaban tinggi. Ulangi setiap 7–10 hari.",
+        "peringatan":  "Efektif untuk Phytophthora resisten metalaksil. Tetap rotasikan untuk mencegah resistensi baru. Gunakan APD lengkap. Interval pra-panen 14 hari.",
+        "gambar_url":  "https://i0.wp.com/greenagefarms.com/wp-content/uploads/2023/07/afd8caf4-914b-42ea-8e50-d157ee8f7e5a.png?fit=500%2C500&ssl=1",
+        "link_pembelian": "https://shopee.co.id/search?keyword=acrobat%20mz%2069%20wp"
+    },
+    {
+        "id":  "INS-001",
+        "nama_obat":  "Regent 50 SC",
+        "kategori":  "Insektisida",
+        "produsen":  "BASF",
+        "bahan_aktif":  "Fipronil 50 g/l",
+        "dosis":  "0,5 ml/liter air",
+        "deskripsi":  "Insektisida sistemik dan kontak dari kelompok fenilpirazol yang bekerja memblokir reseptor GABA pada sistem saraf serangga sehingga menyebabkan hiperaktivitas dan kematian. Memiliki spektrum luas dan efektif terhadap hama penghisap maupun pengunyah. Sangat efektif untuk wereng dan penggerek batang padi.",
+        "tanaman":  [
+                        "Padi",
+                        "Tomat",
+                        "Teh"
+                    ],
+        "sasaran":  [
+                        "Wereng batang coklat (Nilaparvata lugens)",
+                        "Penggerek batang padi (Scirpophaga sp.)",
+                        "Trips (Thrips sp.)",
+                        "Kutu daun (Aphis sp.)"
+                    ],
+        "cara_pakai":  "Larutkan 0,5 ml dalam 1 liter air. Semprotkan ke bagian pangkal tanaman padi (area pertanaman) untuk wereng atau ke seluruh tajuk untuk hama pengunyah. Efektif juga sebagai soil drench. Interval 14 hari.",
+        "peringatan":  "Sangat toksik bagi lebah dan organisme air. Hindari aplikasi saat tanaman berbunga. Jangan gunakan dekat kolam ikan atau sumber air. Interval pra-panen 14 hari. Batasi penggunaan maksimal 2 kali/musim.",
+        "gambar_url":  "https://www.saprodi.id/wp-content/uploads/2021/03/BASF-Regent-50SC-80ml-1.jpg",
+        "link_pembelian": "https://shopee.co.id/search?keyword=regent%2050%20sc"
+    },
+    {
+        "id":  "INS-002",
+        "nama_obat":  "Confidor 200 SL",
+        "kategori":  "Insektisida",
+        "produsen":  "Bayer CropScience",
+        "bahan_aktif":  "Imidakloprid 200 g/l",
+        "dosis":  "0,5 ml/liter air",
+        "deskripsi":  "Insektisida sistemik neonikotinoid yang diserap oleh akar dan daun lalu ditranslokasikan ke seluruh jaringan tanaman. Bekerja dengan mengikat reseptor asetilkolin nikotinat pada sistem saraf serangga sehingga menyebabkan gangguan saraf permanen. Sangat efektif untuk hama penghisap dan beberapa hama tanah.",
+        "tanaman":  [
+                        "Teh",
+                        "Tomat",
+                        "Padi"
+                    ],
+        "sasaran":  [
+                        "Kutu daun teh (Toxoptera aurantii)",
+                        "Wereng hijau (Nephotettix sp.)",
+                        "Kutu kebul (Bemisia tabaci)",
+                        "Thrips (Thrips palmi)"
+                    ],
+        "cara_pakai":  "Larutkan 0,5 ml dalam 1 liter air. Semprotkan ke seluruh permukaan daun atau aplikasikan sebagai drench tanah di sekitar perakaran. Efek sistemik memberikan perlindungan 2–3 minggu. Jangan digunakan saat tanaman berbunga.",
+        "peringatan":  "Sangat berbahaya bagi lebah madu dan serangga penyerbuk. DILARANG digunakan saat tanaman berbunga. Toksik bagi burung dan organisme air. Maksimal 2 kali per musim. Interval pra-panen 21 hari.",
+        "gambar_url":  "https://down-id.img.susercontent.com/file/id-11134207-7r98q-lyer32p6abbyb1",
+        "link_pembelian": "https://shopee.co.id/search?keyword=confidor%20200%20sl"
+    },
+    {
+        "id":  "INS-003",
+        "nama_obat":  "Decis 25 EC",
+        "kategori":  "Insektisida",
+        "produsen":  "Bayer CropScience",
+        "bahan_aktif":  "Deltametrin 25 g/l",
+        "dosis":  "0,5 ml/liter air",
+        "deskripsi":  "Insektisida kontak dan lambung dari kelompok piretroid sintetis yang bekerja sangat cepat. Mengganggu sistem saraf serangga dengan menstabilkan kanal natrium sehingga menyebabkan hiperaktivitas dan kelumpuhan. Efektif mengendalikan berbagai ulat dan serangga pengunyah.",
+        "tanaman":  [
+                        "Tomat",
+                        "Teh",
+                        "Padi"
+                    ],
+        "sasaran":  [
+                        "Ulat grayak (Spodoptera litura)",
+                        "Ulat buah tomat (Helicoverpa armigera)",
+                        "Hama pengunyah daun teh",
+                        "Walang sangit (Leptocorisa oratorius)"
+                    ],
+        "cara_pakai":  "Larutkan 0,5 ml dalam 1 liter air. Semprotkan merata ke seluruh bagian tanaman saat serangan hama aktif. Bekerja cepat, efek knockdown terlihat dalam hitungan jam. Ulangi setiap 7–10 hari jika populasi hama masih tinggi.",
+        "peringatan":  "Berbahaya bagi lebah, ikan, dan serangga air. Jangan semprotkan dekat kolam atau sungai. Hindari inhalasi kabut semprot. Gunakan masker dan sarung tangan. Interval pra-panen 7 hari.",
+        "gambar_url":  "https://www.saprodi.id/wp-content/uploads/2021/03/Bayer-Decis-25-EC-250ml-1.jpg",
+        "link_pembelian": "https://shopee.co.id/search?keyword=decis%2025%20ec"
+    },
+    {
+        "id":  "INS-004",
+        "nama_obat":  "Match 50 EC",
+        "kategori":  "Insektisida",
+        "produsen":  "Syngenta",
+        "bahan_aktif":  "Lufenuron 50 g/l",
+        "dosis":  "1 ml/liter air",
+        "deskripsi":  "Insektisida pengatur pertumbuhan serangga (IGR) dari kelompok benzoilurea yang bekerja menghambat sintesis kitin. Larva yang memakan tanaman yang disemprot tidak mampu berganti kulit sehingga akhirnya mati. Selektif terhadap serangga pengunyah dan lebih aman bagi serangga penyerbuk dewasa.",
+        "tanaman":  [
+                        "Tomat",
+                        "Teh"
+                    ],
+        "sasaran":  [
+                        "Ulat grayak (Spodoptera litura)",
+                        "Ulat buah (Helicoverpa armigera)",
+                        "Ulat api teh (Setora nitens)",
+                        "Thrips larva"
+                    ],
+        "cara_pakai":  "Larutkan 1 ml dalam 1 liter air. Semprotkan ke seluruh permukaan tanaman termasuk bawah daun tempat larva bersembunyi. Efektivitas optimal pada larva instar awal. Interval aplikasi 7–14 hari.",
+        "peringatan":  "Efektif hanya pada larva, tidak pada serangga dewasa. Hindari inhalasi. Toksik bagi organisme akuatik. Interval pra-panen 7 hari. Simpan jauh dari panas dan api.",
+        "gambar_url":  "https://down-id.img.susercontent.com/file/2438d52230a7563cd4a197b15cff2d8d",
+        "link_pembelian": "https://shopee.co.id/search?keyword=match%2050%20ec"
+    },
+    {
+        "id":  "INS-005",
+        "nama_obat":  "Virtako 300 SC",
+        "kategori":  "Insektisida",
+        "produsen":  "Syngenta",
+        "bahan_aktif":  "Thiamethoksam 141 g/l + Klorantraniliprol 88 g/l",
+        "dosis":  "0,5 ml/liter air",
+        "deskripsi":  "Insektisida campuran premium yang menggabungkan neonikotinoid (thiamethoksam) dengan diamida (klorantraniliprol) untuk perlindungan ganda. Thiamethoksam bekerja sistemik terhadap hama penghisap, sementara klorantraniliprol bekerja dengan mengaktifkan reseptor ryanodine yang menyebabkan paralisis otot pada ulat dan larva.",
+        "tanaman":  [
+                        "Padi"
+                    ],
+        "sasaran":  [
+                        "Penggerek batang padi (Scirpophaga sp.)",
+                        "Wereng batang coklat (Nilaparvata lugens)",
+                        "Wereng hijau (Nephotettix sp.)"
+                    ],
+        "cara_pakai":  "Larutkan 0,5 ml dalam 1 liter air. Semprotkan ke bagian tajuk dan pangkal batang padi. Untuk penggerek, aplikasikan saat telur mulai menetas. Satu aplikasi memberikan perlindungan 3–4 minggu.",
+        "peringatan":  "Berbahaya bagi lebah dan organisme akuatik. Maksimal 2 kali per musim tanam untuk mencegah resistensi. Interval pra-panen 14 hari. Jangan gunakan dekat ekosistem sawah yang menjadi habitat ikan.",
+        "gambar_url":  "https://down-id.img.susercontent.com/file/be6c755339343c79702afe1cdf92a43c",
+        "link_pembelian": "https://shopee.co.id/search?keyword=virtako%20300%20sc"
+    },
+    {
+        "id":  "INS-006",
+        "nama_obat":  "Prevathon 50 SC",
+        "kategori":  "Insektisida",
+        "produsen":  "DuPont / Corteva",
+        "bahan_aktif":  "Klorantraniliprol 50 g/l",
+        "dosis":  "0,5 ml/liter air",
+        "deskripsi":  "Insektisida dari kelompok diamida (anthranilic diamide) yang bekerja dengan mengaktifkan reseptor ryanodine pada otot serangga sehingga terjadi pelepasan ion kalsium secara tidak terkontrol, menyebabkan kelumpuhan dan kematian. Sangat efektif terhadap Lepidoptera (ulat) dan relatif aman bagi lebah dewasa.",
+        "tanaman":  [
+                        "Padi",
+                        "Tomat"
+                    ],
+        "sasaran":  [
+                        "Penggerek batang padi (Scirpophaga sp.)",
+                        "Ulat buah tomat (Helicoverpa armigera)",
+                        "Ulat grayak (Spodoptera litura)",
+                        "Ulat penggulung daun padi"
+                    ],
+        "cara_pakai":  "Larutkan 0,5 ml dalam 1 liter air. Semprotkan ke seluruh tajuk tanaman termasuk batang. Untuk penggerek padi, semprotkan saat gejala sundep awal terlihat. Interval 14–21 hari.",
+        "peringatan":  "Relatif aman bagi lebah dewasa namun tetap hindari penyemprotan saat tanaman berbunga. Jauhkan dari perairan. Interval pra-panen 14 hari. Rotasikan dengan insektisida mekanisme berbeda.",
+        "gambar_url":  "https://down-id.img.susercontent.com/file/id-11134207-7r98p-lxo4x93l74ay69",
+        "link_pembelian": "https://shopee.co.id/search?keyword=prevathon%2050%20sc"
+    },
+    {
+        "id":  "INS-007",
+        "nama_obat":  "Dursban 200 EC",
+        "kategori":  "Insektisida",
+        "produsen":  "Dow AgroSciences / Corteva",
+        "bahan_aktif":  "Klorpirifos 200 g/l",
+        "dosis":  "2 ml/liter air",
+        "deskripsi":  "Insektisida organofosfat berspektrum luas yang bekerja menghambat enzim asetilkolinesterase pada sistem saraf serangga sehingga menyebabkan akumulasi asetilkolin dan hiperaktivitas saraf. Efektif terhadap hama tanah, ulat, dan hama penghisap. Memiliki efek kontak, lambung, dan fumigan.",
+        "tanaman":  [
+                        "Teh",
+                        "Padi",
+                        "Tomat"
+                    ],
+        "sasaran":  [
+                        "Kumbang tanah",
+                        "Ulat tanah (Agrotis sp.)",
+                        "Hama penghisap akar teh",
+                        "Penggerek batang padi"
+                    ],
+        "cara_pakai":  "Larutkan 2 ml dalam 1 liter air. Untuk hama tanah, sirami larutan ke pangkal tanaman. Untuk hama tajuk, semprotkan ke seluruh bagian tanaman. Bisa juga dicampur dengan pupuk granul untuk aplikasi tanah.",
+        "peringatan":  "Sangat berbahaya bagi manusia, ternak, dan satwa liar. Gunakan APD lengkap termasuk baju pelindung. Hindari kontak kulit. Toksik bagi burung, ikan, dan lebah. Interval pra-panen 21 hari.",
+        "gambar_url":  "https://www.saprodi.id/wp-content/uploads/2021/03/Dursban-200EC-100ml-1-.jpg",
+        "link_pembelian": "https://shopee.co.id/search?keyword=dursban%20200%20ec"
+    },
+    {
+        "id":  "INS-008",
+        "nama_obat":  "Lannate 40 SP",
+        "kategori":  "Insektisida",
+        "produsen":  "DuPont / Corteva",
+        "bahan_aktif":  "Metomil 40%",
+        "dosis":  "1,5 g/liter air",
+        "deskripsi":  "Insektisida karbamat sistemik yang menghambat enzim asetilkolinesterase. Bekerja cepat dengan efek kontak, lambung, dan sistemik. Sangat efektif terhadap ulat dan beberapa hama penghisap. Metomil memiliki efek translaminar yang memungkinkan pengendalian larva yang bersembunyi di balik daun.",
+        "tanaman":  [
+                        "Tomat",
+                        "Teh"
+                    ],
+        "sasaran":  [
+                        "Ulat grayak (Spodoptera litura)",
+                        "Ulat buah (Helicoverpa armigera)",
+                        "Kutu daun (Myzus persicae)",
+                        "Ulat pucuk teh"
+                    ],
+        "cara_pakai":  "Larutkan 1,5 g dalam 1 liter air. Semprotkan ke seluruh bagian tanaman saat hama aktif (pagi atau sore hari). Efek cepat biasanya terlihat dalam 24 jam. Ulangi setiap 7–10 hari.",
+        "peringatan":  "SANGAT TOKSIK. Berbahaya bagi manusia, ternak, burung, dan lebah. Hanya untuk pengguna terlatih. Gunakan APD lengkap termasuk respirator. Simpan di tempat terkunci. Interval pra-panen 7 hari.",
+        "gambar_url":  "https://www.saprodi.id/wp-content/uploads/2021/03/Dupont-Lannate-40-SP-100-gram-1.jpg",
+        "link_pembelian": "https://shopee.co.id/search?keyword=lannate%2040%20sp"
+    },
+    {
+        "id":  "INS-009",
+        "nama_obat":  "Buprofezin 25 WP",
+        "kategori":  "Insektisida",
+        "produsen":  "Nichino America / berbagai produsen",
+        "bahan_aktif":  "Buprofezin 25%",
+        "dosis":  "1,5 g/liter air",
+        "deskripsi":  "Insektisida pengatur pertumbuhan serangga (IGR) yang menghambat sintesis kitin dan prostaglandin. Efektif mengendalikan nimfa wereng dengan menghambat proses ganti kulit sehingga nimfa tidak berkembang menjadi dewasa. Selektif dan relatif aman bagi musuh alami wereng.",
+        "tanaman":  [
+                        "Padi"
+                    ],
+        "sasaran":  [
+                        "Wereng batang coklat (Nilaparvata lugens) nimfa",
+                        "Wereng hijau (Nephotettix sp.) nimfa",
+                        "Kutu putih nimfa"
+                    ],
+        "cara_pakai":  "Larutkan 1,5 g dalam 1 liter air. Semprotkan ke bagian pangkal tanaman padi tempat wereng berkoloni. Efektif terhadap nimfa, aplikasikan saat populasi nimfa instar 1–3. Interval 14–21 hari.",
+        "peringatan":  "Tidak efektif terhadap serangga dewasa. Gunakan APD standar. Toksik bagi organisme air. Jangan gunakan lebih dari 2 kali per musim. Interval pra-panen 14 hari.",
+        "gambar_url":  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSea5sUg94ydYr5fuLS7F8pAgphKSfH6FrFAw&s",
+        "link_pembelian": "https://shopee.co.id/search?keyword=buprofezin%2025%20wp"
+    },
+    {
+        "id":  "INS-010",
+        "nama_obat":  "Pyrinex 480 EC",
+        "kategori":  "Insektisida",
+        "produsen":  "Cheminova / FMC",
+        "bahan_aktif":  "Klorpirifos 480 g/l",
+        "dosis":  "1 ml/liter air",
+        "deskripsi":  "Insektisida organofosfat konsentrasi tinggi yang berspektrum luas. Formulasi emulsi 480 g/l memungkinkan penggunaan dengan dosis yang lebih rendah dibanding formulasi konsentrasi biasa. Efektif terhadap hama tanah dan hama permukaan dengan efek kontak dan fumigan.",
+        "tanaman":  [
+                        "Teh",
+                        "Padi"
+                    ],
+        "sasaran":  [
+                        "Hama akar teh",
+                        "Nematoda parasit tanah",
+                        "Ulat tanah (Agrotis sp.)",
+                        "Hama gudang serangga tanah padi"
+                    ],
+        "cara_pakai":  "Larutkan 1 ml dalam 1 liter air. Untuk hama tanah, siram ke sekitar perakaran. Untuk hama tajuk, semprotkan saat populasi hama melebihi ambang ekonomi. Dapat dikombinasikan dengan pupuk daun.",
+        "peringatan":  "Sangat toksik dan berbau menyengat. Wajib pakai APD lengkap. Berbahaya bagi ikan, lebah, dan burung. Jangan gunakan dekat perairan. Interval pra-panen 21 hari.",
+        "gambar_url":  "https://static.wixstatic.com/media/d7cea2_b7d60663da4a4a9d8cb8b5ed8a0d58bd~mv2.png/v1/fill/w_560,h_700,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/d7cea2_b7d60663da4a4a9d8cb8b5ed8a0d58bd~mv2.png",
+        "link_pembelian": "https://shopee.co.id/search?keyword=pyrinex%20480%20ec"
+    },
+    {
+        "id":  "BAK-001",
+        "nama_obat":  "Agrimycin 15 WP",
+        "kategori":  "Bakterisida",
+        "produsen":  "Pfizer / Syngenta",
+        "bahan_aktif":  "Streptomisin Sulfat 15%",
+        "dosis":  "1,5 g/liter air",
+        "deskripsi":  "Bakterisida berbasis antibiotik streptomisin yang bekerja menghambat sintesis protein bakteri pada ribosom 30S. Efektif mengendalikan infeksi bakteri pada tanaman terutama yang disebabkan oleh Xanthomonas, Pseudomonas, dan Erwinia. Dapat digunakan secara preventif maupun kuratif.",
+        "tanaman":  [
+                        "Tomat",
+                        "Teh",
+                        "Padi"
+                    ],
+        "sasaran":  [
+                        "Bercak bakteri tomat (Xanthomonas vesicatoria)",
+                        "Hawar bakteri padi (Xanthomonas oryzae)",
+                        "Busuk lunak (Erwinia sp.)",
+                        "Bercak bakteri teh (Pseudomonas sp.)"
+                    ],
+        "cara_pakai":  "Larutkan 1,5 g dalam 1 liter air. Semprotkan merata ke seluruh permukaan tanaman termasuk bawah daun. Aplikasikan saat gejala awal muncul atau preventif pada musim hujan. Ulangi setiap 7–10 hari.",
+        "peringatan":  "Jangan gunakan berlebihan untuk mencegah resistensi antibiotik. Penggunaan yang tidak tepat dapat menyebabkan bakteri resisten. Rotasikan dengan bakterisida non-antibiotik. Interval pra-panen 14 hari.",
+        "gambar_url":  "https://id-live-01.slatic.net/p/7909145bf7431dd8d098139cba9f1737.jpg",
+        "link_pembelian": "https://shopee.co.id/search?keyword=agrimycin%2015%20wp"
+    },
+    {
+        "id":  "BAK-002",
+        "nama_obat":  "Kocide 77 WP (Dual Action)",
+        "kategori":  "Bakterisida",
+        "produsen":  "DuPont / Corteva",
+        "bahan_aktif":  "Tembaga Hidroksida 77%",
+        "dosis":  "3 g/liter air",
+        "deskripsi":  "Bakterisida dan fungisida kontak berbasis tembaga yang efektif menghambat pertumbuhan dan penyebaran bakteri patogen tanaman. Ion Cu2+ yang dilepaskan merusak membran sel bakteri dan mendenaturasi enzim-enzim vital metabolisme. Digunakan luas untuk pengendalian penyakit bakteri pada berbagai tanaman.",
+        "tanaman":  [
+                        "Tomat",
+                        "Teh",
+                        "Padi"
+                    ],
+        "sasaran":  [
+                        "Hawar bakteri padi (Xanthomonas oryzae pv. oryzae)",
+                        "Bercak bakteri tomat (Xanthomonas vesicatoria)",
+                        "Busuk pangkal batang bakteri",
+                        "Bercak daun bakteri teh"
+                    ],
+        "cara_pakai":  "Larutkan 3 g dalam 1 liter air. Semprotkan secara merata ke seluruh tajuk tanaman. Efektif digunakan preventif sebelum musim hujan dan kuratif saat gejala awal terlihat. Interval 7–10 hari.",
+        "peringatan":  "Fitotoksik pada konsentrasi tinggi atau cuaca panas. Jangan campurkan dengan produk yang sensitif terhadap tembaga. Toksik bagi organisme akuatik. Interval pra-panen 7 hari.",
+        "gambar_url":  "https://down-id.img.susercontent.com/file/id-11134207-7rbka-m8dyy76vyqm0e5",
+        "link_pembelian": "https://shopee.co.id/search?keyword=kocide%2077%20wp%20(dual%20action)"
+    },
+    {
+        "id":  "BAK-003",
+        "nama_obat":  "Bacteriosin 10 SP",
+        "kategori":  "Bakterisida",
+        "produsen":  "Petrokimia Gresik",
+        "bahan_aktif":  "Kasugamisin Hidroklorida 10%",
+        "dosis":  "2 g/liter air",
+        "deskripsi":  "Bakterisida dan fungisida berbahan aktif kasugamisin, antibiotik aminoglisosida yang diproduksi oleh Streptomyces kasugaensis. Menghambat sintesis protein bakteri dan jamur tertentu pada tingkat translasi ribosom. Sangat efektif untuk hawar daun bakteri padi (Kresek) dan blast padi.",
+        "tanaman":  [
+                        "Padi"
+                    ],
+        "sasaran":  [
+                        "Hawar daun bakteri (Xanthomonas oryzae pv. oryzae)",
+                        "Kresek (gejala layu sistemik HDB)",
+                        "Blas padi (Magnaporthe oryzae)",
+                        "Busuk batang bakteri"
+                    ],
+        "cara_pakai":  "Larutkan 2 g dalam 1 liter air. Semprotkan ke seluruh bagian tanaman padi. Untuk kresek parah, tambahkan volume semprot. Aplikasikan saat 30–40% tanaman mulai menunjukkan gejala. Interval 7 hari.",
+        "peringatan":  "Produk antibiotik; gunakan sesuai dosis dan interval yang dianjurkan. Rotasikan dengan produk non-antibiotik. Hindari penggunaan berlebihan. Interval pra-panen 14 hari.",
+        "gambar_url":  "https://down-id.img.susercontent.com/file/d482bc2a963448a89d5b62f19eb64346",
+        "link_pembelian": "https://shopee.co.id/search?keyword=bacteriosin%2010%20sp"
+    },
+    {
+        "id":  "BAK-004",
+        "nama_obat":  "Cupravit OB 21",
+        "kategori":  "Bakterisida",
+        "produsen":  "Bayer CropScience",
+        "bahan_aktif":  "Tembaga Oksiklorida 58%",
+        "dosis":  "3 g/liter air",
+        "deskripsi":  "Bakterisida dan fungisida kontak berbasis tembaga oksiklorida yang melepaskan ion tembaga secara bertahap untuk efek jangka lebih panjang dibanding tembaga sulfat. Efektif mengendalikan penyakit bakteri dan jamur pada permukaan tanaman dengan membentuk lapisan pelindung tahan cuci hujan.",
+        "tanaman":  [
+                        "Teh",
+                        "Tomat"
+                    ],
+        "sasaran":  [
+                        "Bercak daun bakteri teh",
+                        "Busuk pangkal bakteri tomat (Erwinia sp.)",
+                        "Kanker bakteri (Clavibacter michiganensis)",
+                        "Bercak coklat teh"
+                    ],
+        "cara_pakai":  "Larutkan 3 g dalam 1 liter air. Aduk rata dan semprotkan segera. Aplikasikan pada kondisi cuaca kering dan semprotkan ke seluruh permukaan tanaman. Interval 7–14 hari tergantung tingkat serangan.",
+        "peringatan":  "Hindari pencampuran dengan produk sensitif tembaga. Dapat menyebabkan noda biru kehijauan pada buah. Tidak fitotoksik pada dosis anjuran jika cuaca normal. Interval pra-panen 14 hari.",
+        "gambar_url":  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTES876_gN4IntiYQY6pazgTGeuTe3az4-fAg&s",
+        "link_pembelian": "https://shopee.co.id/search?keyword=cupravit%20ob%2021"
+    },
+    {
+        "id":  "BAK-005",
+        "nama_obat":  "Agri-Phos 400 SL",
+        "kategori":  "Bakterisida",
+        "produsen":  "Nufarm",
+        "bahan_aktif":  "Fosetil Aluminium 400 g/l (setara fosfonat)",
+        "dosis":  "3 ml/liter air",
+        "deskripsi":  "Produk berbahan aktif fosfonat yang memiliki efek bakteriostatik dan fungistatik serta merangsang mekanisme ketahanan sistemik tanaman (SAR — Systemic Acquired Resistance). Diserap tanaman dan mendistorsi metabolisme patogen sekaligus meningkatkan kemampuan pertahanan alami tanaman terhadap infeksi.",
+        "tanaman":  [
+                        "Teh",
+                        "Tomat"
+                    ],
+        "sasaran":  [
+                        "Busuk akar bakteri dan Phytophthora teh",
+                        "Busuk pangkal batang tomat",
+                        "Penyakit layu bakteri (Ralstonia solanacearum)",
+                        "Damping-off bakteri"
+                    ],
+        "cara_pakai":  "Larutkan 3 ml dalam 1 liter air. Semprotkan ke daun atau sirami ke zona perakaran (soil drench). Untuk drench, gunakan 5 ml/liter air dan sirami 200 ml per tanaman. Interval 14 hari.",
+        "peringatan":  "Relatif aman namun tetap gunakan APD standar. Jangan campurkan langsung dengan produk tembaga karena dapat terbentuk endapan. Simpan di tempat kering. Interval pra-panen 7 hari.",
+        "gambar_url":  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiDUXLx170ZI6whlPzKvOD4sasPaqrnIKy7g&s",
+        "link_pembelian": "https://shopee.co.id/search?keyword=agri-fos%20400%20sl"
+    },
+    {
+        "id":  "AKA-001",
+        "nama_obat":  "Mitac 200 EC",
+        "kategori":  "Akarisida",
+        "produsen":  "Agan Chemical / Syngenta",
+        "bahan_aktif":  "Amitraz 200 g/l",
+        "dosis":  "1 ml/liter air",
+        "deskripsi":  "Akarisida berbahan aktif amitraz yang bekerja sebagai agonis reseptor oktopamin pada sistem saraf tungau, menyebabkan hiperaktivitas dan kematian. Efektif terhadap telur, nimfa, dan tungau dewasa sehingga memutus siklus hidup hama. Spektrum luas mencakup berbagai spesies tungau hama.",
+        "tanaman":  [
+                        "Teh",
+                        "Tomat"
+                    ],
+        "sasaran":  [
+                        "Tungau merah (Tetranychus urticae)",
+                        "Tungau kuning teh (Acaphylla theae)",
+                        "Tungau laba-laba (Panonychus ulmi)",
+                        "Tungau eriofid"
+                    ],
+        "cara_pakai":  "Larutkan 1 ml dalam 1 liter air. Semprotkan merata ke seluruh permukaan daun terutama bagian bawah daun tempat tungau berkoloni. Lakukan penyemprotan pagi atau sore hari. Ulangi setelah 14 hari jika populasi masih tinggi.",
+        "peringatan":  "Toksik bagi lebah, burung, dan mamalia. Hindari inhalasi. Jangan digunakan lebih dari 2 kali berturut-turut. Rotasikan dengan akarisida mekanisme berbeda. Interval pra-panen 21 hari.",
+        "gambar_url":  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmERrYTwIdQ_06QLe2GMyhpwgaTPhyE-NySQ&s",
+        "link_pembelian": "https://shopee.co.id/search?keyword=mitac%20200%20ec"
+    },
+    {
+        "id":  "AKA-002",
+        "nama_obat":  "Omite 570 EW",
+        "kategori":  "Akarisida",
+        "produsen":  "Chemtura / Lanxess",
+        "bahan_aktif":  "Propargit 570 g/l",
+        "dosis":  "1,5 ml/liter air",
+        "deskripsi":  "Akarisida kontak yang efektif terhadap semua stadium aktif tungau (nimfa dan dewasa). Bekerja dengan menghambat respirasi mitokondria tungau melalui inhibisi kompleks III rantai transpor elektron. Formulasi EW (emulsi dalam air) lebih ramah lingkungan dibanding formulasi EC konvensional.",
+        "tanaman":  [
+                        "Teh",
+                        "Tomat"
+                    ],
+        "sasaran":  [
+                        "Tungau merah (Tetranychus urticae)",
+                        "Tungau dua bintik",
+                        "Tungau laba-laba coklat (Panonychus citri)",
+                        "Tungau pucuk teh"
+                    ],
+        "cara_pakai":  "Larutkan 1,5 ml dalam 1 liter air. Semprotkan merata dengan tekanan cukup ke seluruh permukaan daun terutama bagian bawah. Tambahkan perata (adjuvant/surfaktan) untuk meningkatkan daya sebar. Interval minimal 21 hari antara aplikasi.",
+        "peringatan":  "Jangan digunakan saat suhu \u003e35°C karena risiko fitotoksisitas. Tidak efektif terhadap telur. Hindari aplikasi berulang karena tungau mudah resisten. Interval pra-panen 21 hari.",
+        "gambar_url":  "https://down-id.img.susercontent.com/file/ae4c2c8d26db3565ac1b90e7d41d8835",
+        "link_pembelian": "https://shopee.co.id/search?keyword=omite%20570%20ew"
+    },
+    {
+        "id":  "AKA-003",
+        "nama_obat":  "Apollo 500 SC",
+        "kategori":  "Akarisida",
+        "produsen":  "Bayer CropScience",
+        "bahan_aktif":  "Klofentezin 500 g/l",
+        "dosis":  "0,4 ml/liter air",
+        "deskripsi":  "Akarisida ovosida dan larvosida yang bekerja spesifik menghambat proses embriogenesis dan molting pada tungau. Tidak efektif terhadap tungau dewasa namun sangat efektif membasmi telur dan nimfa. Efek residual panjang hingga 6–8 minggu memberikan perlindungan jangka panjang terhadap reinvestasi tungau.",
+        "tanaman":  [
+                        "Teh",
+                        "Tomat"
+                    ],
+        "sasaran":  [
+                        "Telur dan nimfa tungau merah (Tetranychus urticae)",
+                        "Telur tungau laba-laba",
+                        "Telur dan larva tungau pucuk teh"
+                    ],
+        "cara_pakai":  "Larutkan 0,4 ml dalam 1 liter air. Semprotkan merata ke seluruh permukaan tanaman. Paling efektif diaplikasikan saat populasi tungau masih rendah sebagai tindakan preventif. Satu aplikasi memberikan perlindungan 6–8 minggu.",
+        "peringatan":  "Tidak membunuh tungau dewasa; kombinasikan dengan akarisida ovosida jika populasi dewasa tinggi. Relatif aman bagi predator tungau alami. Interval pra-panen 14 hari.",
+        "gambar_url":  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF7y0ukf5OFF2SCxg0fNVkdudEZTMF4IrOAg&s",
+        "link_pembelian": "https://shopee.co.id/search?keyword=apollo%20500%20sc"
+    },
+    {
+        "id":  "AKA-004",
+        "nama_obat":  "Vertimec 18 EC",
+        "kategori":  "Akarisida",
+        "produsen":  "Syngenta",
+        "bahan_aktif":  "Abamektin 18 g/l",
+        "dosis":  "0,5 ml/liter air",
+        "deskripsi":  "Akarisida dan insektisida biologi semi-sintetis berbahan aktif abamektin, produk fermentasi Streptomyces avermitilis. Bekerja dengan mengaktifkan kanal klorida glutamat pada sel saraf dan otot tungau, menyebabkan paralisis dan kematian. Memiliki sifat translaminar yang memungkinkan pengendalian hama di dalam jaringan daun.",
+        "tanaman":  [
+                        "Teh",
+                        "Tomat"
+                    ],
+        "sasaran":  [
+                        "Tungau merah (Tetranychus urticae)",
+                        "Leafminer (Liriomyza sp.)",
+                        "Tungau pucuk teh (Polyphagotarsonemus latus)",
+                        "Thrips larva"
+                    ],
+        "cara_pakai":  "Larutkan 0,5 ml dalam 1 liter air. Tambahkan minyak mineral atau surfaktan untuk meningkatkan penetrasi translaminar. Semprotkan merata ke seluruh permukaan daun. Interval 7–10 hari.",
+        "peringatan":  "Sangat toksik bagi lebah, ikan, dan organisme akuatik. Jangan gunakan dekat perairan. Hindari penyemprotan saat tanaman berbunga. Interval pra-panen 7 hari.",
+        "gambar_url":  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeI44Ui5oenhBRHDpxLHrdEcF_tNnQvlknLg&s",
+        "link_pembelian": "https://shopee.co.id/search?keyword=vertimec%2018%20ec"
+    },
+    {
+        "id":  "AKA-005",
+        "nama_obat":  "Oberon 240 SC",
+        "kategori":  "Akarisida",
+        "produsen":  "Bayer CropScience",
+        "bahan_aktif":  "Spiromesifen 240 g/l",
+        "dosis":  "0,5 ml/liter air",
+        "deskripsi":  "Akarisida modern dari kelompok ketoenol yang bekerja menghambat biosintesis lipid pada tungau dan serangga tertentu. Efektif terhadap telur, larva, nimfa, dan tungau dewasa betina (menghambat reproduksi). Tidak ada resistensi silang dengan akarisida kelompok lain karena mekanisme kerja yang unik.",
+        "tanaman":  [
+                        "Tomat",
+                        "Teh"
+                    ],
+        "sasaran":  [
+                        "Tungau merah (Tetranychus urticae)",
+                        "Tungau laba-laba (Tetranychus sp.)",
+                        "Kutu kebul (Bemisia tabaci)",
+                        "Tungau pucuk teh"
+                    ],
+        "cara_pakai":  "Larutkan 0,5 ml dalam 1 liter air. Kocok larutan sebelum digunakan. Semprotkan merata ke seluruh permukaan daun dengan fokus pada bagian bawah daun. Satu aplikasi efektif 3–4 minggu. Interval minimal 21 hari.",
+        "peringatan":  "Jangan digunakan lebih dari 2 kali per musim untuk mencegah resistensi. Rotasikan dengan akarisida mekanisme berbeda. Relatif aman bagi serangga predator. Interval pra-panen 7 hari.",
+        "gambar_url":  "https://down-id.img.susercontent.com/file/id-11134207-8224x-mhnogtrtx9mt2e",
+        "link_pembelian": "https://shopee.co.id/search?keyword=oberon%20240%20sc"
+    },
+    {
+        "id":  "ORG-001",
+        "nama_obat":  "Biomax-BT 3,2 WP",
+        "kategori":  "Organik",
+        "produsen":  "Petrokimia Gresik / Berbagai produsen lokal",
+        "bahan_aktif":  "Bacillus thuringiensis var. kurstaki 3,2%",
+        "dosis":  "2 g/liter air",
+        "deskripsi":  "Insektisida biologi berbahan aktif bakteri Bacillus thuringiensis var. kurstaki (Btk) yang menghasilkan kristal protein δ-endotoksin. Protein ini aktif dalam kondisi alkali usus serangga target (Lepidoptera) dan membuat lubang pada dinding sel epitel usus, menyebabkan kematian larva. Sangat selektif dan aman bagi manusia, hewan, dan serangga non-target.",
+        "tanaman":  [
+                        "Tomat",
+                        "Teh",
+                        "Padi"
+                    ],
+        "sasaran":  [
+                        "Ulat grayak (Spodoptera litura) larva",
+                        "Ulat buah tomat (Helicoverpa armigera)",
+                        "Ulat api teh (Setora nitens)",
+                        "Ulat penggulung daun padi"
+                    ],
+        "cara_pakai":  "Larutkan 2 g dalam 1 liter air. Semprotkan ke seluruh permukaan tanaman saat sore hari untuk melindungi viabilitas spora dari sinar UV. Efektif pada larva instar 1–3. Ulangi setiap 5–7 hari sesuai kondisi lapangan.",
+        "peringatan":  "Tidak berbahaya bagi manusia dan hewan berdarah panas. Hindari paparan sinar matahari langsung setelah pengenceran (mengurangi viabilitas). Simpan di tempat sejuk dan kering. Tanpa interval pra-panen (food safe).",
+        "gambar_url":  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmJyZcQaW0g3jdgYXwhU90LTn7B3K33z2xMQ&s",
+        "link_pembelian": "https://shopee.co.id/search?keyword=biomax-bt%203%2C2%20wp"
+    },
+    {
+        "id":  "ORG-002",
+        "nama_obat":  "Trichoderma Plus",
+        "kategori":  "Organik",
+        "produsen":  "Balai Besar Penelitian Bioteknologi \u0026 Sumber Daya Genetik / produsen lokal",
+        "bahan_aktif":  "Trichoderma harzianum + T. viride (konsentrasi ≥10^8 CFU/g)",
+        "dosis":  "5–10 g/liter air atau 10 g/kg media tanam",
+        "deskripsi":  "Fungisida biologi berbasis jamur antagonis Trichoderma yang bekerja melalui kompetisi ruang dan nutrisi, parasitisme langsung terhadap jamur patogen, serta produksi enzim litik (kitinase, glukanase) yang mendegradasi dinding sel jamur patogen. Juga merangsang pertahanan sistemik tanaman dan meningkatkan ketersediaan hara di rizosfer.",
+        "tanaman":  [
+                        "Teh",
+                        "Tomat",
+                        "Padi"
+                    ],
+        "sasaran":  [
+                        "Fusarium (Fusarium oxysporum)",
+                        "Phytophthora sp.",
+                        "Rhizoctonia solani",
+                        "Sclerotium rolfsii",
+                        "Pythium sp."
+                    ],
+        "cara_pakai":  "Campurkan 5–10 g per liter air dan siramkan ke zona perakaran sebagai drench, atau campurkan 10 g per kg kompos/media tanam. Untuk pencegahan, aplikasikan saat persiapan lahan dan ulangi setiap 2–4 minggu. Dapat juga diaplikasikan saat transplanting.",
+        "peringatan":  "Jangan campurkan dengan fungisida kimia; aplikasikan minimal 2 hari terpisah dari fungisida. Simpan di tempat sejuk (\u003c25°C) terhindar sinar matahari. Periksa tanggal kadaluarsa karena produk berbasis organisme hidup.",
+        "gambar_url":  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeJBI_zhEnxGiexOToBZ_cr7C1vwP3WC9WsA&s",
+        "link_pembelian": "https://shopee.co.id/search?keyword=trichoderma%20plus"
+    },
+    {
+        "id":  "ORG-003",
+        "nama_obat":  "Neem Azal T/S",
+        "kategori":  "Organik",
+        "produsen":  "Trifolio-M GmbH",
+        "bahan_aktif":  "Azadiraktin 1% (ekstrak biji nimba)",
+        "dosis":  "2 ml/liter air",
+        "deskripsi":  "Pestisida organik berbahan aktif azadiraktin yang diekstrak dari biji pohon nimba (Azadirachta indica). Bekerja sebagai penghambat molting (anti-ekdison), penghambat makan, dan penolak serangga (repellent). Mengganggu sistem hormon serangga sehingga larva tidak dapat berganti kulit dan berkembang menjadi dewasa.",
+        "tanaman":  [
+                        "Teh",
+                        "Tomat"
+                    ],
+        "sasaran":  [
+                        "Ulat grayak larva",
+                        "Kutu daun (Aphis sp.)",
+                        "Thrips",
+                        "Kutu putih (Mealybug)",
+                        "Ulat pucuk teh"
+                    ],
+        "cara_pakai":  "Larutkan 2 ml dalam 1 liter air. Tambahkan sedikit sabun cair (0,5 ml/l) sebagai emulsifier. Semprotkan merata ke seluruh tanaman termasuk bawah daun. Aplikasikan pada pagi atau sore hari. Ulangi setiap 7 hari.",
+        "peringatan":  "Efektivitas berkurang oleh sinar UV; semprotkan sore hari. Aman bagi manusia, mamalia, dan sebagian besar serangga dewasa non-target. Dapat sedikit toksik bagi serangga air pada konsentrasi tinggi. Tanpa interval pra-panen wajib namun dianjurkan cuci sebelum konsumsi.",
+        "gambar_url":  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAD6-g7gpiWtJL44V8zq_3j_1FvUXCR4SvAw&s",
+        "link_pembelian": "https://shopee.co.id/search?keyword=neem%20azal%20t%2Fs"
+    },
+    {
+        "id":  "ORG-004",
+        "nama_obat":  "Beauveria bassiana WP",
+        "kategori":  "Organik",
+        "produsen":  "Balai Proteksi Tanaman / Produsen lokal biopestisida",
+        "bahan_aktif":  "Beauveria bassiana (konsentrasi ≥10^8 spora/g)",
+        "dosis":  "5 g/liter air",
+        "deskripsi":  "Insektisida biologi berbasis jamur entomopatogen Beauveria bassiana. Spora jamur menempel pada kutikula serangga, berkecambah, dan menembus ke dalam hemosoel (rongga tubuh) serangga di mana jamur berkembang menyebabkan kematian dalam 3–7 hari. Efektif terhadap berbagai hama utama dan dapat menyebar di dalam populasi serangga.",
+        "tanaman":  [
+                        "Teh",
+                        "Tomat",
+                        "Padi"
+                    ],
+        "sasaran":  [
+                        "Wereng (Nilaparvata lugens)",
+                        "Ulat grayak",
+                        "Thrips",
+                        "Kutu daun",
+                        "Penggerek batang padi (efek parsial)"
+                    ],
+        "cara_pakai":  "Larutkan 5 g dalam 1 liter air. Semprotkan sore hari atau berawan untuk menjaga viabilitas spora. Kelembaban tinggi meningkatkan efektivitas. Ulangi setiap 7–10 hari. Efektif dikombinasikan dengan aplikasi Bt untuk spektrum lebih luas.",
+        "peringatan":  "Hindari pencampuran dengan fungisida kimia. Simpan di tempat sejuk dan gelap. Efektivitas menurun pada suhu \u003e35°C dan kondisi kering ekstrem. Aman bagi manusia dan hewan berdarah panas. Tanpa interval pra-panen wajib.",
+        "gambar_url":  "https://down-id.img.susercontent.com/file/3ac6337a026adfa1e87985f0923f2f05",
+        "link_pembelian": "https://shopee.co.id/search?keyword=beauveria%20bassiana%20wp"
+    },
+    {
+        "id":  "ORG-005",
+        "nama_obat":  "BioFungisida Streptomyces SP",
+        "kategori":  "Organik",
+        "produsen":  "Produsen biopestisida nasional / Balai Pengkajian Teknologi Pertanian",
+        "bahan_aktif":  "Streptomyces sp. (≥10^8 CFU/ml) + metabolit bioaktif",
+        "dosis":  "5 ml/liter air (semprot) atau 10 ml/liter air (drench)",
+        "deskripsi":  "Fungisida biologi berbasis bakteri actinomisetes Streptomyces sp. yang menghasilkan senyawa antimikroba alami (streptomisin, kasugamisin, dan senyawa antijamur lainnya). Efektif mengendalikan penyakit jamur dan bakteri secara bersamaan melalui antagonisme langsung dan induksi ketahanan sistemik tanaman.",
+        "tanaman":  [
+                        "Teh",
+                        "Tomat",
+                        "Padi"
+                    ],
+        "sasaran":  [
+                        "Fusarium wilt",
+                        "Rhizoctonia sp.",
+                        "Bercak daun berbagai patogen",
+                        "Hawar bakteri padi",
+                        "Busuk akar teh"
+                    ],
+        "cara_pakai":  "Larutkan 5 ml dalam 1 liter air untuk semprot daun. Untuk drench akar, gunakan 10 ml/liter dan siramkan 200–300 ml per tanaman. Aplikasikan preventif setiap 2 minggu atau saat gejala awal penyakit muncul.",
+        "peringatan":  "Jangan campurkan dengan antibiotik kimia atau fungisida sistemik karena akan mematikan organisme aktif. Simpan di tempat sejuk (\u003c25°C). Periksa viabilitas dengan uji coba kecil sebelum aplikasi massal. Aman bagi manusia, hewan, dan lingkungan.",
+        "gambar_url":  "https://down-id.img.susercontent.com/file/b916360a43a9c13458aa1a48ccafec25",
+        "link_pembelian": "https://shopee.co.id/search?keyword=biofungisida%20streptomyces%20sp"
+    }
+]

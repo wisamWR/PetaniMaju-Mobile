@@ -11,6 +11,8 @@ import '../../data/models/forum_post_model.dart';
 import 'package:intl/intl.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../widgets/custom_showcase.dart';
+import '../../core/farming_advice.dart';
+import '../../data/services/notification_history_service.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -38,6 +40,7 @@ class _DashboardContentState extends State<_DashboardContent> {
 
   // Store profile for Header & Weather Display
   UserProfile? _userProfile;
+  int _unreadNotif = 0;
 
   final WeatherService _weatherService = WeatherService();
   final SupabaseService _supabaseService = SupabaseService();
@@ -53,8 +56,19 @@ class _DashboardContentState extends State<_DashboardContent> {
     _weatherFuture = _fetchWeather();
     _tipsFuture = _supabaseService.getTips();
     _forumFuture = _supabaseService.getForumPosts();
+    _loadUnread();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => _checkTutorial());
+  }
+
+  Future<void> _loadUnread() async {
+    final count = await NotificationHistoryService().unreadCount();
+    if (mounted) setState(() => _unreadNotif = count);
+  }
+
+  Future<void> _openNotifications() async {
+    await context.push('/notifikasi');
+    _loadUnread();
   }
 
   Future<void> _checkTutorial() async {
@@ -78,6 +92,7 @@ class _DashboardContentState extends State<_DashboardContent> {
       _tipsFuture = _supabaseService.getTips();
       _forumFuture = _supabaseService.getForumPosts();
     });
+    _loadUnread();
   }
 
   Future<WeatherModel> _fetchWeather() async {
@@ -127,11 +142,7 @@ class _DashboardContentState extends State<_DashboardContent> {
 
       // Override nama kota di model dengan Kecamatan untuk tampilan UI (sesuai request)
       if (displayLocation != null && displayLocation.isNotEmpty) {
-        return WeatherModel(
-            cityName: displayLocation,
-            temperature: weather.temperature,
-            description: weather.description,
-            iconCode: weather.iconCode);
+        return weather.copyWith(cityName: displayLocation);
       }
 
       return weather;
@@ -179,16 +190,39 @@ class _DashboardContentState extends State<_DashboardContent> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(_getGreeting(),
-                          style: const TextStyle(
-                              fontSize: 14, color: Colors.grey)),
-                      const SizedBox(height: 4),
-                      Text(
-                        _userProfile?.nama ??
-                            _user?.userMetadata?['nama'] ??
-                            'Petani Maju',
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(_getGreeting(),
+                                    style: const TextStyle(
+                                        fontSize: 14, color: Colors.grey)),
+                                const SizedBox(height: 4),
+                                Text(
+                                  _userProfile?.nama ??
+                                      _user?.userMetadata?['nama'] ??
+                                      'Petani Maju',
+                                  style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                          IconButton(
+                            tooltip: 'Notifikasi',
+                            onPressed: _openNotifications,
+                            icon: Badge(
+                              isLabelVisible: _unreadNotif > 0,
+                              label: Text('$_unreadNotif'),
+                              child: const Icon(Icons.notifications_outlined,
+                                  color: Color(0xFF166534)),
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 8),
                       Row(
@@ -223,17 +257,27 @@ class _DashboardContentState extends State<_DashboardContent> {
                         child: _buildWeatherCard(),
                       ),
 
+                      const SizedBox(height: 16),
+                      _buildPlantCareCard(),
+
                       const SizedBox(height: 24),
 
-                      // Quick Access Grid (2 Columns like web)
+                      // Quick Access Grid
                       GridView.count(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 16,
-                        mainAxisSpacing: 16,
-                        childAspectRatio: 1.1,
+                        crossAxisCount: 4,
+                        crossAxisSpacing: 12,
+                        mainAxisSpacing: 12,
+                        childAspectRatio: 0.8,
                         children: [
+                          _buildQuickAccess(context, "Scan",
+                              Icons.document_scanner, Colors.teal, '/scan'),
+                          _buildQuickAccess(context, "Asisten Tani",
+                              Icons.support_agent, const Color(0xFF166534),
+                              '/asisten'),
+                          _buildQuickAccess(context, "Obat", Icons.medication,
+                              Colors.orange, '/obat'),
                           _buildQuickAccess(context, "Cuaca", Icons.wb_sunny,
                               Colors.blue, '/cuaca'),
                           _buildQuickAccess(context, "Info Hama",
@@ -242,6 +286,8 @@ class _DashboardContentState extends State<_DashboardContent> {
                               Icons.calendar_month, Colors.green, '/calendar'),
                           _buildQuickAccess(context, "Video",
                               Icons.play_circle_fill, Colors.purple, '/videos'),
+                          _buildQuickAccess(context, "Riwayat Scan",
+                              Icons.history, Colors.indigo, '/scan/history'),
                         ],
                       ),
 
@@ -449,7 +495,9 @@ class _DashboardContentState extends State<_DashboardContent> {
       Color color, String route) {
     return InkWell(
       onTap: () => context.push(route),
+      borderRadius: BorderRadius.circular(16),
       child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 4),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
@@ -459,18 +507,78 @@ class _DashboardContentState extends State<_DashboardContent> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                   color: color.withOpacity(0.1), shape: BoxShape.circle),
-              child: Icon(icon, color: color, size: 32),
+              child: Icon(icon, color: color, size: 24),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 8),
             Text(title,
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                    color: Colors.grey[800], fontWeight: FontWeight.bold)),
+                    color: Colors.grey[800],
+                    fontWeight: FontWeight.bold,
+                    fontSize: 11)),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildPlantCareCard() {
+    return FutureBuilder<WeatherModel>(
+      future: _weatherFuture,
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) return const SizedBox.shrink();
+        final w = snapshot.data!;
+        final advice = FarmingAdvice.plantCare(
+          temperature: w.temperature,
+          humidity: w.humidity,
+          windSpeed: w.windSpeed,
+          iconCode: w.iconCode,
+          description: w.description,
+        );
+        final color =
+            advice.isUrgent ? Colors.orange : const Color(0xFF166534);
+        return Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: advice.isUrgent ? Colors.orange[50] : Colors.green[50],
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: color.withOpacity(0.3)),
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: color.withOpacity(0.15), shape: BoxShape.circle),
+                child: Icon(advice.icon, color: color, size: 22),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Perawatan Tanaman \u2022 ${advice.title}",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: color)),
+                    const SizedBox(height: 4),
+                    Text(advice.advice,
+                        style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.grey[800],
+                            height: 1.4)),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 

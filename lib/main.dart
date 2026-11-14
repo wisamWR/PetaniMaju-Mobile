@@ -14,6 +14,8 @@ import 'data/models/hama_model.dart';
 import 'data/models/video_model.dart';
 import 'data/models/forum_post_model.dart';
 import 'data/models/user_profile.dart';
+import 'data/models/drug_model.dart';
+import 'data/models/scan_history_model.dart';
 
 import 'data/services/notification_service.dart';
 import 'data/services/supabase_service.dart';
@@ -37,6 +39,18 @@ import 'screens/profile/profile_screen.dart';
 import 'screens/profile/profile_edit_screen.dart';
 import 'screens/profile/change_password_screen.dart';
 import 'screens/profile/about_screen.dart';
+import 'screens/profile/help_screen.dart';
+import 'screens/auth/forgot_password_screen.dart';
+import 'screens/scanner/scanner_screen.dart';
+import 'screens/scanner/scan_history_screen.dart';
+import 'screens/scanner/scan_history_detail_screen.dart';
+import 'screens/drugs/drug_list_screen.dart';
+import 'screens/drugs/drug_detail_screen.dart';
+import 'screens/chatbot/chatbot_screen.dart';
+import 'screens/chatbot/chat_history_screen.dart';
+import 'screens/notifications/notification_history_screen.dart';
+import 'screens/notifications/notification_settings_screen.dart';
+import 'screens/premium/premium_screen.dart';
 import 'widgets/scaffold_with_navbar.dart';
 
 // Router Config
@@ -49,6 +63,56 @@ final _router = GoRouter(
     GoRoute(
         path: '/onboarding',
         builder: (context, state) => const OnboardingScreen()),
+    GoRoute(
+        path: '/forgot-password',
+        builder: (context, state) => const ForgotPasswordScreen()),
+
+    // Layar penuh (tanpa bottom nav)
+    GoRoute(
+        path: '/scan',
+        builder: (context, state) => const ScannerScreen(),
+        routes: [
+          GoRoute(
+              path: 'history',
+              builder: (context, state) => const ScanHistoryScreen(),
+              routes: [
+                GoRoute(
+                  path: 'detail',
+                  builder: (context, state) => ScanHistoryDetailScreen(
+                      item: state.extra as ScanHistory),
+                ),
+              ]),
+        ]),
+    GoRoute(
+        path: '/asisten',
+        builder: (context, state) => ChatbotScreen(initial: state.extra),
+        routes: [
+          GoRoute(
+              path: 'riwayat',
+              builder: (context, state) => const ChatHistoryScreen()),
+        ]),
+    GoRoute(
+        path: '/obat',
+        builder: (context, state) =>
+            DrugListScreen(initialQuery: state.extra as String?),
+        routes: [
+          GoRoute(
+            path: 'detail',
+            builder: (context, state) =>
+                DrugDetailScreen(drug: state.extra as Drug),
+          ),
+        ]),
+    GoRoute(
+        path: '/notifikasi',
+        builder: (context, state) => const NotificationHistoryScreen(),
+        routes: [
+          GoRoute(
+              path: 'pengaturan',
+              builder: (context, state) =>
+                  const NotificationSettingsScreen()),
+        ]),
+    GoRoute(
+        path: '/premium', builder: (context, state) => const PremiumScreen()),
 
     // ShellRoute for BottomNav
     ShellRoute(
@@ -127,6 +191,9 @@ final _router = GoRouter(
               GoRoute(
                   path: 'about',
                   builder: (context, state) => const AboutScreen()),
+              GoRoute(
+                  path: 'help',
+                  builder: (context, state) => const HelpScreen()),
             ]),
         GoRoute(
           path: '/cuaca',
@@ -150,6 +217,7 @@ final _router = GoRouter(
     final session = Supabase.instance.client.auth.currentSession;
     final isLoggingIn = state.uri.toString() == '/login' ||
         state.uri.toString() == '/register' ||
+        state.uri.toString() == '/forgot-password' ||
         state.uri.toString() == '/onboarding';
 
     if (session != null && isLoggingIn) {
@@ -161,6 +229,27 @@ final _router = GoRouter(
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  final missing = AppConstants.missingRequired;
+  if (missing.isNotEmpty) {
+    runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Text(
+              "Konfigurasi belum lengkap: ${missing.join(', ')}.\n\n"
+              "Isi file .env lalu jalankan:\n"
+              "flutter run --dart-define-from-file=.env",
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+      ),
+    ));
+    return;
+  }
 
   await Supabase.initialize(
     url: AppConstants.supabaseUrl,
@@ -182,6 +271,13 @@ Future<void> main() async {
       }
     },
   );
+
+  // Jadwalkan ulang notifikasi harian sesuai pengaturan pengguna
+  try {
+    await notificationService.applySettings();
+  } catch (e) {
+    debugPrint('Gagal menerapkan pengaturan notifikasi: $e');
+  }
 
   runApp(
     MultiProvider(

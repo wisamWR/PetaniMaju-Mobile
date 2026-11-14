@@ -30,6 +30,11 @@
 *   🎥 **Video Edukasi:** Tutorial visual untuk pembelajaran yang lebih mudah.
 *   💬 **Forum Komunitas:** Ruang diskusi untuk bertanya dan berbagi solusi.
 *   👤 **Profil Pengguna:** Personalisasi pengalaman berdasarkan jenis tanaman dan lokasi.
+*   🔬 **Scan Penyakit Tanaman (AI):** Foto daun → diagnosa penyakit, penanganan, pencegahan, dan rekomendasi obat (Gemini Vision).
+*   🤖 **Asisten Tani:** Chatbot pertanian (Gemini) dengan konteks cuaca & jadwal, bisa membuat jadwal kalender langsung dari chat.
+*   💊 **Katalog Obat Tanaman:** 40 obat/pestisida lengkap dengan dosis & cara pakai, bisa dibuka tanpa internet.
+*   🔔 **Riwayat & Pengaturan Notifikasi:** Jam sapaan pagi, filter peringatan cuaca, pengingat H-1/H-1 jam, dan mode tenang malam.
+*   ⭐ **PetaniMaju PRO:** Langganan via Midtrans untuk chat Asisten Tani tanpa batas (gratis: 3 jawaban/hari).
 
 ---
 
@@ -97,6 +102,23 @@ class AppConstants {
 }
 ```
 
+### 4. Konfigurasi Fitur AI (Gemini)
+Scanner penyakit dan Asisten Tani butuh Gemini API key yang **tidak** disimpan di kode:
+```bash
+cp .env.example .env        # isi GEMINI_API_KEY
+flutter run --dart-define-from-file=.env
+```
+
+### 5. Backend Fitur Baru
+1. Jalankan migration `supabase/migrations/20260919000000_agrinova_features.sql` di SQL Editor Supabase.
+   Isinya: tabel `prediction_history`, bucket `scan_images`, tabel `user_premium` dan `premium_orders`.
+2. (Untuk PRO) deploy Edge Function lalu set secret Midtrans:
+```bash
+supabase functions deploy create-midtrans-payment
+supabase functions deploy check-midtrans-payment
+supabase secrets set MIDTRANS_SERVER_KEY=SB-Mid-server-xxx MIDTRANS_IS_PRODUCTION=false
+```
+
 ---
 
 ## 🗄️ Database Setup (Supabase)
@@ -111,6 +133,9 @@ Aplikasi ini membutuhkan tabel-tabel berikut di Supabase:
 *   `calendar_events`: Jadwal tanam pengguna.
 *   `forum_posts`: Postingan forum.
 *   `saved_items`: Bookmark pengguna (relasi ke tips, video, hama).
+*   `prediction_history`: Riwayat hasil scan penyakit tanaman.
+*   `user_premium`: Status langganan PRO (hanya ditulis Edge Function).
+*   `premium_orders`: Order langganan PRO (hanya ditulis Edge Function).
 
 ### SQL Schema (Contoh Singkat)
 ```sql
@@ -136,7 +161,7 @@ alter table profiles enable row level security;
 
 ### Development Mode
 ```bash
-flutter run
+flutter run --dart-define-from-file=.env
 ```
 
 ### Production Build (APK)

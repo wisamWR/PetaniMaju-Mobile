@@ -625,6 +625,7 @@ class _ProfileContentState extends State<_ProfileContent>
                       final service = NotificationService();
                       if (val) {
                         await service.requestPermissions();
+                        await service.applySettings();
                       } else {
                         await service.cancelAll();
                       }
@@ -632,6 +633,56 @@ class _ProfileContentState extends State<_ProfileContent>
                   ),
                 ],
               ),
+            ),
+          ),
+          const SizedBox(height: 16),
+
+          // Features Section
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                  child: Text("Fitur & Layanan",
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                ),
+                const Divider(height: 1),
+                _buildSettingItem(Icons.workspace_premium, "PetaniMaju PRO",
+                    iconColor: Colors.amber[800], onTap: () {
+                  context.push('/premium');
+                }),
+                _buildSettingItem(Icons.history, "Riwayat Scan Tanaman",
+                    onTap: () {
+                  context.push('/scan/history');
+                }),
+                _buildSettingItem(Icons.forum_outlined, "Riwayat Chat Asisten",
+                    onTap: () {
+                  context.push('/asisten/riwayat').then((session) {
+                    if (session != null && mounted) {
+                      context.push('/asisten', extra: session);
+                    }
+                  });
+                }),
+                _buildSettingItem(Icons.notifications_none, "Riwayat Notifikasi",
+                    onTap: () {
+                  context.push('/notifikasi');
+                }),
+                _buildSettingItem(Icons.tune, "Pengaturan Notifikasi",
+                    onTap: () async {
+                  await context.push('/notifikasi/pengaturan');
+                  _loadData();
+                }),
+                _buildSettingItem(Icons.help_outline, "Bantuan & Dukungan",
+                    onTap: () {
+                  context.push('/profile/help');
+                }),
+              ],
             ),
           ),
           const SizedBox(height: 16),

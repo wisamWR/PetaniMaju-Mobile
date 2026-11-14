@@ -149,7 +149,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     setState(() => _isLoading = true);
     try {
-      await _authService.signUp(
+      final response = await _authService.signUp(
         email: _emailController.text.trim(),
         username: _usernameController.text.trim(),
         password: _passwordController.text,
@@ -161,15 +161,36 @@ class _RegisterScreenState extends State<RegisterScreen> {
         jenisTanaman: finalCrop,
       );
 
-      if (mounted) {
+      if (!mounted) return;
+
+      // Tanpa session berarti Supabase mewajibkan konfirmasi email dulu.
+      if (response.session == null) {
+        await showDialog(
+          context: context,
+          builder: (ctx) => AlertDialog(
+            icon: const Icon(Icons.mark_email_unread,
+                size: 40, color: Color(0xFF166534)),
+            title: const Text("Cek Email Anda"),
+            content: Text(
+                "Kami mengirim link konfirmasi ke ${_emailController.text.trim()}. "
+                "Klik link tersebut, lalu login. Periksa juga folder spam."),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(ctx),
+                child: const Text("Mengerti"),
+              ),
+            ],
+          ),
+        );
+      } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text("Registrasi berhasil! Silakan login."),
             backgroundColor: Colors.green,
           ),
         );
-        context.go('/login');
       }
+      if (mounted) context.go('/login');
     } on AuthException catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(

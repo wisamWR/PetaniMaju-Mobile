@@ -1,16 +1,27 @@
+import 'dart:convert';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/material.dart';
+
+import '../models/notification_record.dart';
+import '../models/notification_settings.dart';
+import 'notification_history_service.dart';
 
 class NotificationService {
   static final NotificationService _instance = NotificationService._internal();
   factory NotificationService() => _instance;
   NotificationService._internal();
 
+  static const int dailyBriefId = 888;
+  static const int weatherReminderId = 887;
+  static const String _settingsKey = 'notification_settings';
+
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
+  final NotificationHistoryService _history = NotificationHistoryService();
 
   Future<void> init({Function(String?)? onNotificationTap}) async {
     tz.initializeTimeZones();
@@ -65,6 +76,46 @@ class NotificationService {
     }
   }
 
+  // --- Settings ---
+
+  Future<NotificationSettings> getSettings() async {
+    final prefs = await SharedPreferences.getInstance();
+    final raw = prefs.getString(_settingsKey);
+    if (raw == null) return const NotificationSettings();
+    try {
+      return NotificationSettings.fromJson(
+          Map<String, dynamic>.from(jsonDecode(raw)));
+    } catch (_) {
+      return const NotificationSettings();
+    }
+  }
+
+  Future<void> saveSettings(NotificationSettings settings) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_settingsKey, jsonEncode(settings.toJson()));
+    await applySettings();
+  }
+
+  Future<bool> isGloballyEnabled() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool('notifications_enabled') ?? false;
+  }
+
+  /// Jadwalkan ulang notifikasi harian sesuai pengaturan terbaru.
+  Future<void> applySettings() async {
+    final settings = await getSettings();
+    final enabled = await isGloballyEnabled();
+    await scheduleDailyBrief(
+      isEnabled: enabled && settings.morningBriefingEnabled,
+      hour: settings.morningBriefingHour,
+      minute: settings.morningBriefingMinute,
+    );
+    await scheduleWeatherReminder(
+        isEnabled: enabled && settings.weatherReminderEnabled);
+  }
+
+  // --- Scheduling ---
+
   Future<void> scheduleDailyNotification({
     required int id,
     required String title,
@@ -96,21 +147,23 @@ class NotificationService {
     debugPrint(
         "DEBUG: Scheduling ID $id at $scheduledDate (in ${durationToWait.inMinutes} mins)");
 
+    const details = NotificationDetails(
+      android: AndroidNotificationDetails(
+        'daily_farming_schedule',
+        'Jadwal Pertanian',
+        channelDescription: 'Pengingat harian jadwal pertanian',
+        importance: Importance.max,
+        priority: Priority.high,
+      ),
+    );
+
     try {
       await flutterLocalNotificationsPlugin.zonedSchedule(
         id,
         title,
         body,
         tzScheduled,
-        const NotificationDetails(
-          android: AndroidNotificationDetails(
-            'daily_farming_schedule',
-            'Jadwal Pertanian',
-            channelDescription: 'Pengingat harian jadwal pertanian',
-            importance: Importance.max,
-            priority: Priority.high,
-          ),
-        ),
+        details,
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
@@ -119,42 +172,100 @@ class NotificationService {
     } catch (e) {
       debugPrint("ERROR Scheduling Notification: $e");
       // Fallback for exact alarm permission issues
-      if (e.toString().contains("exact_alarms_not_permitted")) {
-        debugPrint("Falling back to inexact scheduling...");
-        await flutterLocalNotificationsPlugin.zonedSchedule(
-          id,
-          title,
-          body,
-          tzScheduled,
-          const NotificationDetails(
-            android: AndroidNotificationDetails(
-              'daily_farming_schedule',
-              'Jadwal Pertanian',
-              channelDescription: 'Pengingat harian jadwal pertanian',
-              importance: Importance.max,
-              priority: Priority.high,
-            ),
-          ),
-          androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
-          uiLocalNotificationDateInterpretation:
-              UILocalNotificationDateInterpretation.absoluteTime,
-          payload: 'calendar',
-        );
-      }
+      if (!e.toString().contains("exact_alarms_not_permitted")) return;
+      debugPrint("Falling back to inexact scheduling...");
+      await flutterLocalNotificationsPlugin.zonedSchedule(
+        id,
+        title,
+        body,
+        tzScheduled,
+        details,
+        androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime,
+        payload: 'calendar',
+      );
+    }
+
+    await _history.addPending(NotificationRecord(
+      id: id,
+      title: title,
+      body: body,
+      payload: 'calendar',
+      time: scheduledDate,
+    ));
+  }
+
+  /// Pengingat jadwal tani: H-1, H-1 jam, dan tepat waktu (sesuai pengaturan).
+  /// Pengingat H-1 / H-1 jam dilewati bila jatuh di jam mode tenang.
+  Future<void> scheduleCalendarReminders({
+    required int eventId,
+    required String title,
+    required String type,
+    required DateTime eventTime,
+  }) async {
+    final settings = await getSettings();
+    final timeLabel =
+        "${eventTime.hour.toString().padLeft(2, '0')}:${eventTime.minute.toString().padLeft(2, '0')}";
+
+    Future<void> schedule(int id, DateTime at, String t, String body,
+        {bool respectQuiet = true}) async {
+      if (respectQuiet && settings.isQuietAt(at)) return;
+      await scheduleDailyNotification(
+        id: id,
+        title: t,
+        body: body,
+        date: at,
+        time: TimeOfDay(hour: at.hour, minute: at.minute),
+      );
+    }
+
+    if (settings.reminder1DayBefore) {
+      await schedule(
+        calendarReminderId(eventId, 1),
+        eventTime.subtract(const Duration(days: 1)),
+        "Besok: $type 📅",
+        "Jangan lupa, besok pukul $timeLabel ada kegiatan '$title'.",
+      );
+    }
+    if (settings.reminder1HourBefore) {
+      await schedule(
+        calendarReminderId(eventId, 2),
+        eventTime.subtract(const Duration(hours: 1)),
+        "1 Jam Lagi: $type ⏰",
+        "Kegiatan '$title' dimulai pukul $timeLabel. Siapkan peralatan!",
+      );
+    }
+    if (settings.reminderAtTime) {
+      await schedule(
+        calendarReminderId(eventId, 0),
+        eventTime,
+        "Pengingat Jadwal Tani 🌱",
+        "Saatnya melakukan kegiatan '$type' - $title. Semangat bertani!",
+        respectQuiet: false,
+      );
     }
   }
 
-  Future<void> scheduleDailyBrief({bool isEnabled = true}) async {
-    const int id = 888;
+  /// ID notifikasi unik per pengingat kalender. slot 0 = tepat waktu.
+  static int calendarReminderId(int eventId, int slot) =>
+      slot == 0 ? eventId : 1000000 + eventId * 10 + slot;
+
+  Future<void> cancelCalendarReminders(int eventId) async {
+    for (final slot in [0, 1, 2]) {
+      await cancelType(calendarReminderId(eventId, slot));
+    }
+  }
+
+  Future<void> scheduleDailyBrief(
+      {bool isEnabled = true, int hour = 6, int minute = 0}) async {
     if (!isEnabled) {
-      await flutterLocalNotificationsPlugin.cancel(id);
+      await flutterLocalNotificationsPlugin.cancel(dailyBriefId);
       return;
     }
 
-    // Schedule for 06:00 AM
     final now = DateTime.now();
-    var scheduledDate = DateTime(now.year, now.month, now.day, 6, 0);
-    // If 6 AM passed, schedule for tomorrow
+    var scheduledDate = DateTime(now.year, now.month, now.day, hour, minute);
     if (scheduledDate.isBefore(now)) {
       scheduledDate = scheduledDate.add(const Duration(days: 1));
     }
@@ -162,7 +273,7 @@ class NotificationService {
     debugPrint("DEBUG: Scheduling Daily Brief at $scheduledDate");
 
     await flutterLocalNotificationsPlugin.zonedSchedule(
-      id,
+      dailyBriefId,
       "Selamat Pagi, Petani! ☀️",
       "Cek prakiraan cuaca dan jadwal tani hari ini sebelum ke sawah.",
       tz.TZDateTime.from(scheduledDate, tz.local),
@@ -184,9 +295,8 @@ class NotificationService {
   }
 
   Future<void> scheduleWeatherReminder({bool isEnabled = true}) async {
-    const int id = 887;
     if (!isEnabled) {
-      await flutterLocalNotificationsPlugin.cancel(id);
+      await flutterLocalNotificationsPlugin.cancel(weatherReminderId);
       return;
     }
 
@@ -201,7 +311,7 @@ class NotificationService {
     debugPrint("DEBUG: Scheduling Weather Reminder at $scheduledDate");
 
     await flutterLocalNotificationsPlugin.zonedSchedule(
-      id,
+      weatherReminderId,
       "Sudah Cek Cuaca Sore Ini? 🌦️",
       "Buka aplikasi sebentar untuk update prediksi hujan & hama.",
       tz.TZDateTime.from(scheduledDate, tz.local),
@@ -222,17 +332,47 @@ class NotificationService {
     );
   }
 
-  Future<void> showWeatherAlert(String title, String body) async {
-    // ID 777 for general alerts.
-    // Use random ID if we want multiple alerts to stack, but 777 avoids spamming/stacking too much.
-    // Let's use a dynamic ID based on time to allow multiple alerts (e.g. Rain AND Wind).
-    final id = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+  // --- Immediate notifications ---
 
-    await flutterLocalNotificationsPlugin.show(
-      id,
-      title,
-      body,
-      const NotificationDetails(
+  Future<void> _showNow({
+    required int id,
+    required String title,
+    required String body,
+    required NotificationDetails details,
+    required String payload,
+    bool respectQuiet = true,
+  }) async {
+    if (respectQuiet) {
+      final settings = await getSettings();
+      if (settings.isQuietAt(DateTime.now())) {
+        debugPrint("DEBUG: Quiet mode aktif, notifikasi '$title' ditahan.");
+        return;
+      }
+    }
+    await flutterLocalNotificationsPlugin.show(id, title, body, details,
+        payload: payload);
+    await _history.log(NotificationRecord(
+      id: id,
+      title: title,
+      body: body,
+      payload: payload,
+      time: DateTime.now(),
+    ));
+  }
+
+  /// Menampilkan peringatan cuaca bila jenisnya diizinkan di pengaturan.
+  Future<bool> showWeatherAlert(String title, String body) async {
+    final settings = await getSettings();
+    if (!settings.allowsWeatherAlert(title)) return false;
+
+    // Dynamic ID based on time to allow multiple alerts (e.g. Rain AND Wind).
+    final id = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+    await _showNow(
+      id: id,
+      title: title,
+      body: body,
+      payload: 'weather',
+      details: const NotificationDetails(
         android: AndroidNotificationDetails(
           'weather_alert_channel',
           'Peringatan Cuaca',
@@ -242,17 +382,18 @@ class NotificationService {
           styleInformation: BigTextStyleInformation(''),
         ),
       ),
-      payload: 'weather',
     );
+    return true;
   }
 
   Future<void> showTestMorningBrief() async {
-    const int id = 889;
-    await flutterLocalNotificationsPlugin.show(
-      id,
-      "Selamat Pagi, Petani! ☀️ (Test)",
-      "Cek prakiraan cuaca dan jadwal tani hari ini sebelum ke sawah.",
-      const NotificationDetails(
+    await _showNow(
+      id: 889,
+      title: "Selamat Pagi, Petani! ☀️ (Test)",
+      body: "Cek prakiraan cuaca dan jadwal tani hari ini sebelum ke sawah.",
+      payload: 'dashboard',
+      respectQuiet: false,
+      details: const NotificationDetails(
         android: AndroidNotificationDetails(
           'daily_brief_channel',
           'Sapaan Pagi',
@@ -261,17 +402,17 @@ class NotificationService {
           priority: Priority.defaultPriority,
         ),
       ),
-      payload: 'dashboard',
     );
   }
 
   Future<void> showTestWeatherReminder() async {
-    const int id = 887;
-    await flutterLocalNotificationsPlugin.show(
-      id,
-      "Sudah Cek Cuaca Sore Ini? 🌦️ (Test)",
-      "Buka aplikasi sebentar untuk update prediksi hujan & hama.",
-      const NotificationDetails(
+    await _showNow(
+      id: weatherReminderId,
+      title: "Sudah Cek Cuaca Sore Ini? 🌦️ (Test)",
+      body: "Buka aplikasi sebentar untuk update prediksi hujan & hama.",
+      payload: 'weather',
+      respectQuiet: false,
+      details: const NotificationDetails(
         android: AndroidNotificationDetails(
           'weather_reminder_channel',
           'Pengingat Cuaca',
@@ -280,15 +421,16 @@ class NotificationService {
           priority: Priority.defaultPriority,
         ),
       ),
-      payload: 'weather',
     );
   }
 
   Future<void> cancelType(int id) async {
     await flutterLocalNotificationsPlugin.cancel(id);
+    await _history.removePending(id);
   }
 
   Future<void> cancelAll() async {
     await flutterLocalNotificationsPlugin.cancelAll();
+    await _history.clearPending();
   }
 }

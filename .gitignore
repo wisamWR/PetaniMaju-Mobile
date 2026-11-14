@@ -43,3 +43,13 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Secrets untuk --dart-define-from-file
+.env
+supabase/functions/.env
+
+# Sisa struktur lama (sebelum app dipromosikan ke root)
+/mobile/
+
+# Supabase CLI cache
+supabase/.temp/
