@@ -180,7 +180,7 @@ class _ScanHistoryScreenState extends State<ScanHistoryScreen> {
                   errorWidget: (_, __, ___) => Container(
                     width: 70,
                     height: 70,
-                    color: color.withOpacity(0.1),
+                    color: color.withValues(alpha: 0.1),
                     child: Icon(Icons.eco, color: color),
                   ),
                 ),

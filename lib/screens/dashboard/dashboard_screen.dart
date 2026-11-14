@@ -14,6 +14,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../widgets/custom_showcase.dart';
 import '../../core/farming_advice.dart';
 import '../../data/services/notification_history_service.dart';
+import '../../widgets/app_ui.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -220,7 +221,7 @@ class _DashboardContentState extends State<_DashboardContent> {
                               isLabelVisible: _unreadNotif > 0,
                               label: Text('$_unreadNotif'),
                               child: const Icon(Icons.notifications_outlined,
-                                  color: Color(0xFF166534)),
+                                  color: AppColors.primary),
                             ),
                           ),
                         ],
@@ -275,7 +276,7 @@ class _DashboardContentState extends State<_DashboardContent> {
                           _buildQuickAccess(context, "Scan",
                               Icons.document_scanner, Colors.teal, '/scan'),
                           _buildQuickAccess(context, "Asisten Tani",
-                              Icons.support_agent, const Color(0xFF166534),
+                              Icons.support_agent, AppColors.primary,
                               '/asisten'),
                           _buildQuickAccess(context, "Obat", Icons.medication,
                               Colors.orange, '/obat'),
@@ -427,7 +428,7 @@ class _DashboardContentState extends State<_DashboardContent> {
               borderRadius: BorderRadius.circular(24),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.blue.withOpacity(0.3),
+                    color: Colors.blue.withValues(alpha: 0.3),
                     blurRadius: 10,
                     offset: const Offset(0, 5)),
               ],
@@ -442,7 +443,7 @@ class _DashboardContentState extends State<_DashboardContent> {
                         width: 100,
                         height: 100,
                         decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.1),
+                            color: Colors.white.withValues(alpha: 0.1),
                             shape: BoxShape.circle))),
 
                 Column(
@@ -510,7 +511,7 @@ class _DashboardContentState extends State<_DashboardContent> {
             Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                  color: color.withOpacity(0.1), shape: BoxShape.circle),
+                  color: color.withValues(alpha: 0.1), shape: BoxShape.circle),
               child: Icon(icon, color: color, size: 24),
             ),
             const SizedBox(height: 8),
@@ -542,13 +543,13 @@ class _DashboardContentState extends State<_DashboardContent> {
           description: w.description,
         );
         final color =
-            advice.isUrgent ? Colors.orange : const Color(0xFF166534);
+            advice.isUrgent ? Colors.orange : AppColors.primary;
         return Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: advice.isUrgent ? Colors.orange[50] : Colors.green[50],
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: color.withOpacity(0.3)),
+            border: Border.all(color: color.withValues(alpha: 0.3)),
           ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -556,7 +557,7 @@ class _DashboardContentState extends State<_DashboardContent> {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                    color: color.withOpacity(0.15), shape: BoxShape.circle),
+                    color: color.withValues(alpha: 0.15), shape: BoxShape.circle),
                 child: Icon(advice.icon, color: color, size: 22),
               ),
               const SizedBox(width: 12),
@@ -697,7 +698,7 @@ class _DashboardContentState extends State<_DashboardContent> {
             child: Text(action,
                 style: const TextStyle(
                     fontSize: 12,
-                    color: Color(0xFF166534),
+                    color: AppColors.primary,
                     fontWeight: FontWeight.bold))),
       ],
     );

@@ -5,6 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../data/models/forum_post_model.dart';
 import '../../data/models/forum_comment_model.dart';
 import '../../data/services/supabase_service.dart';
+import '../../widgets/app_ui.dart';
 
 class ForumDetailScreen extends StatefulWidget {
   final ForumPost post;
@@ -85,6 +86,7 @@ class _ForumDetailScreenState extends State<ForumDetailScreen> {
       _commentController.clear();
       await _fetchComments(); // Refresh list
     } catch (e) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Gagal mengirim komentar: $e")));
     } finally {
@@ -134,16 +136,13 @@ class _ForumDetailScreenState extends State<ForumDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Detail Diskusi"),
-        actions: [
+      appBar: buildAppBar("Detail Diskusi", actions: [
           if (_supabaseService.currentUser?.id == widget.post.userId)
             IconButton(
               icon: const Icon(Icons.delete, color: Colors.red),
               onPressed: _confirmDelete,
             ),
-        ],
-      ),
+        ]),
       body: Column(
         children: [
           Expanded(
@@ -196,7 +195,7 @@ class _ForumDetailScreenState extends State<ForumDetailScreen> {
                               horizontal: 12, vertical: 8),
                           decoration: BoxDecoration(
                               color: _isLiked
-                                  ? Colors.green.withOpacity(0.1)
+                                  ? Colors.green.withValues(alpha: 0.1)
                                   : Colors.grey[100],
                               borderRadius: BorderRadius.circular(20),
                               border: Border.all(
@@ -317,7 +316,7 @@ class _ForumDetailScreenState extends State<ForumDetailScreen> {
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(color: Colors.white, boxShadow: [
               BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
+                  color: Colors.black.withValues(alpha: 0.05),
                   blurRadius: 10,
                   offset: const Offset(0, -4))
             ]),
@@ -348,7 +347,7 @@ class _ForumDetailScreenState extends State<ForumDetailScreen> {
                               color: Colors.white, strokeWidth: 2))
                       : const Icon(Icons.send),
                   style: IconButton.styleFrom(
-                      backgroundColor: const Color(0xFF166534)),
+                      backgroundColor: AppColors.primary),
                 )
               ],
             ),

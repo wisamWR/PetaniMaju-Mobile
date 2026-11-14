@@ -5,6 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../data/models/forum_post_model.dart';
 import '../../data/services/supabase_service.dart';
 import 'forum_detail_screen.dart';
+import '../../widgets/app_ui.dart';
 
 class ForumListScreen extends StatefulWidget {
   const ForumListScreen({super.key});
@@ -94,7 +95,7 @@ class _ForumListScreenState extends State<ForumListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Forum Petani")),
+      appBar: buildAppBar("Forum Petani"),
       body: Column(
         children: [
           // Category Filter
@@ -112,7 +113,7 @@ class _ForumListScreenState extends State<ForumListScreen> {
                 return ChoiceChip(
                   label: Text(category),
                   selected: isSelected,
-                  selectedColor: const Color(0xFF166534),
+                  selectedColor: AppColors.primary,
                   labelStyle: TextStyle(
                     color: isSelected ? Colors.white : Colors.black,
                   ),
@@ -160,7 +161,7 @@ class _ForumListScreenState extends State<ForumListScreen> {
                         ElevatedButton(
                           onPressed: _refreshPosts,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF166534),
+                            backgroundColor: AppColors.primary,
                             foregroundColor: Colors.white,
                           ),
                           child: const Text("Coba Lagi"),
@@ -201,7 +202,7 @@ class _ForumListScreenState extends State<ForumListScreen> {
           await context.push('/forum/create');
           _refreshPosts();
         },
-        backgroundColor: const Color(0xFF166534),
+        backgroundColor: AppColors.primary,
         child: const Icon(Icons.edit, color: Colors.white),
       ),
     );
@@ -268,7 +269,7 @@ class _ForumListScreenState extends State<ForumListScreen> {
                                       horizontal: 8, vertical: 4),
                                   decoration: BoxDecoration(
                                     color: _getCategoryColor(post.category)
-                                        .withOpacity(0.1),
+                                        .withValues(alpha: 0.1),
                                     borderRadius: BorderRadius.circular(6),
                                   ),
                                   child: Text(
@@ -372,8 +373,16 @@ class _ForumListScreenState extends State<ForumListScreen> {
                               fontSize: 12, color: Colors.grey)),
                     ],
                   ),
-                  const Icon(Icons.comment_outlined,
-                      size: 20, color: Colors.grey),
+                  Row(
+                    children: [
+                      const Icon(Icons.comment_outlined,
+                          size: 16, color: Colors.grey),
+                      const SizedBox(width: 4),
+                      Text("${post.commentCount} Komentar",
+                          style: const TextStyle(
+                              fontSize: 12, color: Colors.grey)),
+                    ],
+                  ),
                 ],
               )
             ],

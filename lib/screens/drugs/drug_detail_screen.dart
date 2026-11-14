@@ -45,7 +45,7 @@ class DrugDetailScreen extends StatelessWidget {
                 imageUrl: drug.gambarUrl ?? '',
                 fit: BoxFit.cover,
                 errorWidget: (_, __, ___) => Container(
-                  color: color.withOpacity(0.15),
+                  color: color.withValues(alpha: 0.15),
                   child: Icon(Icons.medication, size: 80, color: color),
                 ),
               ),
@@ -60,9 +60,9 @@ class DrugDetailScreen extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                     decoration: BoxDecoration(
-                      color: color.withOpacity(0.1),
+                      color: color.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(6),
-                      border: Border.all(color: color.withOpacity(0.3)),
+                      border: Border.all(color: color.withValues(alpha: 0.3)),
                     ),
                     child: Text(drug.kategori,
                         style: TextStyle(
@@ -162,7 +162,7 @@ class DrugDetailScreen extends StatelessWidget {
                         padding:
                             const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                         decoration: BoxDecoration(
-                          color: color.withOpacity(0.08),
+                          color: color.withValues(alpha: 0.08),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Text(t,

@@ -12,6 +12,7 @@ import '../../data/models/video_model.dart';
 import '../../data/models/hama_model.dart';
 import 'package:showcaseview/showcaseview.dart';
 import '../../widgets/custom_showcase.dart';
+import '../../widgets/app_ui.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -146,7 +147,7 @@ class _ProfileContentState extends State<_ProfileContent>
               ElevatedButton(
                 onPressed: _loadData,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF166534),
+                  backgroundColor: AppColors.primary,
                   foregroundColor: Colors.white,
                 ),
                 child: const Text("Coba Lagi"),
@@ -191,7 +192,7 @@ class _ProfileContentState extends State<_ProfileContent>
       width: double.infinity,
       padding: const EdgeInsets.fromLTRB(24, 60, 24, 32),
       decoration: const BoxDecoration(
-        color: Color(0xFF166534), // Green 700
+        color: AppColors.primary, // Green 700
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(32)),
         boxShadow: [
           BoxShadow(color: Colors.black12, blurRadius: 10, offset: Offset(0, 5))
@@ -259,7 +260,7 @@ class _ProfileContentState extends State<_ProfileContent>
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
-          BoxShadow(color: Colors.grey.withOpacity(0.1), blurRadius: 10)
+          BoxShadow(color: Colors.grey.withValues(alpha: 0.1), blurRadius: 10)
         ],
       ),
       child: Column(
@@ -313,9 +314,9 @@ class _ProfileContentState extends State<_ProfileContent>
       ),
       child: TabBar(
         controller: _tabController,
-        labelColor: const Color(0xFF166534),
+        labelColor: AppColors.primary,
         unselectedLabelColor: Colors.grey,
-        indicatorColor: const Color(0xFF166534),
+        indicatorColor: AppColors.primary,
         tabs: const [
           Tab(text: "Info Akun"),
           Tab(text: "Postingan"),
@@ -501,7 +502,7 @@ class _ProfileContentState extends State<_ProfileContent>
       padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
       child: Row(
         children: [
-          Container(width: 4, height: 16, color: const Color(0xFF166534)),
+          Container(width: 4, height: 16, color: AppColors.primary),
           const SizedBox(width: 8),
           Text(title,
               style:
@@ -541,7 +542,7 @@ class _ProfileContentState extends State<_ProfileContent>
                   width: 60,
                   height: 60,
                   color: Colors.green[50],
-                  child: const Icon(Icons.bookmark, color: Color(0xFF166534))),
+                  child: const Icon(Icons.bookmark, color: AppColors.primary)),
         ),
         title: Text(title,
             maxLines: 2,
@@ -602,7 +603,7 @@ class _ProfileContentState extends State<_ProfileContent>
                         color: Colors.green[50],
                         borderRadius: BorderRadius.circular(8)),
                     child: const Icon(Icons.notifications_active,
-                        size: 20, color: Color(0xFF166534)),
+                        size: 20, color: AppColors.primary),
                   ),
                   const SizedBox(width: 16),
                   const Expanded(
@@ -611,7 +612,7 @@ class _ProfileContentState extends State<_ProfileContent>
                   ),
                   Switch(
                     value: _notificationsEnabled,
-                    activeThumbColor: const Color(0xFF166534),
+                    activeThumbColor: AppColors.primary,
                     onChanged: (val) async {
                       setState(() => _notificationsEnabled = val);
                       final prefs = await SharedPreferences.getInstance();
@@ -737,7 +738,7 @@ class _ProfileContentState extends State<_ProfileContent>
   Widget _buildContactRow(IconData icon, String text) {
     return Row(
       children: [
-        Icon(icon, size: 18, color: const Color(0xFF166534)),
+        Icon(icon, size: 18, color: AppColors.primary),
         const SizedBox(width: 12),
         Expanded(
             child: Text(text,
@@ -752,10 +753,10 @@ class _ProfileContentState extends State<_ProfileContent>
       leading: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-            color: (iconColor ?? const Color(0xFF166534)).withOpacity(0.1),
+            color: (iconColor ?? AppColors.primary).withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(8)),
         child:
-            Icon(icon, size: 20, color: iconColor ?? const Color(0xFF166534)),
+            Icon(icon, size: 20, color: iconColor ?? AppColors.primary),
       ),
       title: Text(title,
           style: TextStyle(fontWeight: FontWeight.w500, color: textColor)),

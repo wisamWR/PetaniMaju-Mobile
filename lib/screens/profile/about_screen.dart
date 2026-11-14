@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../widgets/app_ui.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
@@ -7,12 +8,7 @@ class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Tentang Aplikasi"),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        elevation: 0,
-      ),
+      appBar: buildAppBar("Tentang Aplikasi"),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
@@ -27,7 +23,7 @@ class AboutScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
+                    color: Colors.black.withValues(alpha: 0.1),
                     blurRadius: 20,
                     offset: const Offset(0, 10),
                   )
@@ -51,7 +47,7 @@ class AboutScreen extends StatelessWidget {
               style: GoogleFonts.poppins(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: const Color(0xFF166534),
+                color: AppColors.primary,
               ),
             ),
             Text(
@@ -124,7 +120,7 @@ class AboutScreen extends StatelessWidget {
                     "Tim RPL Kelompok 3",
                     style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w600,
-                      color: const Color(0xFF166534),
+                      color: AppColors.primary,
                     ),
                   ),
                   const SizedBox(height: 48),
@@ -151,10 +147,10 @@ class AboutScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: const Color(0xFF166534).withOpacity(0.1),
+              color: AppColors.primary.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(8),
             ),
-            child: Icon(icon, color: const Color(0xFF166534), size: 20),
+            child: Icon(icon, color: AppColors.primary, size: 20),
           ),
           const SizedBox(width: 16),
           Expanded(

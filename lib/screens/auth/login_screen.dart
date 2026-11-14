@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../data/services/supabase_service.dart';
+import '../../widgets/app_ui.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -63,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
         return StatefulBuilder(
           builder: (ctx, setDialogState) => AlertDialog(
             icon: const Icon(Icons.mark_email_unread,
-                size: 40, color: Color(0xFF166534)),
+                size: 40, color: AppColors.primary),
             title: const Text("Email Belum Dikonfirmasi"),
             content: Text(
                 "Buka email $email dan klik link konfirmasi dari PetaniMaju, "
@@ -112,14 +113,14 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // const Icon(Icons.grass, size: 80, color: Color(0xFF166534)),
+              // const Icon(Icons.grass, size: 80, color: AppColors.primary),
               // const SizedBox(height: 24),
               // Text(
               //   "Masuk PetaniMaju",
               //   textAlign: TextAlign.center,
               //   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
               //     fontWeight: FontWeight.bold,
-              //     color: const Color(0xFF166534),
+              //     color: AppColors.primary,
               //   ),
               // ),
               Container(
@@ -173,7 +174,7 @@ class _LoginScreenState extends State<LoginScreen> {
               FilledButton(
                 onPressed: _isLoading ? null : _handleLogin,
                 style: FilledButton.styleFrom(
-                  backgroundColor: const Color(0xFF166534),
+                  backgroundColor: AppColors.primary,
                   padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
                 child: _isLoading

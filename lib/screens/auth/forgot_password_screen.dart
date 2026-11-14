@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../data/services/supabase_service.dart';
+import '../../widgets/app_ui.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
@@ -66,7 +67,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Icon(Icons.lock_reset, size: 72, color: Color(0xFF166534)),
+          const Icon(Icons.lock_reset, size: 72, color: AppColors.primary),
           const SizedBox(height: 24),
           const Text(
             "Lupa Kata Sandi?",
@@ -101,7 +102,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           FilledButton(
             onPressed: _isLoading ? null : _submit,
             style: FilledButton.styleFrom(
-              backgroundColor: const Color(0xFF166534),
+              backgroundColor: AppColors.primary,
               padding: const EdgeInsets.symmetric(vertical: 16),
             ),
             child: _isLoading
@@ -117,7 +118,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const Icon(Icons.mark_email_read, size: 72, color: Color(0xFF166534)),
+        const Icon(Icons.mark_email_read, size: 72, color: AppColors.primary),
         const SizedBox(height: 24),
         const Text(
           "Cek Email Anda",
@@ -135,7 +136,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         FilledButton(
           onPressed: () => context.go('/login'),
           style: FilledButton.styleFrom(
-            backgroundColor: const Color(0xFF166534),
+            backgroundColor: AppColors.primary,
             padding: const EdgeInsets.symmetric(vertical: 16),
           ),
           child: const Text("Kembali ke Login", style: TextStyle(fontSize: 16)),

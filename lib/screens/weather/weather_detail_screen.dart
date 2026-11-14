@@ -5,6 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../data/models/weather_model.dart';
 import '../../data/services/weather_service.dart';
 import '../../data/services/supabase_service.dart';
+import '../../widgets/app_ui.dart';
 
 class WeatherDetailScreen extends StatefulWidget {
   final WeatherModel? weather;
@@ -93,14 +94,14 @@ class _WeatherDetailScreenState extends State<WeatherDetailScreen> {
       return Scaffold(
         backgroundColor: Colors.white,
         body: Center(
-          child: CircularProgressIndicator(color: const Color(0xFF166534)),
+          child: CircularProgressIndicator(color: AppColors.primary),
         ),
       );
     }
 
     if (_weather == null && _errorMessage != null) {
       return Scaffold(
-        appBar: AppBar(title: const Text("Info Cuaca")),
+        appBar: buildAppBar("Info Cuaca"),
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(24.0),
@@ -124,7 +125,7 @@ class _WeatherDetailScreenState extends State<WeatherDetailScreen> {
                 ElevatedButton(
                   onPressed: () => _fetchWeather(forceRefresh: true),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF166534),
+                    backgroundColor: AppColors.primary,
                     foregroundColor: Colors.white,
                   ),
                   child: const Text("Coba Lagi"),
@@ -156,7 +157,7 @@ class _WeatherDetailScreenState extends State<WeatherDetailScreen> {
       ),
       body: RefreshIndicator(
         onRefresh: () async => await _fetchWeather(forceRefresh: true),
-        color: const Color(0xFF166534),
+        color: AppColors.primary,
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
           padding: const EdgeInsets.all(20),
@@ -179,7 +180,7 @@ class _WeatherDetailScreenState extends State<WeatherDetailScreen> {
                 style: GoogleFonts.plusJakartaSans(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: const Color(0xFF166534),
+                  color: AppColors.primary,
                 ),
               ),
               const SizedBox(height: 12),
@@ -268,14 +269,14 @@ class _WeatherDetailScreenState extends State<WeatherDetailScreen> {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [Color(0xFF166534), Color(0xFF15803d)],
+          colors: [AppColors.primary, Color(0xFF15803d)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF166534).withOpacity(0.3),
+            color: AppColors.primary.withValues(alpha: 0.3),
             blurRadius: 15,
             offset: const Offset(0, 8),
           ),
@@ -329,7 +330,7 @@ class _WeatherDetailScreenState extends State<WeatherDetailScreen> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
+                  color: Colors.white.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
@@ -378,7 +379,7 @@ class _WeatherDetailScreenState extends State<WeatherDetailScreen> {
                       weather.description.replaceFirstMapped(RegExp(r'^\w'),
                           (match) => match.group(0)!.toUpperCase()),
                       style: GoogleFonts.inter(
-                        color: Colors.white.withOpacity(0.9),
+                        color: Colors.white.withValues(alpha: 0.9),
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),
@@ -467,7 +468,7 @@ class _WeatherDetailScreenState extends State<WeatherDetailScreen> {
             border: Border.all(color: Colors.grey[100]!),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.05),
+                color: Colors.grey.withValues(alpha: 0.05),
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),

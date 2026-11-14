@@ -35,7 +35,7 @@ class DrugMiniCard extends StatelessWidget {
                 fit: BoxFit.cover,
                 errorWidget: (_, __, ___) => Container(
                   height: 80,
-                  color: color.withOpacity(0.1),
+                  color: color.withValues(alpha: 0.1),
                   child: Icon(Icons.medication, color: color),
                 ),
               ),

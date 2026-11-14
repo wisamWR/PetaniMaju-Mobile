@@ -130,7 +130,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
           Container(
             padding: const EdgeInsets.all(18),
             decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.2), shape: BoxShape.circle),
+                color: Colors.white.withValues(alpha: 0.2), shape: BoxShape.circle),
             child: const Icon(Icons.document_scanner, size: 48, color: Colors.white),
           ),
           const SizedBox(height: 16),
@@ -329,7 +329,7 @@ class ScanResultHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = healthy ? Colors.green : Colors.orange;
     return InfoCard(
-      borderColor: color.withOpacity(0.4),
+      borderColor: color.withValues(alpha: 0.4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -338,7 +338,7 @@ class ScanResultHeader extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                    color: color.withOpacity(0.1), shape: BoxShape.circle),
+                    color: color.withValues(alpha: 0.1), shape: BoxShape.circle),
                 child: Icon(healthy ? Icons.eco : Icons.coronavirus, color: color),
               ),
               const SizedBox(width: 12),
@@ -358,7 +358,7 @@ class ScanResultHeader extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(
-                    color: _severityColor(severity).withOpacity(0.1),
+                    color: _severityColor(severity).withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(severity,

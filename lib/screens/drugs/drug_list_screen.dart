@@ -165,7 +165,7 @@ class _DrugListScreenState extends State<DrugListScreen> {
       errorWidget: (_, __, ___) => Container(
         width: width,
         height: height,
-        color: drugCategoryColor(d.kategori).withOpacity(0.1),
+        color: drugCategoryColor(d.kategori).withValues(alpha: 0.1),
         child: Icon(Icons.medication, color: drugCategoryColor(d.kategori)),
       ),
     );
@@ -175,9 +175,9 @@ class _DrugListScreenState extends State<DrugListScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(6),
-        border: Border.all(color: color.withOpacity(0.3)),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Text(text,
           style: TextStyle(fontSize: 10, color: color, fontWeight: FontWeight.bold)),

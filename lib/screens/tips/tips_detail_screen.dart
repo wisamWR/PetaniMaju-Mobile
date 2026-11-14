@@ -5,6 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../data/models/tip_model.dart';
 
 import '../../data/services/supabase_service.dart';
+import '../../widgets/app_ui.dart';
 
 class TipsDetailScreen extends StatefulWidget {
   final Tip tip;
@@ -76,7 +77,7 @@ class _TipsDetailScreenState extends State<TipsDetailScreen> {
             expandedHeight: 250.0,
             floating: false,
             pinned: true,
-            backgroundColor: const Color(0xFF166534),
+            backgroundColor: AppColors.primary,
             leading: IconButton(
               icon: const CircleAvatar(
                 backgroundColor: Colors.white,
@@ -94,7 +95,7 @@ class _TipsDetailScreenState extends State<TipsDetailScreen> {
                   child: IconButton(
                     icon: Icon(
                       _isBookmarked ? Icons.bookmark : Icons.bookmark_border,
-                      color: const Color(0xFF166534),
+                      color: AppColors.primary,
                       size: 20,
                     ),
                     onPressed: _toggleBookmark,
@@ -125,13 +126,13 @@ class _TipsDetailScreenState extends State<TipsDetailScreen> {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF166534).withOpacity(0.1),
+                      color: AppColors.primary.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(
                       widget.tip.kategori,
                       style: const TextStyle(
-                        color: Color(0xFF166534),
+                        color: AppColors.primary,
                         fontWeight: FontWeight.bold,
                         fontSize: 12,
                       ),

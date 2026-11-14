@@ -58,8 +58,8 @@
 4.  **Pest & Disease Info:** Database hama dan penyakit dengan foto dan solusi penanganan.
 5.  **Planting Calendar:** Fitur untuk mencatat dan memantau fase tanam.
 6.  **Video Tutorials:** Integrasi video YouTube untuk panduan visual.
-7.  **Community Forum:** Fitur sosial untuk membuat postingan, like, dan komentar (coming soon).
-8.  **User Profile & Auth:** Login/Register, edit profil, dan pengaturan notifikasi.
+7.  **Community Forum:** Fitur sosial untuk membuat postingan (dengan foto), like, dan komentar.
+8.  **User Profile & Auth:** Login/Register, lupa kata sandi, edit profil, ubah kata sandi, dan hapus akun permanen (verifikasi kata sandi).
 9.  **Bookmarks:** Simpan tips, video, atau info hama favorit untuk dibaca nanti.
 10. **Showcase Tutorial:** Panduan interaktif untuk pengguna baru.
 
@@ -110,8 +110,11 @@ flutter run --dart-define-from-file=.env
 ```
 
 ### 5. Backend Fitur Baru
-1. Jalankan migration `supabase/migrations/20260919000000_agrinova_features.sql` di SQL Editor Supabase.
-   Isinya: tabel `prediction_history`, bucket `scan_images`, tabel `user_premium` dan `premium_orders`.
+1. Jalankan semua file di `supabase/migrations/` (urut nama file) di SQL Editor Supabase,
+   atau `supabase db push`:
+   - `20260919000000_agrinova_features.sql` — tabel `prediction_history`, bucket `scan_images`, tabel `user_premium` & `premium_orders`.
+   - `20260919100000_base_schema.sql` — profil, tips, hama, video, forum, kalender, bookmark + RLS.
+   - `20261115000000_delete_account.sql` — fungsi `delete_my_account()` untuk fitur **Hapus Akun**.
 2. (Untuk PRO) deploy Edge Function lalu set secret Midtrans:
 ```bash
 supabase functions deploy create-midtrans-payment

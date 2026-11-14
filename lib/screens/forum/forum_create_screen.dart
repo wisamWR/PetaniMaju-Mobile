@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../data/services/supabase_service.dart';
+import '../../widgets/app_ui.dart';
 
 class ForumCreateScreen extends StatefulWidget {
   const ForumCreateScreen({super.key});
@@ -91,7 +92,7 @@ class _ForumCreateScreenState extends State<ForumCreateScreen> {
       ),
       focusedBorder: const OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(12)),
-        borderSide: BorderSide(color: Color(0xFF166534), width: 2),
+        borderSide: BorderSide(color: AppColors.primary, width: 2),
       ),
       filled: true,
       fillColor: Colors.grey[50],
@@ -125,7 +126,7 @@ class _ForumCreateScreenState extends State<ForumCreateScreen> {
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF166534),
+                  color: AppColors.primary,
                 ),
               ),
               const SizedBox(height: 8),
@@ -239,7 +240,7 @@ class _ForumCreateScreenState extends State<ForumCreateScreen> {
                 child: FilledButton(
                   onPressed: _isLoading ? null : _submitPost,
                   style: FilledButton.styleFrom(
-                    backgroundColor: const Color(0xFF166534),
+                    backgroundColor: AppColors.primary,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
