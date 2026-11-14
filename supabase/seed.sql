@@ -1,4 +1,6 @@
 -- Konten awal (tips & hama) diambil dari project Petani Maju V.2.
+-- Gambar yang dulu di storage V.2 kini ada di bucket content_images
+-- (salinannya di supabase/seed-images/, unggah dengan `supabase storage cp`).
 -- Idempoten: baris dengan judul/nama yang sama tidak diduplikasi.
 
 insert into public.tips (title, description, content, category, image_url, created_at)
@@ -6,11 +8,11 @@ select * from (values
   ('Tips Menjaga Tanaman Tetap Sehat', 'Lakukan penyiraman secara teratur, berikan pupuk sesuai kebutuhan, dan pastikan tanaman mendapatkan cukup sinar matahari.', 'Lakukan penyiraman secara teratur, berikan pupuk sesuai kebutuhan, dan pastikan tanaman mendapatkan cukup sinar matahari. Bersihkan gulma serta daun yang sudah rusak agar tidak menjadi tempat berkembangnya hama dan penyakit.
 
 ### 🌐 Sumber
-Redaksi Petani Maju', 'Tips Tani', 'https://ioryoxeviwsjibjmwhbl.supabase.co/storage/v1/object/public/images/tips/1787908561_images-9.jpg', '2026-08-28T09:15:00+00:00'::timestamptz),
+Redaksi Petani Maju', 'Tips Tani', 'https://lmbsryezpadlsbxznezl.supabase.co/storage/v1/object/public/content_images/tips/tips-menjaga-tanaman-tetap-sehat.jpg', '2026-08-28T09:15:00+00:00'::timestamptz),
   ('Cara Pemupukan yang Tepat', 'Gunakan pupuk sesuai jenis tanaman dan dosis yang dianjurkan.', 'Gunakan pupuk sesuai jenis tanaman dan dosis yang dianjurkan. Hindari pemberian pupuk nitrogen secara berlebihan karena dapat membuat tanaman lebih rentan terhadap beberapa penyakit.
 
 ### 🌐 Sumber
-Redaksi Petani Maju', 'Tips Tani', 'https://ioryoxeviwsjibjmwhbl.supabase.co/storage/v1/object/public/images/tips/1787908713_images-10.jpg', '2026-08-28T09:17:00+00:00'::timestamptz),
+Redaksi Petani Maju', 'Tips Tani', 'https://lmbsryezpadlsbxznezl.supabase.co/storage/v1/object/public/content_images/tips/cara-pemupukan-yang-tepat.jpg', '2026-08-28T09:17:00+00:00'::timestamptz),
   ('Yuk, Kenalan dengan BPP di Demak: Sumber Ilmu Tani Kita!', '### ⚡ Solusi Cepat BPP adalah tempat petani bisa belajar banyak hal baru dan dapat bantuan soal pertanian.', '### ⚡ Solusi Cepat
 BPP adalah tempat petani bisa belajar banyak hal baru dan dapat bantuan soal pertanian. Jangan sungkan mampir ke BPP terdekat di wilayah Demak untuk ngobrol dan cari solusi!
 
@@ -968,32 +970,32 @@ select * from (values
 
 Ciri-ciri: Cangkang berwarna kuning keemasan.
 
-Dampak: Bibit habis dimakan sehingga perlu tanam ulang.', 'Pengumpulan manual dan penggunaan umpan.', 'https://ioryoxeviwsjibjmwhbl.supabase.co/storage/v1/object/public/images/pest/keong-mas.jpg', '2026-06-03T07:09:38.625376+00:00'::timestamptz),
+Dampak: Bibit habis dimakan sehingga perlu tanam ulang.', 'Pengumpulan manual dan penggunaan umpan.', 'https://lmbsryezpadlsbxznezl.supabase.co/storage/v1/object/public/content_images/hama/keong-mas.jpg', '2026-06-03T07:09:38.625376+00:00'::timestamptz),
   ('Kutu Daun', 'Hama', 'Hama penghisap cairan tanaman hortikultura.
 
 Ciri-ciri: Koloni kecil berwarna hijau atau hitam pada daun muda.
 
-Dampak: Pertumbuhan tanaman terhambat.', 'Semprot pestisida nabati dan manfaatkan predator alami.', 'https://ioryoxeviwsjibjmwhbl.supabase.co/storage/v1/object/public/images/pest/kutu-daun.jpg', '2026-06-03T07:09:38.625376+00:00'::timestamptz),
+Dampak: Pertumbuhan tanaman terhambat.', 'Semprot pestisida nabati dan manfaatkan predator alami.', 'https://lmbsryezpadlsbxznezl.supabase.co/storage/v1/object/public/content_images/hama/kutu-daun.jpg', '2026-06-03T07:09:38.625376+00:00'::timestamptz),
   ('Penggerek Batang Padi', 'Hama', 'Larva menyerang bagian dalam batang padi.
 
 Ciri-ciri: Batang mudah patah dan mengering.
 
-Dampak: Menyebabkan puso atau gagal panen.', 'Gunakan perangkap feromon dan tanam serempak.', 'https://ioryoxeviwsjibjmwhbl.supabase.co/storage/v1/object/public/images/pest/penggerek-batang.jpg', '2026-06-03T07:09:38.625376+00:00'::timestamptz),
+Dampak: Menyebabkan puso atau gagal panen.', 'Gunakan perangkap feromon dan tanam serempak.', 'https://lmbsryezpadlsbxznezl.supabase.co/storage/v1/object/public/content_images/hama/penggerek-batang-padi.jpg', '2026-06-03T07:09:38.625376+00:00'::timestamptz),
   ('Tikus Sawah', 'Hama', 'Hama pengerat yang menyerang tanaman sejak awal tanam hingga panen.
 
 Ciri-ciri: Terdapat bekas gigitan dan lubang sarang di sekitar sawah.
 
-Dampak: Kerusakan tanaman dalam jumlah besar.', 'Gropyokan, pemasangan perangkap, dan sanitasi lahan.', 'https://ioryoxeviwsjibjmwhbl.supabase.co/storage/v1/object/public/images/pest/tikus-sawah.jpg', '2026-06-03T07:09:38.625376+00:00'::timestamptz),
+Dampak: Kerusakan tanaman dalam jumlah besar.', 'Gropyokan, pemasangan perangkap, dan sanitasi lahan.', 'https://lmbsryezpadlsbxznezl.supabase.co/storage/v1/object/public/content_images/hama/tikus-sawah.jpg', '2026-06-03T07:09:38.625376+00:00'::timestamptz),
   ('Ulat Grayak', 'Hama', 'Ulat pemakan daun yang aktif pada malam hari.
 
 Ciri-ciri: Daun berlubang besar, ditemukan ulat berwarna hijau kecoklatan.
 
-Dampak: Mengurangi luas daun sehingga fotosintesis terganggu.', 'Pengendalian mekanis, penggunaan musuh alami, dan insektisida biologis.', 'https://ioryoxeviwsjibjmwhbl.supabase.co/storage/v1/object/public/images/pest/ulat-grayak.jpg', '2026-06-03T07:09:38.625376+00:00'::timestamptz),
+Dampak: Mengurangi luas daun sehingga fotosintesis terganggu.', 'Pengendalian mekanis, penggunaan musuh alami, dan insektisida biologis.', 'https://lmbsryezpadlsbxznezl.supabase.co/storage/v1/object/public/content_images/hama/ulat-grayak.jpg', '2026-06-03T07:09:38.625376+00:00'::timestamptz),
   ('Wereng Batang Coklat', 'Hama', 'Hama utama tanaman padi yang menyerang batang dan menghisap cairan tanaman.
 
 Ciri-ciri: Warna coklat, ukuran kecil, bergerombol di pangkal batang.
 
-Dampak: Tanaman menguning, kering, dan gagal panen.', 'Gunakan varietas tahan wereng, musnahkan tanaman terserang, dan aplikasikan insektisida sesuai dosis.', 'https://ioryoxeviwsjibjmwhbl.supabase.co/storage/v1/object/public/images/pest/wereng-batang-coklat.png', '2026-06-03T07:09:38.625376+00:00'::timestamptz),
+Dampak: Tanaman menguning, kering, dan gagal panen.', 'Gunakan varietas tahan wereng, musnahkan tanaman terserang, dan aplikasikan insektisida sesuai dosis.', 'https://lmbsryezpadlsbxznezl.supabase.co/storage/v1/object/public/content_images/hama/wereng-batang-coklat.jpg', '2026-06-03T07:09:38.625376+00:00'::timestamptz),
   ('Penyakit Busuk Batang Terong', 'Penyakit', 'Penyakit ini bikin batang tanaman terong jadi busuk, Sobat Tani. Penyebabnya adalah jamur jahat yang hidup di dalam tanah dan gampang menyebar lewat air. Kalau sudah kena, tanaman terong bisa layu dan akhirnya mati.
 
 Ciri-ciri: Batang tanaman terong terlihat busuk, lembek, dan warnanya berubah. Tanaman yang terserang biasanya akan layu dan tidak bisa tumbuh lagi.', '**1. Cabut dan Musnahkan Tanaman Sakit** 💀
@@ -1019,3 +1021,17 @@ Berikut cara mengatasi tiap penyakit:
 *   **3. Untuk Hawar Daun:** Atur jarak tanam biar nggak terlalu rapat. Pakai varietas jagung yang tahan hawar daun. Bersihkan sisa-sisa tanaman yang sudah kena penyakit.', 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800', '2026-09-17T05:49:52.745613+00:00'::timestamptz)
 ) as v(name, type, description, solution_organic, image_url, created_at)
 where not exists (select 1 from public.hama_penyakit p where p.name = v.name);
+
+-- Video edukasi (YouTube, sudah dicek ada & boleh di-embed per 2026-11-15).
+insert into public.videos (title, video_url, description)
+select * from (values
+  ('Cara Menanam Padi dari Awal hingga Panen', 'https://www.youtube.com/watch?v=px3vCA4Tf5c', 'Tahapan lengkap budidaya padi sawah termasuk jadwal pemupukan. Kanal: Kentar Kentir.'),
+  ('Cara Tanam Padi agar Cepat Tumbuh Setelah Pindah Tanam', 'https://www.youtube.com/watch?v=wiJg9_tz3Fw', 'Tips pindah tanam bibit padi supaya cepat pulih dan anakan lebih banyak. Kanal: Eko Budi youtube Farm.'),
+  ('Cara Semai Cabai hingga Siap Tanam', 'https://www.youtube.com/watch?v=dproMYRFFr8', 'Menyemai benih cabai dari biji sampai bibit siap dipindah ke lahan. Kanal: Daun Talas Chanel.'),
+  ('Cara Menanam Cabai dari Awal hingga Panen', 'https://www.youtube.com/watch?v=YCCy3i7Agak', 'Budidaya cabai rawit dari persiapan lahan sampai panen. Kanal: HERI PETANI INDONESIA.'),
+  ('Membuat Pupuk Kompos Metode Berkeley', 'https://www.youtube.com/watch?v=_9ILrBQzfjk', 'Kompos cepat dari campuran bahan hijau, bahan coklat, dan aktivator. Kanal: Tani Ponik.'),
+  ('Membuat Pupuk dari Kotoran Sapi', 'https://www.youtube.com/watch?v=i_uB0bZ58A0', 'Mengolah kotoran sapi menjadi pupuk organik, dijelaskan oleh penyuluh pertanian. Kanal: jabung official.'),
+  ('Mengenal Wereng Hijau Penyebar Virus Tungro', 'https://www.youtube.com/watch?v=7_pGIBSgc3Q', 'Ciri serangan wereng hijau, kaitannya dengan penyakit tungro, dan cara pengendaliannya. Kanal: Zona Pertanian.'),
+  ('Cara Mengatasi Hama Wereng pada Padi', 'https://www.youtube.com/watch?v=ybZMNPqWonk', 'Langkah praktis menekan serangan wereng di sawah. Kanal: Ogieq GD.')
+) as v(title, video_url, description)
+where not exists (select 1 from public.videos x where x.video_url = v.video_url);
