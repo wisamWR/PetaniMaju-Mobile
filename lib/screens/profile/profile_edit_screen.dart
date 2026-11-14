@@ -170,7 +170,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
         setState(() => _regencies = jsonDecode(res.body));
       }
     } catch (e) {
-      print(e);
+      debugPrint("$e");
     }
   }
 
@@ -188,7 +188,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
         setState(() => _districts = jsonDecode(res.body));
       }
     } catch (e) {
-      print(e);
+      debugPrint("$e");
     }
   }
 

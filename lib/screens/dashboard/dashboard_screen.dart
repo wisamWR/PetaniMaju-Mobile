@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:showcaseview/showcaseview.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../core/weather_icons.dart';
 import '../../data/services/supabase_service.dart';
 import '../../data/services/weather_service.dart';
 import '../../data/models/weather_model.dart';
@@ -433,7 +434,7 @@ class _DashboardContentState extends State<_DashboardContent> {
             ),
             child: Stack(
               children: [
-                // Decorative blur circle (mocked with simple container for now)
+                // Decorative circle
                 Positioned(
                     right: -20,
                     top: -20,
@@ -449,9 +450,9 @@ class _DashboardContentState extends State<_DashboardContent> {
                   children: [
                     Row(
                       children: [
-                        const Icon(Icons.wb_sunny,
-                            color: Colors.yellow,
-                            size: 24), // Mock Condition Icon
+                        Icon(WeatherIcons.iconFor(weather.iconCode),
+                            color: WeatherIcons.colorFor(weather.iconCode),
+                            size: 24),
                         const SizedBox(width: 8),
                         const Text("Cuaca Hari Ini",
                             style: TextStyle(
@@ -665,12 +666,15 @@ class _DashboardContentState extends State<_DashboardContent> {
           const SizedBox(height: 8),
           Row(
             children: [
+              const Icon(Icons.thumb_up_outlined, size: 14, color: Colors.grey),
+              const SizedBox(width: 4),
+              Text("${post.likes}",
+                  style: const TextStyle(fontSize: 12, color: Colors.grey)),
+              const SizedBox(width: 10),
               const Icon(Icons.comment, size: 14, color: Colors.grey),
               const SizedBox(width: 4),
-              Text("${post.likes} Diskusi",
-                  style: const TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey)), // Mock 'likes' as interaction count
+              Text("${post.commentCount} Diskusi",
+                  style: const TextStyle(fontSize: 12, color: Colors.grey)),
               const SizedBox(width: 12),
               Text(DateFormat('dd MMM yyyy').format(post.createdAt),
                   style: const TextStyle(fontSize: 12, color: Colors.grey)),

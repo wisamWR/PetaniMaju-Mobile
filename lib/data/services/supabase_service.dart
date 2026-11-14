@@ -78,6 +78,53 @@ class SupabaseService {
     await client.auth.updateUser(UserAttributes(password: newPassword));
   }
 
+  /// Hapus akun user yang sedang login.
+  /// 1. Verifikasi ulang kata sandi (AuthException jika salah).
+  /// 2. Bersihkan foto milik user di storage (best-effort).
+  /// 3. RPC `delete_my_account` menghapus auth.users + data turunan (cascade).
+  Future<void> deleteAccount(String password) async {
+    final user = currentUser;
+    final email = user?.email;
+    if (user == null || email == null) {
+      throw const AuthException('Sesi tidak ditemukan, silakan masuk lagi.');
+    }
+
+    await client.auth.signInWithPassword(email: email, password: password);
+
+    await _removeOwnImages('prediction_history', 'scan_images', user.id);
+    await _removeOwnImages('forum_posts', 'forum_images', user.id);
+
+    await client.rpc('delete_my_account');
+
+    // Token sudah tidak valid di server, cukup bersihkan sesi lokal.
+    await client.auth.signOut(scope: SignOutScope.local);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('cached_user_profile');
+  }
+
+  Future<void> _removeOwnImages(String table, String bucket, String userId) async {
+    try {
+      final rows = await client
+          .from(table)
+          .select('image_url')
+          .eq('user_id', userId)
+          .not('image_url', 'is', null);
+
+      final paths = <String>[];
+      for (final row in rows) {
+        final segments = Uri.parse(row['image_url'] as String).pathSegments;
+        final i = segments.indexOf(bucket);
+        if (i != -1 && i + 1 < segments.length) {
+          paths.add(segments.sublist(i + 1).join('/'));
+        }
+      }
+      if (paths.isNotEmpty) await client.storage.from(bucket).remove(paths);
+    } catch (e) {
+      // Gagal bersih-bersih foto tidak boleh menggagalkan hapus akun.
+      debugPrint('Gagal menghapus foto $bucket: $e');
+    }
+  }
+
   // --- Data Fetching ---
 
   Future<UserProfile?> getUserProfile() async {
@@ -217,7 +264,7 @@ class SupabaseService {
       final response = await client
           .from('forum_posts')
           .select(
-              '*, profiles!forum_posts_user_id_fkey(nama, avatar_url, kabupaten, provinsi)')
+              '*, profiles!forum_posts_user_id_fkey(nama, avatar_url, kabupaten, provinsi), forum_comments(count)')
           .order('created_at', ascending: false);
 
       final data = response as List;
@@ -636,7 +683,7 @@ class SupabaseService {
         'hama': hama,
       };
     } catch (e) {
-      print("Error fetching saved items: $e");
+      debugPrint("Error fetching saved items: $e");
       return {'tips': [], 'videos': [], 'hama': []};
     }
   }
@@ -650,7 +697,7 @@ class SupabaseService {
     String? kecamatan,
     String? jenisTanaman,
   }) async {
-    print("DEBUG: Updating Profile for $nama (No Alamat)");
+    debugPrint("DEBUG: Updating Profile for $nama (No Alamat)");
     final user = currentUser;
     if (user == null) return;
 

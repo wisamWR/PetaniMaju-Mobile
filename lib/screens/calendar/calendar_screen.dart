@@ -216,7 +216,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
                       if (isEditing) {
                         await SupabaseService().updateCalendarEvent(
-                          id: eventToEdit!.id,
+                          id: eventToEdit.id,
                           title: titleController.text,
                           type: selectedType,
                           notes: notes,

@@ -5,7 +5,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../core/constants.dart';
 import '../models/weather_model.dart';
-import 'package:intl/intl.dart';
 import 'notification_service.dart';
 
 class WeatherService {
@@ -401,7 +400,7 @@ class WeatherService {
         lastUpdated: cacheTime,
       );
     } catch (e) {
-      print("Cache load error: $e");
+      debugPrint("Cache load error: $e");
       return null;
     }
   }

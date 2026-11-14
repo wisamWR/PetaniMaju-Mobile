@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supabase_flutter/supabase_flutter.dart' show AuthException;
 import '../../data/models/user_profile.dart';
 import 'package:intl/intl.dart';
 import '../../data/models/forum_post_model.dart';
@@ -36,8 +36,6 @@ class _ProfileContentState extends State<_ProfileContent>
   final SupabaseService _supabaseService = SupabaseService();
   bool _isLoading = true;
   bool _notificationsEnabled = false;
-  bool _dailyBriefEnabled = true; // Default true for Sapaan Pagi
-  bool _weatherReminderEnabled = true;
   UserProfile? _profile;
   late TabController _tabController;
 
@@ -88,8 +86,6 @@ class _ProfileContentState extends State<_ProfileContent>
       // Load Prefs
       final prefs = await SharedPreferences.getInstance();
       final notifEnabled = prefs.getBool('notifications_enabled') ?? false;
-      final dailyEnabled = prefs.getBool('daily_brief_enabled') ?? true;
-      final weatherRemind = prefs.getBool('weather_reminder_enabled') ?? true;
 
       final user = _supabaseService.currentUser;
       if (user != null) {
@@ -115,13 +111,11 @@ class _ProfileContentState extends State<_ProfileContent>
                 _savedTips.length + _savedVideos.length + _savedHama.length;
 
             _notificationsEnabled = notifEnabled;
-            _dailyBriefEnabled = dailyEnabled;
-            _weatherReminderEnabled = weatherRemind;
           });
         }
       }
     } catch (e) {
-      print("Profile load error: $e");
+      debugPrint("Profile load error: $e");
     } finally {
       if (mounted) {
         setState(() => _isLoading = false);
@@ -438,7 +432,7 @@ class _ProfileContentState extends State<_ProfileContent>
                       Icon(Icons.comment_outlined,
                           size: 16, color: Colors.grey[600]),
                       const SizedBox(width: 4),
-                      Text("0",
+                      Text("${post.commentCount}",
                           style:
                               TextStyle(color: Colors.grey[600], fontSize: 13)),
                     ],
@@ -617,7 +611,7 @@ class _ProfileContentState extends State<_ProfileContent>
                   ),
                   Switch(
                     value: _notificationsEnabled,
-                    activeColor: const Color(0xFF166534),
+                    activeThumbColor: const Color(0xFF166534),
                     onChanged: (val) async {
                       setState(() => _notificationsEnabled = val);
                       final prefs = await SharedPreferences.getInstance();
@@ -791,7 +785,7 @@ class _ProfileContentState extends State<_ProfileContent>
                 backgroundColor: Colors.red, foregroundColor: Colors.white),
             onPressed: () {
               Navigator.pop(context);
-              _showPasswordConfirmation(isDelete: true);
+              _showPasswordConfirmation();
             },
             child: const Text("Lanjut Hapus"),
           ),
@@ -800,7 +794,7 @@ class _ProfileContentState extends State<_ProfileContent>
     );
   }
 
-  void _showPasswordConfirmation({required bool isDelete}) {
+  void _showPasswordConfirmation() {
     final passController = TextEditingController();
     showDialog(
       context: context,
@@ -834,7 +828,7 @@ class _ProfileContentState extends State<_ProfileContent>
             onPressed: () {
               if (passController.text.isNotEmpty) {
                 Navigator.pop(context);
-                if (isDelete) _performDeleteAccount();
+                _performDeleteAccount(passController.text);
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text("Kata sandi wajib diisi")));
@@ -847,29 +841,34 @@ class _ProfileContentState extends State<_ProfileContent>
     );
   }
 
-  Future<void> _performDeleteAccount() async {
+  Future<void> _performDeleteAccount(String password) async {
     showDialog(
         context: context,
         barrierDismissible: false,
         builder: (_) => const Center(child: CircularProgressIndicator()));
 
+    String? error;
     try {
-      // Mock deletion
-      await Future.delayed(const Duration(seconds: 2));
-      await _supabaseService.signOut();
-
-      if (mounted) {
-        Navigator.pop(context); // Pop loading
-        context.go('/login');
-        ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("Akun berhasil dihapus")));
-      }
+      await _supabaseService.deleteAccount(password);
+      await NotificationService().cancelAll();
+    } on AuthException catch (e) {
+      error = e.message.toLowerCase().contains('invalid')
+          ? "Kata sandi salah"
+          : "Gagal menghapus akun: ${e.message}";
     } catch (e) {
-      if (mounted) {
-        Navigator.pop(context);
-        ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("Gagal menghapus akun")));
-      }
+      debugPrint("Delete account error: $e");
+      error = "Gagal menghapus akun. Periksa koneksi lalu coba lagi.";
     }
+
+    if (!mounted) return;
+    Navigator.pop(context); // Pop loading
+    if (error != null) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(error)));
+      return;
+    }
+    context.go('/login');
+    ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Akun berhasil dihapus")));
   }
 }
