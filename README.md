@@ -45,7 +45,7 @@
 *   **APIs:** [OpenWeatherMap API](https://openweathermap.org/api)
 *   **State Management:** `setState` & `Provider`
 *   **Local Storage:** `shared_preferences`
-*   **Notifications:** `flutter_local_notifications`
+*   **Notifications:** `flutter_local_notifications` + `workmanager` (cek cuaca background)
 *   **Navigation:** `go_router`
 
 ---
@@ -53,7 +53,7 @@
 ## 📱 Fitur Detail
 
 1.  **Weather Forecast (7-day):** Menampilkan suhu, kondisi cuaca, kelembaban, dan kecepatan angin.
-2.  **Weather Alerts:** Sistem peringatan dini untuk hujan lebat, panas ekstrem, atau angin kencang.
+2.  **Weather Alerts:** Sistem peringatan dini untuk hujan lebat, panas ekstrem, atau angin kencang. Dicek otomatis setiap 3 jam di background (WorkManager) walau aplikasi tidak dibuka, memakai lokasi terakhir; maksimal satu peringatan per hari dan mengikuti mode tenang.
 3.  **Daily Agricultural Tips:** Tips harian yang berganti setiap hari untuk menambah wawasan.
 4.  **Pest & Disease Info:** Database hama dan penyakit dengan foto dan solusi penanganan.
 5.  **Planting Calendar:** Fitur untuk mencatat dan memantau fase tanam.

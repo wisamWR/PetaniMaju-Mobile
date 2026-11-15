@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mobile/core/weather_icons.dart';
 import 'package:mobile/data/models/forum_post_model.dart';
+import 'package:mobile/data/services/weather_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   test('WeatherIcons mengikuti kode ikon OpenWeather', () {
@@ -42,5 +44,11 @@ void main() {
     final again = ForumPost.fromJson(p.toJson());
     expect(again.likes, 4);
     expect(again.commentCount, 2);
+  });
+
+  test('Cek cuaca background tidak jalan sebelum ada lokasi tersimpan',
+      () async {
+    SharedPreferences.setMockInitialValues({});
+    expect(await WeatherService().checkAlertsInBackground(), isFalse);
   });
 }

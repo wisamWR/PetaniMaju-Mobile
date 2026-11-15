@@ -13,6 +13,7 @@ import '../../data/models/hama_model.dart';
 import 'package:showcaseview/showcaseview.dart';
 import '../../widgets/custom_showcase.dart';
 import '../../widgets/app_ui.dart';
+import '../../data/services/background_weather.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -624,6 +625,7 @@ class _ProfileContentState extends State<_ProfileContent>
                       } else {
                         await service.cancelAll();
                       }
+                      await BackgroundWeather.sync();
                     },
                   ),
                 ],

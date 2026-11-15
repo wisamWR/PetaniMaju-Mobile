@@ -23,7 +23,10 @@ class NotificationService {
       FlutterLocalNotificationsPlugin();
   final NotificationHistoryService _history = NotificationHistoryService();
 
-  Future<void> init({Function(String?)? onNotificationTap}) async {
+  /// [requestPermissions] false untuk isolate background (tidak ada Activity).
+  Future<void> init(
+      {Function(String?)? onNotificationTap,
+      bool requestPermissions = true}) async {
     tz.initializeTimeZones();
     // Set default location generally to WIB/Jakarta as a safe default for Indonesia users
     try {
@@ -33,7 +36,7 @@ class NotificationService {
     }
 
     const AndroidInitializationSettings initializationSettingsAndroid =
-        AndroidInitializationSettings('@mipmap/launcher_icon');
+        AndroidInitializationSettings('ic_notification');
 
     const InitializationSettings initializationSettings =
         InitializationSettings(
@@ -56,7 +59,7 @@ class NotificationService {
         flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>();
 
-    if (androidImplementation != null) {
+    if (requestPermissions && androidImplementation != null) {
       await androidImplementation.requestNotificationsPermission();
       try {
         await androidImplementation.requestExactAlarmsPermission();

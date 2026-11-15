@@ -18,6 +18,7 @@ import 'data/models/drug_model.dart';
 import 'data/models/scan_history_model.dart';
 
 import 'data/services/notification_service.dart';
+import 'data/services/background_weather.dart';
 import 'data/services/supabase_service.dart';
 
 import 'screens/auth/login_screen.dart';
@@ -277,6 +278,14 @@ Future<void> main() async {
     await notificationService.applySettings();
   } catch (e) {
     debugPrint('Gagal menerapkan pengaturan notifikasi: $e');
+  }
+
+  // Cek cuaca berkala di background untuk peringatan cuaca ekstrem
+  try {
+    await BackgroundWeather.init();
+    await BackgroundWeather.sync();
+  } catch (e) {
+    debugPrint('Gagal menjadwalkan cek cuaca background: $e');
   }
 
   runApp(

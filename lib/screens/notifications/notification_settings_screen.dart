@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../data/models/notification_settings.dart';
 import '../../data/services/notification_service.dart';
 import '../../widgets/app_ui.dart';
+import '../../data/services/background_weather.dart';
 
 class NotificationSettingsScreen extends StatefulWidget {
   const NotificationSettingsScreen({super.key});
@@ -49,6 +50,7 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
     } else {
       await _service.cancelAll();
     }
+    await BackgroundWeather.sync();
   }
 
   String _fmt(int h, [int m = 0]) =>
