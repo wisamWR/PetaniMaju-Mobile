@@ -205,3 +205,151 @@ class DetailSection extends StatelessWidget {
     );
   }
 }
+
+/// Efek kilau untuk kerangka loading, tanpa package tambahan.
+/// Mati otomatis bila pengguna mengaktifkan "kurangi animasi".
+class Shimmer extends StatefulWidget {
+  final Widget child;
+
+  const Shimmer({super.key, required this.child});
+
+  @override
+  State<Shimmer> createState() => _ShimmerState();
+}
+
+class _ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 1300))
+      ..repeat();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (MediaQuery.of(context).disableAnimations) return widget.child;
+    return AnimatedBuilder(
+      animation: _controller,
+      child: widget.child,
+      builder: (context, child) => ShaderMask(
+        blendMode: BlendMode.srcATop,
+        shaderCallback: (bounds) => LinearGradient(
+          colors: [Colors.grey[200]!, Colors.grey[50]!, Colors.grey[200]!],
+          stops: const [0.35, 0.5, 0.65],
+          transform: _SlideGradient(_controller.value * 2 - 1),
+        ).createShader(bounds),
+        child: child,
+      ),
+    );
+  }
+}
+
+class _SlideGradient extends GradientTransform {
+  final double percent;
+
+  const _SlideGradient(this.percent);
+
+  @override
+  Matrix4 transform(Rect bounds, {TextDirection? textDirection}) =>
+      Matrix4.translationValues(bounds.width * percent, 0, 0);
+}
+
+/// Kotak abu-abu pengganti konten saat loading.
+class SkeletonBox extends StatelessWidget {
+  final double? width;
+  final double height;
+  final double radius;
+
+  const SkeletonBox({super.key, this.width, this.height = 12, this.radius = 6});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+        borderRadius: BorderRadius.circular(radius),
+      ),
+    );
+  }
+}
+
+/// Daftar kerangka loading. [card] meniru kartu bergambar besar
+/// (tips, video); selain itu meniru baris dengan gambar kecil di kiri.
+class SkeletonList extends StatelessWidget {
+  final int count;
+  final bool card;
+  final EdgeInsetsGeometry padding;
+
+  const SkeletonList({
+    super.key,
+    this.count = 5,
+    this.card = false,
+    this.padding = const EdgeInsets.fromLTRB(16, 0, 16, 24),
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Semantics(
+      label: 'Memuat',
+      child: Shimmer(
+        child: ListView.separated(
+          physics: const NeverScrollableScrollPhysics(),
+          padding: padding,
+          itemCount: count,
+          separatorBuilder: (_, __) => SizedBox(height: card ? 16 : 12),
+          itemBuilder: (_, __) => card ? _card() : _tile(),
+        ),
+      ),
+    );
+  }
+
+  Widget _lines() => const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SkeletonBox(width: 80, height: 10),
+          SizedBox(height: 10),
+          FractionallySizedBox(
+              widthFactor: 0.9, child: SkeletonBox(height: 14)),
+          SizedBox(height: 8),
+          FractionallySizedBox(
+              widthFactor: 0.6, child: SkeletonBox(height: 12)),
+        ],
+      );
+
+  // Kartu transparan: ShaderMask mewarnai semua piksel buram, jadi latar
+  // putih akan ikut berkilau dan menutupi kotak di dalamnya.
+  Widget _card() => InfoCard(
+        color: Colors.transparent,
+        padding: EdgeInsets.zero,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SkeletonBox(height: 150, radius: 16),
+            Padding(padding: const EdgeInsets.all(16), child: _lines()),
+          ],
+        ),
+      );
+
+  Widget _tile() => InfoCard(
+        color: Colors.transparent,
+        padding: const EdgeInsets.all(12),
+        child: Row(
+          children: [
+            const SkeletonBox(width: 64, height: 64, radius: 12),
+            const SizedBox(width: 12),
+            Expanded(child: _lines()),
+          ],
+        ),
+      );
+}

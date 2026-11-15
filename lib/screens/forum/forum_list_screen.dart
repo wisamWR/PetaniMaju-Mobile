@@ -131,7 +131,7 @@ class _ForumListScreenState extends State<ForumListScreen> {
               future: _postsFuture,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const SkeletonList();
                 }
                 if (snapshot.hasError) {
                   return Center(

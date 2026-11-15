@@ -51,7 +51,7 @@ class _TipsListScreenState extends State<TipsListScreen> {
         future: _tipsFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return const SkeletonList(card: true, count: 3);
           }
           if (snapshot.hasError) {
             return EmptyState(

@@ -310,10 +310,30 @@ class _DashboardContentState extends State<_DashboardContent> {
                         child: FutureBuilder<List<Tip>>(
                           future: _tipsFuture,
                           builder: (context, snapshot) {
-                            if (!snapshot.hasData)
-                              return const Center(
-                                  child: CircularProgressIndicator());
-                            final tips = snapshot.data!.take(5).toList();
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return Shimmer(
+                                child: ListView.separated(
+                                  scrollDirection: Axis.horizontal,
+                                  physics:
+                                      const NeverScrollableScrollPhysics(),
+                                  itemCount: 3,
+                                  separatorBuilder: (_, __) =>
+                                      const SizedBox(width: 16),
+                                  itemBuilder: (_, __) => const SkeletonBox(
+                                      width: 200, height: 240, radius: 16),
+                                ),
+                              );
+                            }
+                            final tips =
+                                (snapshot.data ?? const <Tip>[]).take(5).toList();
+                            if (tips.isEmpty) {
+                              return const EmptyState(
+                                icon: Icons.lightbulb_outline,
+                                title: "Tips belum bisa dimuat",
+                                subtitle: "Tarik ke bawah untuk mencoba lagi.",
+                              );
+                            }
                             return ListView.separated(
                               scrollDirection: Axis.horizontal,
                               itemCount: tips.length,
@@ -367,10 +387,8 @@ class _DashboardContentState extends State<_DashboardContent> {
       future: _weatherFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Card(
-              child: SizedBox(
-                  height: 150,
-                  child: Center(child: CircularProgressIndicator())));
+          return const Shimmer(
+              child: SkeletonBox(height: 190, radius: 24));
         }
 
         if (snapshot.hasError) {
@@ -609,7 +627,6 @@ class _DashboardContentState extends State<_DashboardContent> {
                 placeholder: (context, url) => Container(
                   height: 120,
                   color: Colors.grey[200],
-                  child: const Center(child: CircularProgressIndicator()),
                 ),
                 errorWidget: (_, __, ___) => Container(
                   height: 120,

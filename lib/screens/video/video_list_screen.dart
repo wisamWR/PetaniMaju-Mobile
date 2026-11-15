@@ -133,7 +133,7 @@ class _VideoListScreenState extends State<VideoListScreen> {
               future: _videosFuture,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const SkeletonList(card: true, count: 3);
                 }
                 if (snapshot.hasError) {
                   return Center(child: Text("Error: ${snapshot.error}"));

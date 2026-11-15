@@ -86,7 +86,7 @@ class _ScanHistoryScreenState extends State<ScanHistoryScreen> {
         future: _future,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return const SkeletonList(padding: EdgeInsets.all(16));
           }
           if (snapshot.hasError) {
             return EmptyState(
