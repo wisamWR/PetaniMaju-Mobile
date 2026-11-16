@@ -5,13 +5,14 @@ import 'package:geolocator/geolocator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../core/constants.dart';
 import '../models/weather_model.dart';
-import 'package:intl/intl.dart';
 import 'notification_service.dart';
 
 class WeatherService {
   static const String _baseUrl = 'https://api.openweathermap.org/data/2.5';
   static const String _cacheKeyPrefix = 'cached_weather_';
   static const int _cacheDurationMinutes = 10;
+  static const String _lastLatKey = 'last_weather_lat';
+  static const String _lastLonKey = 'last_weather_lon';
 
   Future<Position> _determinePosition() async {
     bool serviceEnabled;
@@ -63,6 +64,19 @@ class WeatherService {
       if (cachedWithLoc != null) return cachedWithLoc;
       rethrow;
     }
+  }
+
+  /// Dipakai worker background: muat ulang cuaca di koordinat terakhir yang
+  /// berhasil dimuat (tanpa GPS) agar logika peringatan cuaca ikut berjalan.
+  /// Mengembalikan false bila aplikasi belum pernah memuat cuaca.
+  Future<bool> checkAlertsInBackground() async {
+    final prefs = await SharedPreferences.getInstance();
+    final lat = prefs.getDouble(_lastLatKey);
+    final lon = prefs.getDouble(_lastLonKey);
+    if (lat == null || lon == null) return false;
+    await _fetchWeatherData(
+        lat: lat, lon: lon, cacheKeySuffix: 'background', forceRefresh: true);
+    return true;
   }
 
   Future<WeatherModel> getWeatherByCity(String cityName,
@@ -178,6 +192,9 @@ class WeatherService {
       // Using coordinates from current weather response ensures consistency
       final double targetLat = (currentJson['coord']['lat'] as num).toDouble();
       final double targetLon = (currentJson['coord']['lon'] as num).toDouble();
+      final locPrefs = await SharedPreferences.getInstance();
+      await locPrefs.setDouble(_lastLatKey, targetLat);
+      await locPrefs.setDouble(_lastLonKey, targetLon);
 
       forecastUrl =
           '$_baseUrl/forecast?lat=$targetLat&lon=$targetLon&appid=${AppConstants.openWeatherApiKey}&units=metric&lang=id';
@@ -205,6 +222,8 @@ class WeatherService {
       try {
         if (alerts.isNotEmpty) {
           final prefs = await SharedPreferences.getInstance();
+          // Worker background menulis dari isolate lain; baca ulang dari disk.
+          await prefs.reload();
           final lastDate = prefs.getString('last_weather_alert_date');
           final todayStr = DateTime.now().toIso8601String().split('T')[0];
 
@@ -401,7 +420,7 @@ class WeatherService {
         lastUpdated: cacheTime,
       );
     } catch (e) {
-      print("Cache load error: $e");
+      debugPrint("Cache load error: $e");
       return null;
     }
   }

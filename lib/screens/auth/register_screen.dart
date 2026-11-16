@@ -4,6 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../../data/services/supabase_service.dart';
+import '../../widgets/app_ui.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -149,7 +150,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     setState(() => _isLoading = true);
     try {
-      await _authService.signUp(
+      final response = await _authService.signUp(
         email: _emailController.text.trim(),
         username: _usernameController.text.trim(),
         password: _passwordController.text,
@@ -161,15 +162,36 @@ class _RegisterScreenState extends State<RegisterScreen> {
         jenisTanaman: finalCrop,
       );
 
-      if (mounted) {
+      if (!mounted) return;
+
+      // Tanpa session berarti Supabase mewajibkan konfirmasi email dulu.
+      if (response.session == null) {
+        await showDialog(
+          context: context,
+          builder: (ctx) => AlertDialog(
+            icon: const Icon(Icons.mark_email_unread,
+                size: 40, color: AppColors.primary),
+            title: const Text("Cek Email Anda"),
+            content: Text(
+                "Kami mengirim link konfirmasi ke ${_emailController.text.trim()}. "
+                "Klik link tersebut, lalu login. Periksa juga folder spam."),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(ctx),
+                child: const Text("Mengerti"),
+              ),
+            ],
+          ),
+        );
+      } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text("Registrasi berhasil! Silakan login."),
             backgroundColor: Colors.green,
           ),
         );
-        context.go('/login');
       }
+      if (mounted) context.go('/login');
     } on AuthException catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -192,7 +214,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Daftar Akun Baru")),
+      appBar: buildAppBar("Daftar Akun Baru"),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(24.0),
         child: Form(
@@ -333,7 +355,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               FilledButton(
                 onPressed: _isLoading ? null : _handleRegister,
                 style: FilledButton.styleFrom(
-                  backgroundColor: const Color(0xFF166534),
+                  backgroundColor: AppColors.primary,
                   padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
                 child: _isLoading

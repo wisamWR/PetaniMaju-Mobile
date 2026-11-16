@@ -28,8 +28,11 @@ class Tip {
     rawDesc = _stripHtml(rawDesc);
     rawContent = _stripHtml(rawContent);
 
-    // 2. Check for Professional Content Override (Hybrid Approach)
-    final proContent = _getProContent(rawTitle);
+    // 2. Konten cadangan hanya untuk tips yang isinya kosong/terlalu pendek.
+    // Tips dengan isi asli tidak boleh ditimpa (mis. "Merawat Air Kolam Koi"
+    // dulu tergantikan materi irigasi sawah karena judulnya memuat "air").
+    final proContent =
+        rawContent.length < _minRealContentLength ? _getProContent(rawTitle) : null;
     if (proContent != null) {
       rawDesc = proContent['deskripsi']!;
       rawContent = proContent['konten']!;
@@ -46,6 +49,8 @@ class Tip {
       createdAt: DateTime.parse(json['created_at']),
     );
   }
+
+  static const int _minRealContentLength = 120;
 
   static String _stripHtml(String text) {
     return text.replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ').trim();

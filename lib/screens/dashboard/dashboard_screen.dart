@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:showcaseview/showcaseview.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../core/weather_icons.dart';
 import '../../data/services/supabase_service.dart';
 import '../../data/services/weather_service.dart';
 import '../../data/models/weather_model.dart';
@@ -11,6 +12,9 @@ import '../../data/models/forum_post_model.dart';
 import 'package:intl/intl.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../widgets/custom_showcase.dart';
+import '../../core/farming_advice.dart';
+import '../../data/services/notification_history_service.dart';
+import '../../widgets/app_ui.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -38,6 +42,7 @@ class _DashboardContentState extends State<_DashboardContent> {
 
   // Store profile for Header & Weather Display
   UserProfile? _userProfile;
+  int _unreadNotif = 0;
 
   final WeatherService _weatherService = WeatherService();
   final SupabaseService _supabaseService = SupabaseService();
@@ -53,8 +58,19 @@ class _DashboardContentState extends State<_DashboardContent> {
     _weatherFuture = _fetchWeather();
     _tipsFuture = _supabaseService.getTips();
     _forumFuture = _supabaseService.getForumPosts();
+    _loadUnread();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => _checkTutorial());
+  }
+
+  Future<void> _loadUnread() async {
+    final count = await NotificationHistoryService().unreadCount();
+    if (mounted) setState(() => _unreadNotif = count);
+  }
+
+  Future<void> _openNotifications() async {
+    await context.push('/notifikasi');
+    _loadUnread();
   }
 
   Future<void> _checkTutorial() async {
@@ -78,6 +94,7 @@ class _DashboardContentState extends State<_DashboardContent> {
       _tipsFuture = _supabaseService.getTips();
       _forumFuture = _supabaseService.getForumPosts();
     });
+    _loadUnread();
   }
 
   Future<WeatherModel> _fetchWeather() async {
@@ -127,11 +144,7 @@ class _DashboardContentState extends State<_DashboardContent> {
 
       // Override nama kota di model dengan Kecamatan untuk tampilan UI (sesuai request)
       if (displayLocation != null && displayLocation.isNotEmpty) {
-        return WeatherModel(
-            cityName: displayLocation,
-            temperature: weather.temperature,
-            description: weather.description,
-            iconCode: weather.iconCode);
+        return weather.copyWith(cityName: displayLocation);
       }
 
       return weather;
@@ -179,16 +192,39 @@ class _DashboardContentState extends State<_DashboardContent> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(_getGreeting(),
-                          style: const TextStyle(
-                              fontSize: 14, color: Colors.grey)),
-                      const SizedBox(height: 4),
-                      Text(
-                        _userProfile?.nama ??
-                            _user?.userMetadata?['nama'] ??
-                            'Petani Maju',
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(_getGreeting(),
+                                    style: const TextStyle(
+                                        fontSize: 14, color: Colors.grey)),
+                                const SizedBox(height: 4),
+                                Text(
+                                  _userProfile?.nama ??
+                                      _user?.userMetadata?['nama'] ??
+                                      'Petani Maju',
+                                  style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                          IconButton(
+                            tooltip: 'Notifikasi',
+                            onPressed: _openNotifications,
+                            icon: Badge(
+                              isLabelVisible: _unreadNotif > 0,
+                              label: Text('$_unreadNotif'),
+                              child: const Icon(Icons.notifications_outlined,
+                                  color: AppColors.primary),
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 8),
                       Row(
@@ -223,17 +259,27 @@ class _DashboardContentState extends State<_DashboardContent> {
                         child: _buildWeatherCard(),
                       ),
 
+                      const SizedBox(height: 16),
+                      _buildPlantCareCard(),
+
                       const SizedBox(height: 24),
 
-                      // Quick Access Grid (2 Columns like web)
+                      // Quick Access Grid
                       GridView.count(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 16,
-                        mainAxisSpacing: 16,
-                        childAspectRatio: 1.1,
+                        crossAxisCount: 4,
+                        crossAxisSpacing: 12,
+                        mainAxisSpacing: 12,
+                        childAspectRatio: 0.8,
                         children: [
+                          _buildQuickAccess(context, "Scan",
+                              Icons.document_scanner, Colors.teal, '/scan'),
+                          _buildQuickAccess(context, "Asisten Tani",
+                              Icons.support_agent, AppColors.primary,
+                              '/asisten'),
+                          _buildQuickAccess(context, "Obat", Icons.medication,
+                              Colors.orange, '/obat'),
                           _buildQuickAccess(context, "Cuaca", Icons.wb_sunny,
                               Colors.blue, '/cuaca'),
                           _buildQuickAccess(context, "Info Hama",
@@ -242,6 +288,8 @@ class _DashboardContentState extends State<_DashboardContent> {
                               Icons.calendar_month, Colors.green, '/calendar'),
                           _buildQuickAccess(context, "Video",
                               Icons.play_circle_fill, Colors.purple, '/videos'),
+                          _buildQuickAccess(context, "Riwayat Scan",
+                              Icons.history, Colors.indigo, '/scan/history'),
                         ],
                       ),
 
@@ -262,10 +310,30 @@ class _DashboardContentState extends State<_DashboardContent> {
                         child: FutureBuilder<List<Tip>>(
                           future: _tipsFuture,
                           builder: (context, snapshot) {
-                            if (!snapshot.hasData)
-                              return const Center(
-                                  child: CircularProgressIndicator());
-                            final tips = snapshot.data!.take(5).toList();
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return Shimmer(
+                                child: ListView.separated(
+                                  scrollDirection: Axis.horizontal,
+                                  physics:
+                                      const NeverScrollableScrollPhysics(),
+                                  itemCount: 3,
+                                  separatorBuilder: (_, __) =>
+                                      const SizedBox(width: 16),
+                                  itemBuilder: (_, __) => const SkeletonBox(
+                                      width: 200, height: 240, radius: 16),
+                                ),
+                              );
+                            }
+                            final tips =
+                                (snapshot.data ?? const <Tip>[]).take(5).toList();
+                            if (tips.isEmpty) {
+                              return const EmptyState(
+                                icon: Icons.lightbulb_outline,
+                                title: "Tips belum bisa dimuat",
+                                subtitle: "Tarik ke bawah untuk mencoba lagi.",
+                              );
+                            }
                             return ListView.separated(
                               scrollDirection: Axis.horizontal,
                               itemCount: tips.length,
@@ -296,6 +364,27 @@ class _DashboardContentState extends State<_DashboardContent> {
                         builder: (context, snapshot) {
                           if (!snapshot.hasData) return const SizedBox.shrink();
                           final posts = snapshot.data!.take(3).toList();
+                          if (posts.isEmpty) {
+                            return InfoCard(
+                              child: Row(
+                                children: [
+                                  Icon(Icons.forum_outlined,
+                                      color: Colors.grey[400]),
+                                  const SizedBox(width: 12),
+                                  const Expanded(
+                                    child: Text(
+                                        "Belum ada diskusi. Jadilah yang pertama bertanya!",
+                                        style: TextStyle(color: Colors.grey)),
+                                  ),
+                                  TextButton(
+                                    onPressed: () =>
+                                        context.push('/forum/create'),
+                                    child: const Text("Tulis"),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
                           return Column(
                             children: posts
                                 .map((post) => _buildForumCard(post))
@@ -319,10 +408,8 @@ class _DashboardContentState extends State<_DashboardContent> {
       future: _weatherFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Card(
-              child: SizedBox(
-                  height: 150,
-                  child: Center(child: CircularProgressIndicator())));
+          return const Shimmer(
+              child: SkeletonBox(height: 190, radius: 24));
         }
 
         if (snapshot.hasError) {
@@ -380,14 +467,16 @@ class _DashboardContentState extends State<_DashboardContent> {
               borderRadius: BorderRadius.circular(24),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.blue.withOpacity(0.3),
+                    color: Colors.blue.withValues(alpha: 0.3),
                     blurRadius: 10,
                     offset: const Offset(0, 5)),
               ],
             ),
             child: Stack(
+              // Lingkaran dekoratif menjorok ke padding; jangan dipotong lurus.
+              clipBehavior: Clip.none,
               children: [
-                // Decorative blur circle (mocked with simple container for now)
+                // Decorative circle
                 Positioned(
                     right: -20,
                     top: -20,
@@ -395,7 +484,7 @@ class _DashboardContentState extends State<_DashboardContent> {
                         width: 100,
                         height: 100,
                         decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.1),
+                            color: Colors.white.withValues(alpha: 0.1),
                             shape: BoxShape.circle))),
 
                 Column(
@@ -403,9 +492,9 @@ class _DashboardContentState extends State<_DashboardContent> {
                   children: [
                     Row(
                       children: [
-                        const Icon(Icons.wb_sunny,
-                            color: Colors.yellow,
-                            size: 24), // Mock Condition Icon
+                        Icon(WeatherIcons.iconFor(weather.iconCode),
+                            color: WeatherIcons.colorFor(weather.iconCode),
+                            size: 24),
                         const SizedBox(width: 8),
                         const Text("Cuaca Hari Ini",
                             style: TextStyle(
@@ -449,7 +538,9 @@ class _DashboardContentState extends State<_DashboardContent> {
       Color color, String route) {
     return InkWell(
       onTap: () => context.push(route),
+      borderRadius: BorderRadius.circular(16),
       child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 4),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
@@ -459,18 +550,78 @@ class _DashboardContentState extends State<_DashboardContent> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                  color: color.withOpacity(0.1), shape: BoxShape.circle),
-              child: Icon(icon, color: color, size: 32),
+                  color: color.withValues(alpha: 0.1), shape: BoxShape.circle),
+              child: Icon(icon, color: color, size: 24),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 8),
             Text(title,
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                    color: Colors.grey[800], fontWeight: FontWeight.bold)),
+                    color: Colors.grey[800],
+                    fontWeight: FontWeight.bold,
+                    fontSize: 11)),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildPlantCareCard() {
+    return FutureBuilder<WeatherModel>(
+      future: _weatherFuture,
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) return const SizedBox.shrink();
+        final w = snapshot.data!;
+        final advice = FarmingAdvice.plantCare(
+          temperature: w.temperature,
+          humidity: w.humidity,
+          windSpeed: w.windSpeed,
+          iconCode: w.iconCode,
+          description: w.description,
+        );
+        final color =
+            advice.isUrgent ? Colors.orange : AppColors.primary;
+        return Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: advice.isUrgent ? Colors.orange[50] : Colors.green[50],
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: color.withValues(alpha: 0.3)),
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: color.withValues(alpha: 0.15), shape: BoxShape.circle),
+                child: Icon(advice.icon, color: color, size: 22),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Perawatan Tanaman \u2022 ${advice.title}",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: color)),
+                    const SizedBox(height: 4),
+                    Text(advice.advice,
+                        style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.grey[800],
+                            height: 1.4)),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -499,7 +650,6 @@ class _DashboardContentState extends State<_DashboardContent> {
                 placeholder: (context, url) => Container(
                   height: 120,
                   color: Colors.grey[200],
-                  child: const Center(child: CircularProgressIndicator()),
                 ),
                 errorWidget: (_, __, ___) => Container(
                   height: 120,
@@ -557,12 +707,15 @@ class _DashboardContentState extends State<_DashboardContent> {
           const SizedBox(height: 8),
           Row(
             children: [
+              const Icon(Icons.thumb_up_outlined, size: 14, color: Colors.grey),
+              const SizedBox(width: 4),
+              Text("${post.likes}",
+                  style: const TextStyle(fontSize: 12, color: Colors.grey)),
+              const SizedBox(width: 10),
               const Icon(Icons.comment, size: 14, color: Colors.grey),
               const SizedBox(width: 4),
-              Text("${post.likes} Diskusi",
-                  style: const TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey)), // Mock 'likes' as interaction count
+              Text("${post.commentCount} Diskusi",
+                  style: const TextStyle(fontSize: 12, color: Colors.grey)),
               const SizedBox(width: 12),
               Text(DateFormat('dd MMM yyyy').format(post.createdAt),
                   style: const TextStyle(fontSize: 12, color: Colors.grey)),
@@ -585,7 +738,7 @@ class _DashboardContentState extends State<_DashboardContent> {
             child: Text(action,
                 style: const TextStyle(
                     fontSize: 12,
-                    color: Color(0xFF166534),
+                    color: AppColors.primary,
                     fontWeight: FontWeight.bold))),
       ],
     );

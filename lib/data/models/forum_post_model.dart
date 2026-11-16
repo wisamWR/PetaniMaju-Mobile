@@ -6,6 +6,7 @@ class ForumPost {
   final String? category;
   final String? imageUrl;
   final int likes;
+  final int commentCount;
   final DateTime createdAt;
 
   // Joined fields
@@ -21,6 +22,7 @@ class ForumPost {
     this.category,
     this.imageUrl,
     this.likes = 0,
+    this.commentCount = 0,
     required this.createdAt,
     this.userName,
     this.userAvatar,
@@ -54,11 +56,21 @@ class ForumPost {
       category: json['category'],
       imageUrl: json['image_url'],
       likes: json['likes_count'] ?? 0, // Fixed: DB uses likes_count
+      commentCount: _parseCount(json['forum_comments'] ?? json['comment_count']),
       createdAt: DateTime.parse(json['created_at']),
       userName: name ?? 'Petani',
       userAvatar: avatar,
       userLocation: location,
     );
+  }
+
+  // PostgREST aggregate `forum_comments(count)` -> [{"count": n}]
+  static int _parseCount(dynamic raw) {
+    if (raw is int) return raw;
+    if (raw is List && raw.isNotEmpty && raw.first is Map) {
+      return (raw.first['count'] as num?)?.toInt() ?? 0;
+    }
+    return 0;
   }
 
   Map<String, dynamic> toJson() {
@@ -69,7 +81,8 @@ class ForumPost {
       'content': content,
       'category': category,
       'image_url': imageUrl,
-      'likes': likes,
+      'likes_count': likes,
+      'comment_count': commentCount,
       'created_at': createdAt.toIso8601String(),
       'profiles': {
         'nama': userName,

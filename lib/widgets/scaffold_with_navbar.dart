@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'app_ui.dart';
 
 class ScaffoldWithNavBar extends StatelessWidget {
   final Widget child;
@@ -14,7 +15,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
         currentIndex: _calculateSelectedIndex(context),
         onTap: (int idx) => _onItemTapped(idx, context),
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: const Color(0xFF166534), // Green-600
+        selectedItemColor: AppColors.primary, // Green-600
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
         items: const [

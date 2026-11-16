@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../data/services/supabase_service.dart';
 import '../../data/services/notification_service.dart';
 import '../../data/models/calendar_event_model.dart';
+import '../../core/farming_advice.dart';
+import '../../widgets/app_ui.dart';
 
 class CalendarScreen extends StatefulWidget {
   const CalendarScreen({super.key});
@@ -215,7 +217,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
                       if (isEditing) {
                         await SupabaseService().updateCalendarEvent(
-                          id: eventToEdit!.id,
+                          id: eventToEdit.id,
                           title: titleController.text,
                           type: selectedType,
                           notes: notes,
@@ -229,12 +231,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
                           notificationTime: notificationTime,
                         );
                       }
-                      if (mounted) Navigator.pop(context);
+                      if (context.mounted) Navigator.pop(context);
                       _loadEvents();
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF166534),
+                    backgroundColor: AppColors.primary,
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
@@ -268,7 +270,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => _showAddEventModal(),
-        backgroundColor: const Color(0xFF166534),
+        backgroundColor: AppColors.primary,
         icon: const Icon(Icons.add_task, color: Colors.white),
         label: Text("Tambah",
             style: GoogleFonts.plusJakartaSans(
@@ -279,7 +281,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
           : Column(
               children: [
                 _buildCalendar(),
-                const SizedBox(height: 16),
+                const SizedBox(height: 8),
+                _buildMonthlyBanner(),
+                const SizedBox(height: 12),
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
@@ -292,6 +296,83 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 ),
               ],
             ),
+    );
+  }
+
+  Widget _buildMonthlyBanner() {
+    final activity = FarmingAdvice.forMonth(_focusedDay.month);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: InkWell(
+        onTap: () => _showMonthlyActivities(activity),
+        borderRadius: BorderRadius.circular(12),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+          decoration: BoxDecoration(
+            color: Colors.green[50],
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: Colors.green[100]!),
+          ),
+          child: Row(
+            children: [
+              const Icon(Icons.tips_and_updates,
+                  size: 20, color: AppColors.primary),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  "Rekomendasi ${activity.title}",
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 13,
+                      color: AppColors.primary),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              const Icon(Icons.chevron_right, color: AppColors.primary),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showMonthlyActivities(MonthlyActivity activity) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
+      builder: (context) => SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Aktivitas ${activity.title}",
+                  style: GoogleFonts.plusJakartaSans(
+                      fontSize: 18, fontWeight: FontWeight.bold)),
+              const SizedBox(height: 4),
+              Text("Saran kegiatan bertani sesuai musim bulan ini",
+                  style: TextStyle(color: Colors.grey[600], fontSize: 12)),
+              const SizedBox(height: 16),
+              ...activity.items.map((item) => Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Icon(Icons.check_circle,
+                            size: 18, color: AppColors.primary),
+                        const SizedBox(width: 10),
+                        Expanded(
+                            child:
+                                Text(item, style: const TextStyle(height: 1.4))),
+                      ],
+                    ),
+                  )),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -309,6 +390,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
           _focusedDay = focusedDay;
         });
       },
+      onPageChanged: (focusedDay) {
+        setState(() => _focusedDay = focusedDay);
+      },
       eventLoader: _getEventsForDay,
       daysOfWeekStyle: DaysOfWeekStyle(
         weekdayStyle: GoogleFonts.inter(fontWeight: FontWeight.w600),
@@ -317,10 +401,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
       ),
       calendarStyle: CalendarStyle(
         todayDecoration: BoxDecoration(
-            color: const Color(0xFF166534).withOpacity(0.5),
+            color: AppColors.primary.withValues(alpha: 0.5),
             shape: BoxShape.circle),
         selectedDecoration: const BoxDecoration(
-            color: Color(0xFF166534), shape: BoxShape.circle),
+            color: AppColors.primary, shape: BoxShape.circle),
         markerDecoration:
             const BoxDecoration(color: Colors.orange, shape: BoxShape.circle),
         outsideDaysVisible: false,
@@ -378,7 +462,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.05),
+                  color: Colors.grey.withValues(alpha: 0.05),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
                 ),
@@ -390,7 +474,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               leading: Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: _getColorType(event.type).withOpacity(0.1),
+                  color: _getColorType(event.type).withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(_getIconType(event.type),

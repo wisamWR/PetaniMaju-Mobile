@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../data/services/supabase_service.dart';
+import '../../widgets/app_ui.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -26,10 +27,21 @@ class _LoginScreenState extends State<LoginScreen> {
       );
       if (mounted) context.go('/dashboard');
     } on AuthException catch (e) {
-      if (mounted)
+      if (!mounted) return;
+      if (e.code == 'email_not_confirmed' ||
+          e.message.toLowerCase().contains('not confirmed')) {
+        _showEmailNotConfirmed();
+      } else if (e.code == 'invalid_credentials') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text("Email atau password salah"),
+              backgroundColor: Colors.red),
+        );
+      } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(e.message), backgroundColor: Colors.red),
         );
+      }
     } catch (e) {
       if (mounted)
         ScaffoldMessenger.of(context).showSnackBar(
@@ -43,6 +55,54 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  void _showEmailNotConfirmed() {
+    final email = _emailController.text.trim();
+    showDialog(
+      context: context,
+      builder: (ctx) {
+        var sending = false;
+        return StatefulBuilder(
+          builder: (ctx, setDialogState) => AlertDialog(
+            icon: const Icon(Icons.mark_email_unread,
+                size: 40, color: AppColors.primary),
+            title: const Text("Email Belum Dikonfirmasi"),
+            content: Text(
+                "Buka email $email dan klik link konfirmasi dari PetaniMaju, "
+                "lalu login kembali. Periksa juga folder spam."),
+            actions: [
+              TextButton(
+                onPressed: sending
+                    ? null
+                    : () async {
+                        setDialogState(() => sending = true);
+                        String message;
+                        try {
+                          await _authService.resendConfirmationEmail(email);
+                          message = "Email konfirmasi dikirim ulang ke $email";
+                        } on AuthException catch (e) {
+                          message = e.code == 'over_email_send_rate_limit'
+                              ? "Terlalu sering. Tunggu beberapa menit lalu coba lagi."
+                              : e.message;
+                        }
+                        if (ctx.mounted) Navigator.pop(ctx);
+                        if (mounted) {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(SnackBar(content: Text(message)));
+                        }
+                      },
+                child: const Text("Kirim Ulang Email"),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(ctx),
+                child: const Text("Tutup"),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,14 +113,14 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // const Icon(Icons.grass, size: 80, color: Color(0xFF166534)),
+              // const Icon(Icons.grass, size: 80, color: AppColors.primary),
               // const SizedBox(height: 24),
               // Text(
               //   "Masuk PetaniMaju",
               //   textAlign: TextAlign.center,
               //   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
               //     fontWeight: FontWeight.bold,
-              //     color: const Color(0xFF166534),
+              //     color: AppColors.primary,
               //   ),
               // ),
               Container(
@@ -103,11 +163,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 obscureText: _obscurePassword,
               ),
-              const SizedBox(height: 24),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () => context.push('/forgot-password'),
+                  child: const Text("Lupa kata sandi?"),
+                ),
+              ),
+              const SizedBox(height: 8),
               FilledButton(
                 onPressed: _isLoading ? null : _handleLogin,
                 style: FilledButton.styleFrom(
-                  backgroundColor: const Color(0xFF166534),
+                  backgroundColor: AppColors.primary,
                   padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
                 child: _isLoading

@@ -40,6 +40,8 @@ dependencies:
   permission_handler: ^11.0.1
   connectivity_plus: ^7.0.0
   showcaseview: ^3.0.0
+  flutter_markdown_plus: ^1.0.12
+  workmanager: ^0.10.10
 
 dev_dependencies:
   flutter_test:
@@ -72,3 +74,4 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/data/

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
 import '../../data/services/supabase_service.dart';
 import '../../data/models/hama_model.dart';
+import '../../widgets/app_ui.dart';
 
 class HamaListScreen extends StatefulWidget {
   const HamaListScreen({super.key});
@@ -113,12 +114,12 @@ class _HamaListScreenState extends State<HamaListScreen> {
                           horizontal: 16, vertical: 8),
                       decoration: BoxDecoration(
                         color: isActive
-                            ? const Color(0xFF166534)
+                            ? AppColors.primary
                             : Colors.grey[100],
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
                             color: isActive
-                                ? const Color(0xFF166534)
+                                ? AppColors.primary
                                 : Colors.grey[300]!),
                       ),
                       child: Text(
@@ -143,7 +144,7 @@ class _HamaListScreenState extends State<HamaListScreen> {
               future: _hamaFuture,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const SkeletonList();
                 }
                 if (snapshot.hasError) {
                   return Center(
@@ -261,9 +262,9 @@ class _HamaListScreenState extends State<HamaListScreen> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
-                        color: typeColor.withOpacity(0.1),
+                        color: typeColor.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(6),
-                        border: Border.all(color: typeColor.withOpacity(0.3)),
+                        border: Border.all(color: typeColor.withValues(alpha: 0.3)),
                       ),
                       child: Text(
                         hama.type,

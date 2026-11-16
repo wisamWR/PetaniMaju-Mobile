@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../../data/services/supabase_service.dart';
 import '../../data/models/video_model.dart';
 import 'package:go_router/go_router.dart';
+import '../../widgets/app_ui.dart';
 
 class VideoListScreen extends StatefulWidget {
   const VideoListScreen({super.key});
@@ -99,7 +100,7 @@ class _VideoListScreenState extends State<VideoListScreen> {
             child: Row(
               children: [
                 const Icon(Icons.play_circle_outline,
-                    color: Color(0xFF166534), size: 28),
+                    color: AppColors.primary, size: 28),
                 const SizedBox(width: 8),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,7 +110,7 @@ class _VideoListScreenState extends State<VideoListScreen> {
                       style: GoogleFonts.plusJakartaSans(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: const Color(0xFF166534),
+                        color: AppColors.primary,
                       ),
                     ),
                     Text(
@@ -132,7 +133,7 @@ class _VideoListScreenState extends State<VideoListScreen> {
               future: _videosFuture,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const SkeletonList(card: true, count: 3);
                 }
                 if (snapshot.hasError) {
                   return Center(child: Text("Error: ${snapshot.error}"));
@@ -195,7 +196,7 @@ class VideoCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.1),
+              color: Colors.grey.withValues(alpha: 0.1),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -232,12 +233,12 @@ class VideoCard extends StatelessWidget {
                   width: 48,
                   height: 48,
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.9),
+                    color: Colors.white.withValues(alpha: 0.9),
                     shape: BoxShape.circle,
                   ),
                   child: const Icon(
                     Icons.play_arrow_rounded,
-                    color: Color(0xFF166534),
+                    color: AppColors.primary,
                     size: 32,
                   ),
                 ),

@@ -5,6 +5,7 @@ import '../../data/models/hama_model.dart';
 import 'package:flutter_html/flutter_html.dart';
 
 import '../../data/services/supabase_service.dart';
+import '../../widgets/app_ui.dart';
 
 class HamaDetailScreen extends StatefulWidget {
   final Hama hama;
@@ -73,7 +74,7 @@ class _HamaDetailScreenState extends State<HamaDetailScreen> {
             expandedHeight: 250.0,
             floating: false,
             pinned: true,
-            backgroundColor: const Color(0xFF166534),
+            backgroundColor: AppColors.primary,
             leading: IconButton(
               icon: const CircleAvatar(
                 backgroundColor: Colors.white,
@@ -91,7 +92,7 @@ class _HamaDetailScreenState extends State<HamaDetailScreen> {
                   child: IconButton(
                     icon: Icon(
                       _isBookmarked ? Icons.bookmark : Icons.bookmark_border,
-                      color: const Color(0xFF166534),
+                      color: AppColors.primary,
                       size: 20,
                     ),
                     onPressed: _toggleBookmark,
@@ -123,9 +124,9 @@ class _HamaDetailScreenState extends State<HamaDetailScreen> {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                     decoration: BoxDecoration(
-                      color: typeColor.withOpacity(0.1),
+                      color: typeColor.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: typeColor.withOpacity(0.5)),
+                      border: Border.all(color: typeColor.withValues(alpha: 0.5)),
                     ),
                     child: Text(
                       widget.hama.type,
@@ -169,10 +170,10 @@ class _HamaDetailScreenState extends State<HamaDetailScreen> {
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF166534).withOpacity(0.05),
+                      color: AppColors.primary.withValues(alpha: 0.05),
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                          color: const Color(0xFF166534).withOpacity(0.2)),
+                          color: AppColors.primary.withValues(alpha: 0.2)),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -180,13 +181,13 @@ class _HamaDetailScreenState extends State<HamaDetailScreen> {
                         Row(
                           children: [
                             const Icon(Icons.verified,
-                                color: Color(0xFF166534), size: 20),
+                                color: AppColors.primary, size: 20),
                             const SizedBox(width: 8),
                             Text(
                               "Solusi Organik",
                               style: GoogleFonts.plusJakartaSans(
                                 fontWeight: FontWeight.bold,
-                                color: const Color(0xFF166534),
+                                color: AppColors.primary,
                               ),
                             ),
                           ],

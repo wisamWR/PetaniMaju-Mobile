@@ -4,6 +4,7 @@ import '../../data/models/video_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../../data/services/supabase_service.dart';
+import '../../widgets/app_ui.dart';
 
 class VideoDetailScreen extends StatefulWidget {
   final Video video;
@@ -82,7 +83,7 @@ class _VideoDetailScreenState extends State<VideoDetailScreen> {
       player: YoutubePlayer(
         controller: _controller,
         showVideoProgressIndicator: true,
-        progressIndicatorColor: const Color(0xFF166534),
+        progressIndicatorColor: AppColors.primary,
         onReady: () {
           _isPlayerReady = true;
         },
@@ -103,7 +104,7 @@ class _VideoDetailScreenState extends State<VideoDetailScreen> {
               IconButton(
                 icon: Icon(
                   _isBookmarked ? Icons.bookmark : Icons.bookmark_border,
-                  color: const Color(0xFF166534),
+                  color: AppColors.primary,
                 ),
                 onPressed: _toggleBookmark,
               ),

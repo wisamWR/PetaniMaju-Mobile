@@ -1,8 +1,15 @@
+/// Kredensial dibaca dari `--dart-define-from-file=.env` (lihat `.env.example`).
 class AppConstants {
-  static const String supabaseUrl = 'https://swahqjobmjlwpiuyyzdf.supabase.co';
+  static const String supabaseUrl = String.fromEnvironment('SUPABASE_URL');
   static const String supabaseAnonKey =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN3YWhxam9ibWpsd3BpdXl5emRmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY5OTQxMjksImV4cCI6MjA4MjU3MDEyOX0.v_ocxqFUw26Q2RzG5BfwCcum66oSiJtJvGJnaSjBGHU';
+      String.fromEnvironment('SUPABASE_ANON_KEY');
+  static const String openWeatherApiKey =
+      String.fromEnvironment('OPENWEATHER_API_KEY');
 
-  // OpenWeather API Key (Placeholder - user needs to input this manually or we can try to find it)
-  static const String openWeatherApiKey = '77f0bfee08391cc8959f46a68707bd74';
+  /// Nama variabel wajib yang belum diisi.
+  static List<String> get missingRequired => [
+        if (supabaseUrl.isEmpty) 'SUPABASE_URL',
+        if (supabaseAnonKey.isEmpty) 'SUPABASE_ANON_KEY',
+        if (openWeatherApiKey.isEmpty) 'OPENWEATHER_API_KEY',
+      ];
 }

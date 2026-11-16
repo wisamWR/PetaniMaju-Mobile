@@ -62,12 +62,67 @@ class SupabaseService {
     );
   }
 
+  Future<void> resendConfirmationEmail(String email) async {
+    await client.auth.resend(type: OtpType.signup, email: email.trim());
+  }
+
   Future<void> signOut() async {
     await client.auth.signOut();
   }
 
+  Future<void> sendPasswordResetEmail(String email) async {
+    await client.auth.resetPasswordForEmail(email.trim());
+  }
+
   Future<void> updatePassword(String newPassword) async {
     await client.auth.updateUser(UserAttributes(password: newPassword));
+  }
+
+  /// Hapus akun user yang sedang login.
+  /// 1. Verifikasi ulang kata sandi (AuthException jika salah).
+  /// 2. Bersihkan foto milik user di storage (best-effort).
+  /// 3. RPC `delete_my_account` menghapus auth.users + data turunan (cascade).
+  Future<void> deleteAccount(String password) async {
+    final user = currentUser;
+    final email = user?.email;
+    if (user == null || email == null) {
+      throw const AuthException('Sesi tidak ditemukan, silakan masuk lagi.');
+    }
+
+    await client.auth.signInWithPassword(email: email, password: password);
+
+    await _removeOwnImages('prediction_history', 'scan_images', user.id);
+    await _removeOwnImages('forum_posts', 'forum_images', user.id);
+
+    await client.rpc('delete_my_account');
+
+    // Token sudah tidak valid di server, cukup bersihkan sesi lokal.
+    await client.auth.signOut(scope: SignOutScope.local);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('cached_user_profile');
+  }
+
+  Future<void> _removeOwnImages(String table, String bucket, String userId) async {
+    try {
+      final rows = await client
+          .from(table)
+          .select('image_url')
+          .eq('user_id', userId)
+          .not('image_url', 'is', null);
+
+      final paths = <String>[];
+      for (final row in rows) {
+        final segments = Uri.parse(row['image_url'] as String).pathSegments;
+        final i = segments.indexOf(bucket);
+        if (i != -1 && i + 1 < segments.length) {
+          paths.add(segments.sublist(i + 1).join('/'));
+        }
+      }
+      if (paths.isNotEmpty) await client.storage.from(bucket).remove(paths);
+    } catch (e) {
+      // Gagal bersih-bersih foto tidak boleh menggagalkan hapus akun.
+      debugPrint('Gagal menghapus foto $bucket: $e');
+    }
   }
 
   // --- Data Fetching ---
@@ -209,7 +264,7 @@ class SupabaseService {
       final response = await client
           .from('forum_posts')
           .select(
-              '*, profiles!forum_posts_user_id_fkey(nama, avatar_url, kabupaten, provinsi)')
+              '*, profiles!forum_posts_user_id_fkey(nama, avatar_url, kabupaten, provinsi), forum_comments(count)')
           .order('created_at', ascending: false);
 
       final data = response as List;
@@ -475,45 +530,26 @@ class SupabaseService {
         .select()
         .single();
 
-    // Schedule Notification
-    // Schedule Notification
+    // Schedule reminders (H-1, H-1 jam, tepat waktu) sesuai pengaturan notifikasi
     try {
-      final prefs = await SharedPreferences.getInstance();
-
-      // Strict check: If global notifications are disabled, DO NOT schedule anything.
-      final globalEnabled = prefs.getBool('notifications_enabled') ?? false;
-
-      if (!globalEnabled) {
+      if (!await NotificationService().isGloballyEnabled()) {
         debugPrint(
             "DEBUG: Notifications disabled globally. Skipping schedule.");
         return;
       }
 
-      // If enabled, proceed
-      bool shouldSchedule = notificationTime != null;
-      TimeOfDay targetTime =
-          notificationTime ?? const TimeOfDay(hour: 7, minute: 0);
-
-      if (notificationTime == null) {
-        // Use default preference time
-        shouldSchedule = true;
-        final hour = prefs.getInt('notif_hour') ?? 7;
-        final minute = prefs.getInt('notif_minute') ?? 0;
-        targetTime = TimeOfDay(hour: hour, minute: minute);
+      var eventTime = date;
+      if (notificationTime != null) {
+        eventTime = DateTime(date.year, date.month, date.day,
+            notificationTime.hour, notificationTime.minute);
       }
 
-      if (shouldSchedule) {
-        final id = data['id'] as int;
-        // Improved Notification Content
-        await NotificationService().scheduleDailyNotification(
-          id: id,
-          title: "Pengingat Jadwal Tani 🌱",
-          body:
-              "Saatnya melakukan kegiatan '$type' - $title. Semangat bertani!",
-          date: date,
-          time: targetTime,
-        );
-      }
+      await NotificationService().scheduleCalendarReminders(
+        eventId: data['id'] as int,
+        title: title,
+        type: type,
+        eventTime: eventTime,
+      );
     } catch (e) {
       debugPrint("Error scheduling notification: $e");
     }
@@ -522,7 +558,7 @@ class SupabaseService {
   Future<void> deleteCalendarEvent(int id) async {
     // Cancel notification first
     try {
-      await NotificationService().cancelType(id);
+      await NotificationService().cancelCalendarReminders(id);
     } catch (_) {}
 
     await client.from('calendar_events').delete().eq('id', id);
@@ -647,7 +683,7 @@ class SupabaseService {
         'hama': hama,
       };
     } catch (e) {
-      print("Error fetching saved items: $e");
+      debugPrint("Error fetching saved items: $e");
       return {'tips': [], 'videos': [], 'hama': []};
     }
   }
@@ -661,7 +697,7 @@ class SupabaseService {
     String? kecamatan,
     String? jenisTanaman,
   }) async {
-    print("DEBUG: Updating Profile for $nama (No Alamat)");
+    debugPrint("DEBUG: Updating Profile for $nama (No Alamat)");
     final user = currentUser;
     if (user == null) return;
 

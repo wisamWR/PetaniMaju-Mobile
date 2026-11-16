@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:showcaseview/showcaseview.dart';
+import 'app_ui.dart';
 
 class CustomShowcase extends StatelessWidget {
   final GlobalKey showcaseKey;
@@ -60,7 +61,7 @@ class CustomShowcase extends StatelessWidget {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF166534),
+                    backgroundColor: AppColors.primary,
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8)),

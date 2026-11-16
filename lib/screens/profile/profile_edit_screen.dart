@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../data/services/supabase_service.dart';
 import '../../data/models/user_profile.dart';
+import '../../widgets/app_ui.dart';
 
 class ProfileEditScreen extends StatefulWidget {
   final UserProfile? profile;
@@ -170,7 +171,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
         setState(() => _regencies = jsonDecode(res.body));
       }
     } catch (e) {
-      print(e);
+      debugPrint("$e");
     }
   }
 
@@ -188,7 +189,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
         setState(() => _districts = jsonDecode(res.body));
       }
     } catch (e) {
-      print(e);
+      debugPrint("$e");
     }
   }
 
@@ -251,7 +252,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
                             BoxShadow(
-                                color: Colors.black.withOpacity(0.05),
+                                color: Colors.black.withValues(alpha: 0.05),
                                 blurRadius: 10,
                                 offset: const Offset(0, 4))
                           ]),
@@ -402,7 +403,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                                 strokeWidth: 2))
                                         : const Text("Simpan"),
                                     style: FilledButton.styleFrom(
-                                      backgroundColor: const Color(0xFF166534),
+                                      backgroundColor: AppColors.primary,
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 16),
                                       shape: RoundedRectangleBorder(
@@ -483,7 +484,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
       alignment: Alignment.topCenter,
       padding: const EdgeInsets.only(top: 60),
       decoration: const BoxDecoration(
-        color: Color(0xFF166534),
+        color: AppColors.primary,
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(30)),
       ),
       child: Column(
@@ -492,10 +493,10 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
             width: 80,
             height: 80,
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.2),
+              color: Colors.white.withValues(alpha: 0.2),
               shape: BoxShape.circle,
               border:
-                  Border.all(color: Colors.white.withOpacity(0.3), width: 3),
+                  Border.all(color: Colors.white.withValues(alpha: 0.3), width: 3),
             ),
             child: const Icon(Icons.person, color: Colors.white, size: 40),
           ),
@@ -534,7 +535,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
               color: Colors.grey)), // Darker grey for visibility
       focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: Color(0xFF166534), width: 2)),
+          borderSide: const BorderSide(color: AppColors.primary, width: 2)),
     );
   }
 }
