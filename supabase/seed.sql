@@ -1005,7 +1005,7 @@ Segera cabut tanaman terong yang sudah jelas kena penyakit ini sampai ke akarnya
 Di bekas lubang tanam yang tadi ada tanaman sakitnya, taburkan pupuk kompos yang banyak. Kompos ini bagus untuk menyuburkan tanah dan bisa bantu menekan pertumbuhan jamur jahat.
 
 **3. Hindari Penyiraman Berlebihan** 💧
-Saat menyiram tanaman, jangan sampai air menggenang terlalu lama di sekitar batang terong. Siram secukupnya saja supaya tanah tidak terlalu lembap, karena jamur penyebab busuk batang ini suka sekali tempat yang basah.', 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800', '2026-08-31T05:02:30.845225+00:00'::timestamptz),
+Saat menyiram tanaman, jangan sampai air menggenang terlalu lama di sekitar batang terong. Siram secukupnya saja supaya tanah tidak terlalu lembap, karena jamur penyebab busuk batang ini suka sekali tempat yang basah.', 'https://lmbsryezpadlsbxznezl.supabase.co/storage/v1/object/public/content_images/hama/penyakit-busuk-batang-terong.jpg', '2026-08-31T05:02:30.845225+00:00'::timestamptz),
   ('3 Penyakit Utama Tanaman Jagung', 'Penyakit', 'Salam Petani Hebat! Jagung kita memang kelihatan gagah, tapi hati-hati ya, dia gampang kena penyakit, apalagi kalau cuaca lagi mendukung bibit penyakitnya. Seringnya, gejala awal penyakit ini nggak kita sadari, tahu-tahu panen sudah anjlok. Nah, biar nggak nyesel belakangan, yuk kita kenali 3 penyakit jagung yang paling sering bikin pusing!
 
 Ciri-ciri: Berikut ciri-ciri penyakit yang sering menyerang jagung:
@@ -1018,7 +1018,7 @@ Berikut cara mengatasi tiap penyakit:
 
 *   **1. Untuk Bulai:** Pilih benih yang sehat dan tahan penyakit. Kalau bisa, benihnya dikasih perlakuan dulu sebelum tanam. Bersihkan sisa tanaman yang sakit.
 *   **2. Untuk Busuk Tongkol:** Pastikan lahan nggak terlalu lembap, air bisa mengalir lancar (drainase bagus). Jaga sirkulasi udara di kebun. Habis panen, biji jagung harus dikeringkan dengan baik.
-*   **3. Untuk Hawar Daun:** Atur jarak tanam biar nggak terlalu rapat. Pakai varietas jagung yang tahan hawar daun. Bersihkan sisa-sisa tanaman yang sudah kena penyakit.', 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800', '2026-09-17T05:49:52.745613+00:00'::timestamptz)
+*   **3. Untuk Hawar Daun:** Atur jarak tanam biar nggak terlalu rapat. Pakai varietas jagung yang tahan hawar daun. Bersihkan sisa-sisa tanaman yang sudah kena penyakit.', 'https://lmbsryezpadlsbxznezl.supabase.co/storage/v1/object/public/content_images/hama/3-penyakit-utama-tanaman-jagung.jpg', '2026-09-17T05:49:52.745613+00:00'::timestamptz)
 ) as v(name, type, description, solution_organic, image_url, created_at)
 where not exists (select 1 from public.hama_penyakit p where p.name = v.name);
 
