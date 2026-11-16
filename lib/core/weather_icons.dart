@@ -27,6 +27,29 @@ class WeatherIcons {
     }
   }
 
+  /// Ikon untuk kondisi cuaca berupa teks bebas (mis. dari Asisten Tani:
+  /// "Mendung", "Hujan ringan", "Cerah berawan").
+  static IconData iconForText(String condition) =>
+      iconFor(_codeForText(condition));
+
+  static Color colorForText(String condition) =>
+      colorFor(_codeForText(condition));
+
+  static String _codeForText(String condition) {
+    final c = condition.toLowerCase();
+    if (c.contains('petir') || c.contains('badai')) return '11d';
+    if (c.contains('hujan') || c.contains('gerimis')) return '10d';
+    if (c.contains('kabut') || c.contains('asap')) return '50d';
+    if (c.contains('cerah') && (c.contains('awan') || c.contains('sebagian'))) {
+      return '02d';
+    }
+    if (c.contains('mendung') || c.contains('awan')) return '04d';
+    if (c.contains('cerah') || c.contains('terik') || c.contains('panas')) {
+      return '01d';
+    }
+    return '';
+  }
+
   static Color colorFor(String iconCode) {
     if (iconCode.endsWith('n')) return Colors.white;
     switch (iconCode.length >= 2 ? iconCode.substring(0, 2) : '') {

@@ -12,6 +12,7 @@ import '../../data/services/supabase_service.dart';
 import '../../widgets/app_ui.dart';
 import '../../widgets/drug_mini_card.dart';
 import 'chat_parser.dart';
+import '../../core/weather_icons.dart';
 
 class ChatBubble extends StatelessWidget {
   final ChatMessage message;
@@ -219,7 +220,8 @@ class WeatherRecommendationCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(children: [
-            const Icon(Icons.wb_sunny, color: Colors.yellow, size: 20),
+            Icon(WeatherIcons.iconForText(v('kondisi')),
+                color: WeatherIcons.colorForText(v('kondisi')), size: 20),
             const SizedBox(width: 8),
             Expanded(
               child: Text(v('lokasi'),

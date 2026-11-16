@@ -13,7 +13,7 @@ Redaksi Petani Maju', 'Tips Tani', 'https://lmbsryezpadlsbxznezl.supabase.co/sto
 
 ### 🌐 Sumber
 Redaksi Petani Maju', 'Tips Tani', 'https://lmbsryezpadlsbxznezl.supabase.co/storage/v1/object/public/content_images/tips/cara-pemupukan-yang-tepat.jpg', '2026-08-28T09:17:00+00:00'::timestamptz),
-  ('Yuk, Kenalan dengan BPP di Demak: Sumber Ilmu Tani Kita!', '### ⚡ Solusi Cepat BPP adalah tempat petani bisa belajar banyak hal baru dan dapat bantuan soal pertanian.', '### ⚡ Solusi Cepat
+  ('Yuk, Kenalan dengan BPP di Demak: Sumber Ilmu Tani Kita!', 'BPP adalah tempat petani bisa belajar banyak hal baru dan dapat bantuan soal pertanian.', '### ⚡ Solusi Cepat
 BPP adalah tempat petani bisa belajar banyak hal baru dan dapat bantuan soal pertanian. Jangan sungkan mampir ke BPP terdekat di wilayah Demak untuk ngobrol dan cari solusi!
 
 ### 📖 Panduan Lengkap
@@ -38,7 +38,7 @@ Jadi, jangan ragu ya untuk mampir ke BPP terdekat. Para penyuluh di sana siap me
 
 ### 🌐 Sumber
 [Dinas Pertanian & Pangan Kab. Demak](https://dinpertanpangan.demakkab.go.id)', 'Lainnya', 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800', '2026-08-31T04:28:13+00:00'::timestamptz),
-  ('Mengenal Balai Penyuluhan Pertanian (BPP) di Sekitar Kita', '### ⚡ Solusi Cepat Konten yang diberikan adalah informasi umum dan tautan ke Balai Penyuluhan Pertanian (BPP) di beberapa wilayah, bukan panduan bercocok tanam…', '### ⚡ Solusi Cepat
+  ('Mengenal Balai Penyuluhan Pertanian (BPP) di Sekitar Kita', 'Konten yang diberikan adalah informasi umum dan tautan ke Balai Penyuluhan Pertanian (BPP) di beberapa wilayah, bukan panduan bercocok tanam…', '### ⚡ Solusi Cepat
 Konten yang diberikan adalah informasi umum dan tautan ke Balai Penyuluhan Pertanian (BPP) di beberapa wilayah, bukan panduan bercocok tanam atau info hama. BPP adalah tempat petani bisa mencari informasi dan konsultasi pertanian.
 
 ### 📖 Panduan Lengkap
@@ -65,7 +65,7 @@ Kalau Bapak/Ibu butuh informasi spesifik tentang cara bertani atau mengatasi mas
 
 ### 🌐 Sumber
 Redaksi Petani Maju', 'Lainnya', 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800', '2026-08-31T04:47:10+00:00'::timestamptz),
-  ('PTPN Group Garap Lahan Bawang Putih Besar-besaran di Jawa Barat, Petani Diajak Ikut Makmur!', '### ⚡ Solusi Cepat PTPN Group sedang gencar mengembangkan budidaya bawang putih di Jawa Barat seluas 10.000 hektare, bahkan akan diperluas lagi.', '### ⚡ Solusi Cepat
+  ('PTPN Group Garap Lahan Bawang Putih Besar-besaran di Jawa Barat, Petani Diajak Ikut Makmur!', 'PTPN Group sedang gencar mengembangkan budidaya bawang putih di Jawa Barat seluas 10.000 hektare, bahkan akan diperluas lagi.', '### ⚡ Solusi Cepat
 PTPN Group sedang gencar mengembangkan budidaya bawang putih di Jawa Barat seluas 10.000 hektare, bahkan akan diperluas lagi. Program ini bertujuan agar Indonesia tidak perlu impor bawang putih lagi dan petani lokal bisa ikut menikmati hasilnya lewat pola kemitraan.
 
 ### 📖 Panduan Lengkap
@@ -102,7 +102,7 @@ Jadi, mari kita sambut baik program ini dan semoga bawang putih kita bisa berjay
 
 ### 🌐 Sumber
 [Horti Indonesia](https://hortiindonesia.com)', 'Lainnya', 'https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?w=800', '2026-08-31T04:55:43+00:00'::timestamptz),
-  ('Panen Jagung Untung, Ternak Sehat, Tanah Subur: Jurus Tani Terpadu!', '### ⚡ Solusi Cepat Jangan cuma ambil biji jagungnya!', '### ⚡ Solusi Cepat
+  ('Panen Jagung Untung, Ternak Sehat, Tanah Subur: Jurus Tani Terpadu!', 'Jangan cuma ambil biji jagungnya!', '### ⚡ Solusi Cepat
 Jangan cuma ambil biji jagungnya! Batang, daun, tongkol, sampai kulit jagung itu bisa jadi pakan ternak yang murah dan bergizi. Kotoran ternaknya pun bisa jadi pupuk alami buat jagung lagi. Jadi, jagung dan ternak bisa saling bantu, bikin usaha tani makin untung dan lestari!
 
 ### 📖 Panduan Lengkap
@@ -168,7 +168,7 @@ Jadi, sedulur petani, menanam jagung itu nggak cuma dapat bijinya aja. Kita bisa
 
 ### 🌐 Sumber
 [Horti Indonesia](https://hortiindonesia.com)', 'Tips Tani', 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=800', '2026-08-31T04:56:06+00:00'::timestamptz),
-  ('Irigasi Tetes: Rahasia Lidah Buaya Subur, Pelepah Tebal, dan Hemat Air!', '### ⚡ Solusi Cepat Untuk budidaya lidah buaya yang optimal, pakai irigasi tetes!', '### ⚡ Solusi Cepat
+  ('Irigasi Tetes: Rahasia Lidah Buaya Subur, Pelepah Tebal, dan Hemat Air!', 'Untuk budidaya lidah buaya yang optimal, pakai irigasi tetes!', '### ⚡ Solusi Cepat
 Untuk budidaya lidah buaya yang optimal, pakai irigasi tetes! Cara ini memastikan tanaman dapat air pas, tidak kurang tidak lebih, sehingga pelepah jadi tebal dan berisi gel banyak. Selain itu, air jadi lebih hemat dan bisa sekalian memupuk.
 
 ### 🛠️ Alat & Bahan
@@ -236,7 +236,7 @@ Semoga pengalaman ini bisa jadi inspirasi buat Bapak/Ibu Petani lainnya yang jug
 
 ### 🌐 Sumber
 [Horti Indonesia](https://hortiindonesia.com)', 'Teknologi Tani', 'https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?w=800', '2026-08-31T04:56:28+00:00'::timestamptz),
-  ('Rumah Kaca Pintar INSTIPER: Melon Panen Melimpah dengan Teknologi Canggih!', '### ⚡ Solusi Cepat INSTIPER mengembangkan rumah kaca pintar (Smart Greenhouse) yang pakai teknologi internet (IoT) dan sistem pemberi saran otomatis (DSS)…', '### ⚡ Solusi Cepat
+  ('Rumah Kaca Pintar INSTIPER: Melon Panen Melimpah dengan Teknologi Canggih!', 'INSTIPER mengembangkan rumah kaca pintar (Smart Greenhouse) yang pakai teknologi internet (IoT) dan sistem pemberi saran otomatis (DSS)…', '### ⚡ Solusi Cepat
 INSTIPER mengembangkan rumah kaca pintar (Smart Greenhouse) yang pakai teknologi internet (IoT) dan sistem pemberi saran otomatis (DSS) untuk budidaya melon. Dengan ini, petani bisa memantau kondisi tanaman secara akurat dan mendapat rekomendasi perawatan, sehingga panen melon jadi lebih banyak dan berkualitas.
 
 ### 🛠️ Alat & Bahan
@@ -281,7 +281,7 @@ Saat ini, di rumah kaca pintar ini sedang dibudidayakan melon jenis **Dalmation*
 
 ### 🌐 Sumber
 [Horti Indonesia](https://hortiindonesia.com)', 'Teknologi Tani', 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=800', '2026-08-31T04:56:48+00:00'::timestamptz),
-  ('Jinawi: Pupuk Lebih Pas, Panen Makin Beras!', '### ⚡ Solusi Cepat Jinawi bantu petani pupuk lebih tepat dan hemat pakai teknologi canggih, biar tanah subur dan panen melimpah.', '### ⚡ Solusi Cepat
+  ('Jinawi: Pupuk Lebih Pas, Panen Makin Beras!', 'Jinawi bantu petani pupuk lebih tepat dan hemat pakai teknologi canggih, biar tanah subur dan panen melimpah.', '### ⚡ Solusi Cepat
 Jinawi bantu petani pupuk lebih tepat dan hemat pakai teknologi canggih, biar tanah subur dan panen melimpah. Nggak ada lagi pupuk terbuang sia-sia!
 
 ### 🛠️ Alat & Bahan
@@ -347,7 +347,7 @@ Yuk, saatnya bertani lebih cerdas dan presisi dengan Jinawi! Kalau mau tahu lebi
 
 ### 🌐 Sumber
 [MSMB Indonesia](https://msmbindonesia.com)', 'Teknologi Tani', 'https://images.unsplash.com/photo-1536657464919-892534f60d6e?w=800', '2026-08-31T05:02:15+00:00'::timestamptz),
-  ('Petani Siap Hadapi Kemarau: Tips Jitu Agar Panen Tetap Berlimpah!', '### ⚡ Solusi Cepat Musim kemarau memang tantangan, tapi dengan persiapan matang seperti hemat air, pilih bibit tahan kering, dan siapkan pakan ternak…', '### ⚡ Solusi Cepat
+  ('Petani Siap Hadapi Kemarau: Tips Jitu Agar Panen Tetap Berlimpah!', 'Musim kemarau memang tantangan, tapi dengan persiapan matang seperti hemat air, pilih bibit tahan kering, dan siapkan pakan ternak…', '### ⚡ Solusi Cepat
 Musim kemarau memang tantangan, tapi dengan persiapan matang seperti hemat air, pilih bibit tahan kering, dan siapkan pakan ternak alternatif, hasil panen dan ternak kita tetap bisa aman dan melimpah.
 
 ### 🛠️ Alat & Bahan
@@ -386,7 +386,7 @@ Dengan persiapan yang matang dan semangat gotong royong, kita pasti bisa melewat
 
 ### 🌐 Sumber
 [IPB Digitani](https://digitani.ipb.ac.id)', 'Cuaca & Musim', 'https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?w=800', '2026-08-31T05:02:53+00:00'::timestamptz),
-  ('PTPN Group Ajak Petani Garap Bawang Putih Besar-besaran di Jawa Barat, Siap Swasembada!', '### ⚡ Solusi Cepat PTPN Group sedang gencar mengembangkan kebun bawang putih di Jawa Barat seluas 10.000 hektar, bahkan akan diperluas lagi.', '### ⚡ Solusi Cepat
+  ('PTPN Group Ajak Petani Garap Bawang Putih Besar-besaran di Jawa Barat, Siap Swasembada!', 'PTPN Group sedang gencar mengembangkan kebun bawang putih di Jawa Barat seluas 10.000 hektar, bahkan akan diperluas lagi.', '### ⚡ Solusi Cepat
 PTPN Group sedang gencar mengembangkan kebun bawang putih di Jawa Barat seluas 10.000 hektar, bahkan akan diperluas lagi. Program ini bertujuan agar Indonesia tidak perlu impor bawang putih lagi dan petani bisa ikut sejahtera dengan pola kemitraan.
 
 ### 📖 Panduan Lengkap
@@ -431,7 +431,7 @@ Jadi, buat para petani di Jawa Barat, ini kesempatan emas untuk ikut serta dalam
 
 ### 🌐 Sumber
 [Horti Indonesia](https://hortiindonesia.com)', 'Lainnya', 'https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?w=800', '2026-08-31T05:28:46+00:00'::timestamptz),
-  ('Jinawi: Teknologi Pintar untuk Pertanian Makin Maju dan Panen Melimpah!', '### ⚡ Solusi Cepat Teknologi Jinawi hadir untuk bantu petani memupuk lebih tepat dan efisien.', '### ⚡ Solusi Cepat
+  ('Jinawi: Teknologi Pintar untuk Pertanian Makin Maju dan Panen Melimpah!', 'Teknologi Jinawi hadir untuk bantu petani memupuk lebih tepat dan efisien.', '### ⚡ Solusi Cepat
 Teknologi Jinawi hadir untuk bantu petani memupuk lebih tepat dan efisien. Dengan info tanah real-time di HP, petani bisa ambil keputusan akurat, bikin hasil panen makin bagus dan hemat biaya.
 
 ### 🛠️ Alat & Bahan
@@ -466,7 +466,7 @@ MSMB berkomitmen terus mendukung pertanian Indonesia lewat solusi digital. Ke de
 
 ### 🌐 Sumber
 [MSMB Indonesia](https://msmbindonesia.com)', 'Teknologi Tani', 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800', '2026-08-31T05:29:13+00:00'::timestamptz),
-  ('Kamus Istilah Hidroponik untuk Pemula: Kenali Istilah Ini Biar Praktik Makin Lancar!', '### ⚡ Solusi Cepat Bagi Petani yang baru mau mencoba sistem hidroponik (tanam tanpa tanah), penting untuk mengenal istilah dasar seperti jenis nutrisi, media…', '### ⚡ Solusi Cepat
+  ('Kamus Istilah Hidroponik untuk Pemula: Kenali Istilah Ini Biar Praktik Makin Lancar!', 'Bagi Petani yang baru mau mencoba sistem hidroponik (tanam tanpa tanah), penting untuk mengenal istilah dasar seperti jenis nutrisi, media…', '### ⚡ Solusi Cepat
 Bagi Petani yang baru mau mencoba sistem hidroponik (tanam tanpa tanah), penting untuk mengenal istilah dasar seperti jenis nutrisi, media tanam, dan model instalasinya. Dengan memahami istilah-istilah ini, kita bisa merawat sayuran hidroponik dengan lebih tepat dan terhindar dari salah takar pupuk.
 
 ### 🛠️ Alat & Bahan
@@ -502,7 +502,7 @@ Untuk pemula, mulailah mencoba dari sistem sumbu (*Wick System*) yang sederhana 
 
 ### 🌐 Sumber
 [MSMB Indonesia](https://msmbindonesia.com)', 'Teknologi Tani', 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800', '2026-08-31T07:17:44+00:00'::timestamptz),
-  ('Tips Menjaga Air Kolam Koi Tetap Bening dan Cara Aman Pindah Ikan Tanpa Stres', '### ⚡ Solusi Cepat Gunakan sistem filtrasi fisik (pompa dan busa/dakron) yang dibersihkan setiap hari agar air tetap jernih dan kaya oksigen.', '### ⚡ Solusi Cepat
+  ('Tips Menjaga Air Kolam Koi Tetap Bening dan Cara Aman Pindah Ikan Tanpa Stres', 'Gunakan sistem filtrasi fisik (pompa dan busa/dakron) yang dibersihkan setiap hari agar air tetap jernih dan kaya oksigen.', '### ⚡ Solusi Cepat
 Gunakan sistem filtrasi fisik (pompa dan busa/dakron) yang dibersihkan setiap hari agar air tetap jernih dan kaya oksigen. Endapkan air baru minimal 1 hari di tandon sebelum digunakan, dan pindahkan ikan menggunakan serokan jaring halus secara cepat namun lembut.
 
 ### 🛠️ Alat & Bahan
@@ -535,7 +535,7 @@ Dengan menjaga kebersihan filter dan memperlakukan ikan secara halus, koi kesaya
 
 ### 🌐 Sumber
 [IPB Digitani](https://digitani.ipb.ac.id)', 'Tips Tani', 'https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=800', '2026-08-31T07:34:20+00:00'::timestamptz),
-  ('Sawah Tetap Menghasilkan di Musim Kemarau: Tanam Kacang Hijau Hemat Air', '### ⚡ Solusi Cepat Saat musim kemarau dan pasokan air terbatas (Musim Tanam 3), petani disarankan beralih menanam kacang hijau.', '### ⚡ Solusi Cepat
+  ('Sawah Tetap Menghasilkan di Musim Kemarau: Tanam Kacang Hijau Hemat Air', 'Saat musim kemarau dan pasokan air terbatas (Musim Tanam 3), petani disarankan beralih menanam kacang hijau.', '### ⚡ Solusi Cepat
 Saat musim kemarau dan pasokan air terbatas (Musim Tanam 3), petani disarankan beralih menanam kacang hijau. Tanaman ini sangat hemat air dan berumur genjah sehingga cepat dipanen dalam waktu 60–70 hari.
 
 ### 🛠️ Alat & Bahan
@@ -562,7 +562,7 @@ Kacang hijau adalah pilihan paling cocok untuk ditanam saat musim kering sebagai
 
 ### 🌐 Sumber
 [IPB Digitani](https://digitani.ipb.ac.id)', 'Cuaca & Musim', 'https://images.unsplash.com/photo-1536657464919-892534f60d6e?w=800', '2026-08-31T07:53:21+00:00'::timestamptz),
-  ('Cara Mudah Merawat Air Kolam Koi Tetap Bening dan Pindah Ikan Tanpa Bikin Stres', '### ⚡ Solusi Cepat Gunakan filter mekanik (busa/dakron) yang dicuci rutin setiap hari dan selalu endapkan air baru di tandon minimal 24 jam sebelum dipakai.', '### ⚡ Solusi Cepat
+  ('Cara Mudah Merawat Air Kolam Koi Tetap Bening dan Pindah Ikan Tanpa Bikin Stres', 'Gunakan filter mekanik (busa/dakron) yang dicuci rutin setiap hari dan selalu endapkan air baru di tandon minimal 24 jam sebelum dipakai.', '### ⚡ Solusi Cepat
 Gunakan filter mekanik (busa/dakron) yang dicuci rutin setiap hari dan selalu endapkan air baru di tandon minimal 24 jam sebelum dipakai. Saat memilah atau memindahkan koi, gunakan seser halus dengan gerakan perlahan agar ikan tidak panik dan lecet.
 
 ### 🛠️ Alat & Bahan
@@ -593,7 +593,7 @@ Dengan menjaga kebersihan filter dan cara pemindahan yang lembut, ikan koi kesay
 
 ### 🌐 Sumber
 [IPB Digitani](https://digitani.ipb.ac.id/bagaimana-cara-pengelolaan-kualitas-air-dan-penanganan-stres-pada-budidaya-ikan-koi/)', 'Lainnya', 'https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=800', '2026-09-17T02:57:37+00:00'::timestamptz),
-  ('Mengenal Jinawi: Alat Cerdas untuk Cek Kesuburan Tanah dan Takaran Pupuk Lewat HP', '### ⚡ Solusi Cepat Gunakan teknologi sensor pintar seperti Jinawi untuk mengecek kondisi dan kebutuhan hara tanah langsung lewat HP.', '### ⚡ Solusi Cepat
+  ('Mengenal Jinawi: Alat Cerdas untuk Cek Kesuburan Tanah dan Takaran Pupuk Lewat HP', 'Gunakan teknologi sensor pintar seperti Jinawi untuk mengecek kondisi dan kebutuhan hara tanah langsung lewat HP.', '### ⚡ Solusi Cepat
 Gunakan teknologi sensor pintar seperti Jinawi untuk mengecek kondisi dan kebutuhan hara tanah langsung lewat HP. Dengan takaran pupuk yang tepat dan pas, biaya pemupukan jadi lebih hemat dan hasil panen lebih maksimal.
 
 ### 🛠️ Alat & Bahan
@@ -627,7 +627,7 @@ Mari kita sambut kemajuan teknologi ini agar pertanian kita semakin maju, hemat,
 
 ### 🌐 Sumber
 [MSMB Indonesia](https://msmbindonesia.com/smart-farming-jinawi-padi-jateng-2026/)', 'Teknologi Tani', 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800', '2026-09-17T03:00:48+00:00'::timestamptz),
-  ('Benih Sawi Belum Tumbuh Setelah Ditanam? Ini Penyebab dan Solusinya!', '### ⚡ Solusi Cepat Diamkan olahan tanah, kapur dolomit, dan kotoran ayam selama minimal 1-2 minggu sebelum tanam agar tanah tidak panas.', '### ⚡ Solusi Cepat
+  ('Benih Sawi Belum Tumbuh Setelah Ditanam? Ini Penyebab dan Solusinya!', 'Diamkan olahan tanah, kapur dolomit, dan kotoran ayam selama minimal 1-2 minggu sebelum tanam agar tanah tidak panas.', '### ⚡ Solusi Cepat
 Diamkan olahan tanah, kapur dolomit, dan kotoran ayam selama minimal 1-2 minggu sebelum tanam agar tanah tidak panas. Saat menyemai, kubur benih tipis-tipis saja (sekitar 0,5–1 cm) dan jaga tanah tetap lembap, tidak kekeringan dan jangan sampai tergenang/becek.
 
 ### 🛠️ Alat & Bahan
@@ -667,7 +667,7 @@ Jika sudah menunggu 7–10 hari dan sawi tetap tidak tumbuh, yuk cek apakah beni
 
 ### 🌐 Sumber
 [IPB Digitani](https://digitani.ipb.ac.id/apa-yang-menyebabkan-tanaman-sawit-tidak-tumbuh/)', 'Tips Tani', 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800', '2026-09-17T03:02:19+00:00'::timestamptz),
-  ('Resep Rahasia Pupuk AB Mix Melon Sendiri, Panen Pasti Melimpah!', '### ⚡ Solusi Cepat Pak Tani dan Bu Tani, mau melonnya subur dan buahnya banyak?', '### ⚡ Solusi Cepat
+  ('Resep Rahasia Pupuk AB Mix Melon Sendiri, Panen Pasti Melimpah!', 'Pak Tani dan Bu Tani, mau melonnya subur dan buahnya banyak?', '### ⚡ Solusi Cepat
 Pak Tani dan Bu Tani, mau melonnya subur dan buahnya banyak? Kuncinya ada di pupuk AB Mix yang pas! Yuk, kita bikin sendiri pupuk cair khusus melon ini, gampang kok, biar tanaman sehat dan panen melimpah ruah!
 
 ### 🛠️ Alat & Bahan
@@ -757,7 +757,7 @@ Semoga panduan ini bermanfaat ya, Pak Tani dan Bu Tani! Dengan pupuk AB Mix yang
 
 ### 🌐 Sumber
 [IPB Digitani](https://digitani.ipb.ac.id/bagaimana-cara-membuat-nutrisi-pupuk-ab-mix-melon/)', 'Pupuk & Tanah', 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=800', '2026-09-17T03:07:19+00:00'::timestamptz),
-  ('Pupuk Makro dan Mikro: Apa Bedanya dan Kenapa Penting Buat Tanaman Kita?', '### ⚡ Solusi Cepat Pahami bahwa tanaman butuh dua jenis pupuk utama: Makro (jumlah besar) dan Mikro (jumlah kecil).', '### ⚡ Solusi Cepat
+  ('Pupuk Makro dan Mikro: Apa Bedanya dan Kenapa Penting Buat Tanaman Kita?', 'Pahami bahwa tanaman butuh dua jenis pupuk utama: Makro (jumlah besar) dan Mikro (jumlah kecil).', '### ⚡ Solusi Cepat
 Pahami bahwa tanaman butuh dua jenis pupuk utama: Makro (jumlah besar) dan Mikro (jumlah kecil). Keduanya sama pentingnya dan harus diberikan secara seimbang agar tanaman tumbuh sehat, kuat, dan hasil panennya melimpah.
 
 ### 📖 Panduan Lengkap
@@ -805,7 +805,7 @@ Dengan memahami pupuk makro dan mikro ini, Bapak/Ibu Petani bisa lebih jitu dala
 
 ### 🌐 Sumber
 [MSMB Indonesia](https://msmbindonesia.com/perbedaan-pupuk-makro-dan-mikro/)', 'Pupuk & Tanah', 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800', '2026-09-17T03:08:24+00:00'::timestamptz),
-  ('Sawit Itu Gimana Sih? Yuk, Kupas Tuntas Mitos dan Faktanya!', '### ⚡ Solusi Cepat Kelapa sawit sering disalahpahami.', '### ⚡ Solusi Cepat
+  ('Sawit Itu Gimana Sih? Yuk, Kupas Tuntas Mitos dan Faktanya!', 'Kelapa sawit sering disalahpahami.', '### ⚡ Solusi Cepat
 Kelapa sawit sering disalahpahami. Penting untuk membedakan mitos dan fakta seputar sawit, mulai dari isu lingkungan, kesehatan, hingga teknologi budidaya modern, agar kita bisa melihatnya secara objektif dan bijak.
 
 ### 📖 Panduan Lengkap
@@ -845,7 +845,7 @@ Nah, jadi intinya, jangan cuma denger dari satu sisi aja ya. Sawit itu banyak ce
 
 ### 🌐 Sumber
 [MSMB Indonesia](https://msmbindonesia.com/mitos-dan-fakta-kelapa-sawit/)', 'Lainnya', 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800', '2026-09-17T05:50:12+00:00'::timestamptz),
-  ('Tani Tetap Jalan Saat Kemarau: Coba Tanam Kacang Hijau!', '### ⚡ Solusi Cepat Saat musim kemarau dan air terbatas, menanam kacang hijau bisa jadi pilihan tepat.', '### ⚡ Solusi Cepat
+  ('Tani Tetap Jalan Saat Kemarau: Coba Tanam Kacang Hijau!', 'Saat musim kemarau dan air terbatas, menanam kacang hijau bisa jadi pilihan tepat.', '### ⚡ Solusi Cepat
 Saat musim kemarau dan air terbatas, menanam kacang hijau bisa jadi pilihan tepat. Tanaman ini cepat panen (sekitar 60-70 hari) dan tidak butuh banyak air, sehingga petani tetap bisa beraktivitas dan menghasilkan.
 
 ### 📖 Panduan Lengkap
@@ -872,7 +872,7 @@ Semoga tips ini bermanfaat ya, Pak Tani dan Bu Tani! Mari terus bertani dengan s
 
 ### 🌐 Sumber
 [IPB Digitani](https://digitani.ipb.ac.id/bagaimana-agar-kegiatan-pertanian-tetap-bisa-berjalan-di-musim-kemarau/)', 'Cuaca & Musim', 'https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?w=800', '2026-09-17T05:50:50+00:00'::timestamptz),
-  ('Petani Makin Canggih: Jinawi Bikin Pupuk Pas, Panen Melimpah!', '### ⚡ Solusi Cepat Lewat acara PADI 2026, petani di Jawa Tengah dikenalkan teknologi Jinawi dari MSMB.', '### ⚡ Solusi Cepat
+  ('Petani Makin Canggih: Jinawi Bikin Pupuk Pas, Panen Melimpah!', 'Lewat acara PADI 2026, petani di Jawa Tengah dikenalkan teknologi Jinawi dari MSMB.', '### ⚡ Solusi Cepat
 Lewat acara PADI 2026, petani di Jawa Tengah dikenalkan teknologi Jinawi dari MSMB. Alat pintar ini bisa kasih tahu kondisi tanah secara langsung dan bantu kita mupuk lebih tepat, biar hasil panen makin bagus dan irit biaya.
 
 ### 📖 Panduan Lengkap
@@ -907,7 +907,7 @@ MSMB ini serius banget dukung pertanian kita maju lewat solusi digital. Ke depan
 
 ### 🌐 Sumber
 [MSMB Indonesia](https://msmbindonesia.com/smart-farming-jinawi-padi-jateng-2026/)', 'Teknologi Tani', 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800', '2026-09-18T04:23:47+00:00'::timestamptz),
-  ('Pupuk Makro dan Mikro: Pentingnya Tahu Beda Keduanya Biar Panen Makin Jos!', '### ⚡ Solusi Cepat Pupuk makro dan mikro sama-sama penting untuk tanaman.', '### ⚡ Solusi Cepat
+  ('Pupuk Makro dan Mikro: Pentingnya Tahu Beda Keduanya Biar Panen Makin Jos!', 'Pupuk makro dan mikro sama-sama penting untuk tanaman.', '### ⚡ Solusi Cepat
 Pupuk makro dan mikro sama-sama penting untuk tanaman. Pupuk makro dibutuhkan dalam jumlah besar untuk membangun struktur tanaman, sedangkan pupuk mikro dibutuhkan sedikit tapi vital untuk mengatur proses di dalamnya. Keduanya harus diberikan secara seimbang agar tanaman tumbuh sehat dan hasil panen optimal.
 
 ### 📖 Panduan Lengkap

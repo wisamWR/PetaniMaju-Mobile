@@ -364,6 +364,27 @@ class _DashboardContentState extends State<_DashboardContent> {
                         builder: (context, snapshot) {
                           if (!snapshot.hasData) return const SizedBox.shrink();
                           final posts = snapshot.data!.take(3).toList();
+                          if (posts.isEmpty) {
+                            return InfoCard(
+                              child: Row(
+                                children: [
+                                  Icon(Icons.forum_outlined,
+                                      color: Colors.grey[400]),
+                                  const SizedBox(width: 12),
+                                  const Expanded(
+                                    child: Text(
+                                        "Belum ada diskusi. Jadilah yang pertama bertanya!",
+                                        style: TextStyle(color: Colors.grey)),
+                                  ),
+                                  TextButton(
+                                    onPressed: () =>
+                                        context.push('/forum/create'),
+                                    child: const Text("Tulis"),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
                           return Column(
                             children: posts
                                 .map((post) => _buildForumCard(post))
@@ -452,6 +473,8 @@ class _DashboardContentState extends State<_DashboardContent> {
               ],
             ),
             child: Stack(
+              // Lingkaran dekoratif menjorok ke padding; jangan dipotong lurus.
+              clipBehavior: Clip.none,
               children: [
                 // Decorative circle
                 Positioned(

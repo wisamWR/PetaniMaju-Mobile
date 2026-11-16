@@ -864,7 +864,9 @@ class _ProfileContentState extends State<_ProfileContent>
     }
 
     if (!mounted) return;
-    Navigator.pop(context); // Pop loading
+    // showDialog memakai root navigator; Navigator.pop(context) dari halaman
+    // di dalam tab akan menutup halaman tab itu sendiri (layar jadi hitam).
+    Navigator.of(context, rootNavigator: true).pop(); // Pop loading
     if (error != null) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(error)));

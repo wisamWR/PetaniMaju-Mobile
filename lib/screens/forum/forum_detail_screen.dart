@@ -139,6 +139,7 @@ class _ForumDetailScreenState extends State<ForumDetailScreen> {
       appBar: buildAppBar("Detail Diskusi", actions: [
           if (_supabaseService.currentUser?.id == widget.post.userId)
             IconButton(
+              tooltip: 'Hapus postingan',
               icon: const Icon(Icons.delete, color: Colors.red),
               onPressed: _confirmDelete,
             ),
@@ -338,6 +339,7 @@ class _ForumDetailScreenState extends State<ForumDetailScreen> {
                 ),
                 const SizedBox(width: 8),
                 IconButton.filled(
+                  tooltip: 'Kirim komentar',
                   onPressed: _isSending ? null : _sendComment,
                   icon: _isSending
                       ? const SizedBox(
